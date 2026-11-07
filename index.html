@@ -128,15 +128,16 @@ main{min-height:60vh}
 .cv dt{font-family:var(--f-mono);font-size:.8rem;color:var(--muted);font-variant-numeric:tabular-nums;padding-top:.1rem}
 .cv dd{margin:0}
 .cv dd small{color:var(--muted);display:block;font-size:.84rem}
-.members{display:grid;grid-template-columns:repeat(auto-fill,minmax(14rem,1fr));gap:1rem}
-.member{display:grid;grid-template-columns:3.4rem minmax(0,1fr);gap:.9rem;align-items:start;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:1rem}
-.member .avatar{font-size:1.1rem}
-.member .mphoto{width:4.5rem;max-width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;border-radius:6px;display:block}
-.member .en-name{font-weight:400;color:var(--muted);font-size:.8rem}
-.member:has(.mphoto){grid-template-columns:4.5rem minmax(0,1fr)}
-.member b{display:block;font-weight:700}
-.member .role{font-size:.82rem;color:var(--deep);display:block}
-.member p{margin:.35rem 0 0;font-size:.84rem;color:var(--muted)}
+.members{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.25rem}
+@media (max-width:640px){.members{grid-template-columns:minmax(0,1fr)}}
+.member{display:grid;grid-template-columns:7.5rem minmax(0,1fr);gap:1.4rem;align-items:start;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:1.4rem}
+@media (max-width:420px){.member{grid-template-columns:5.5rem minmax(0,1fr);gap:1rem;padding:1.1rem}}
+.member .avatar{width:100%;aspect-ratio:3/4;border-radius:8px;font-size:1.6rem}
+.member .mphoto{width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;border-radius:8px;display:block}
+.member .en-name{font-weight:400;color:var(--muted);font-size:.88rem}
+.member b{display:block;font-weight:700;font-size:1.15rem;margin-bottom:.35rem}
+.member .role{font-size:.92rem;color:var(--deep);display:block;line-height:1.5}
+.member p{margin:.6rem 0 0;font-size:.92rem;color:var(--muted)}
 .group-h{font-family:var(--f-body);font-size:.95rem;font-weight:700;margin:1.8rem 0 .8rem;color:var(--muted)}
 .group-h:first-child{margin-top:0}
 .simple-list{display:flex;flex-wrap:wrap;gap:.5rem 1.5rem;font-size:.92rem}
@@ -481,7 +482,7 @@ function renderResearch(){
 function renderTeam(){
   $("#cvCareer").innerHTML=career.map(([y,e,k])=>`<dt>${y}</dt><dd>${esc(lang==="ko"?k:e)}</dd>`).join("");
   $("#cvAwards").innerHTML=awards.map(([y,e,k])=>`<dt>${y}</dt><dd>${esc(lang==="ko"?k:e)}</dd>`).join("");
-  const h=memberGroups.map(([g,ms])=>`<h4 class="group-h">${L(g)}</h4><div class="members">${ms.map(([n,nk,ph,info,tp])=>`<div class="member">${ph?`<img class="mphoto" src="assets/members/${ph}.jpg" alt="${esc(n)}" loading="lazy" width="72" height="96">`:`<div class="avatar" aria-hidden="true">${initials(n)}</div>`}<div><b>${lang==="ko"&&nk?`${nk} <small class="en-name">${esc(n)}</small>`:esc(n)}</b>${L(info).map(x=>`<span class="role">${esc(x)}</span>`).join("")}${L(tp).length?`<p>${L(tp).map(esc).join("<br>")}</p>`:""}</div></div>`).join("")}</div>`).join("");
+  const h=memberGroups.map(([g,ms])=>`<h4 class="group-h">${L(g)}</h4><div class="members">${ms.map(([n,nk,ph,info,tp])=>`<div class="member">${ph?`<img class="mphoto" src="assets/members/${ph}.jpg" alt="${esc(n)}" loading="lazy" width="120" height="160">`:`<div class="avatar" aria-hidden="true">${initials(n)}</div>`}<div><b>${lang==="ko"&&nk?`${nk} <small class="en-name">${esc(n)}</small>`:esc(n)}</b>${L(info).map(x=>`<span class="role">${esc(x)}</span>`).join("")}${L(tp).length?`<p>${L(tp).map(esc).join("<br>")}</p>`:""}</div></div>`).join("")}</div>`).join("");
   $("#memberGroups").innerHTML=h;
 }
 let pubFilter="all";
