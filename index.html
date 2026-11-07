@@ -485,7 +485,7 @@ function renderStatic(){
 function renderHome(){
   $("#homeTopics").innerHTML=topics.map(x=>`<a class="theme-card" href="#research"><h3>${L(x.t)}</h3><p>${L(x.d)}</p></a>`).join("");
   const first=P.filter(p=>p.ty==="f").length;
-  const s=[[P.length,t("stP","SCI(E) papers")],[first,t("stF","First / corresponding")],[1+5+4+3,t("stM","Lab members")]];
+  const s=[[P.length,t("stP","SCI(E) papers")],[first,t("stF","First / corresponding")],[1+memberGroups.filter(([g])=>g.en!=="Alumni").reduce((n,[,m])=>n+m.length,0),t("stM","Lab members")]];
   $("#stats").innerHTML=s.map(([n,l])=>`<div><b>${n}</b><span>${l}</span></div>`).join("");
   $("#homeNews").innerHTML=news.slice(0,4).map(newsRow).join("");
 }
