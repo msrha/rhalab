@@ -377,7 +377,8 @@ const news=[["2026.07", "award", {"en": "Our research has been selected as one o
 const tagName={paper:{en:"Paper",ko:"논문"},award:{en:"Award",ko:"수상"},grant:{en:"Grant",ko:"과제"},people:{en:"People",ko:"구성원"}};
 
 // publications: [authors, title, journal, year, cite, type]
-const P=`Cho A, Cho HJ, Kim CH, Kwak K, Rha MS (correspondence)|Predictive value of blood eosinophil count and serum total immunoglobulin E for type 2 chronic rhinosinusitis according to allergic sensitization status|European Archives of Otorhinolaryngology. In press. doi: 10.1007/s00405-026-10527-y|In press|f
+const P=`Lee HC, Jung CM, Cho HJ, Kim CH, Rha MS (correspondence)|Development and external validation of a machine learning–based predictive model for postoperative recurrence in pediatric chronic rhinosinusitis|International Forum of Rhinology & Allergy. Accepted|In press|f
+Cho A, Cho HJ, Kim CH, Kwak K, Rha MS (correspondence)|Predictive value of blood eosinophil count and serum total immunoglobulin E for type 2 chronic rhinosinusitis according to allergic sensitization status|European Archives of Otorhinolaryngology. In press. doi: 10.1007/s00405-026-10527-y|In press|f
 Moon S*, Lee M*, Jung I#, Rha MS# (correspondence)|Oral corticosteroids and adverse events in chronic rhinosinusitis with nasal polyps|JAMA Otolaryngol Head Neck Surg. 2026;152(8):735-743|2026|f
 Kim D, Cho HJ, Kim CH, Rha MS (correspondence)|Population-scale plasma proteomics reveals systemic inflammatory signatures associated with chronic rhinosinusitis|Clinical and Experimental Allergy. 2026;56(9):1131-1133|2026|f
 Kim G, Lee S, Koo MS, Moon S, Kim D, Cho HJ, Kim CH, Rha MS (correspondence)|Single-cell profiling of paired nasal brushing and tissue samples reveals distinct cellular landscapes and immune phenotypes|Journal of Allergy and Clinical Immunology. 2026;158(1):278-90|2026|f
@@ -492,7 +493,7 @@ function renderPubs(){
   const list=P.filter(p=>(pubFilter==="all"||(pubFilter==="first"?p.ty==="f":p.ty==="c"))&&(!q||(p.a+p.t+p.j+p.y).toLowerCase().includes(q)));
   $("#pubCount").textContent=`${list.length} / ${P.length}`;
   let out="",yr="";
-  list.forEach(p=>{if(p.y!==yr){yr=p.y;out+=`<div class="year-h">${yr}</div>`}
+  list.forEach(p=>{if(p.y!==yr){yr=p.y;out+=`<div class="year-h">${yr==="In press"?"Accepted / In press":yr}</div>`}
     out+=`<div class="pub"><span class="t">${esc(p.t)}</span><span class="a">${hl(p.a)}</span><span class="j">${fmtJ(p.j)}</span></div>`});
   $("#pubList").innerHTML=out||`<p style="color:var(--muted)">${lang==="ko"?"검색 결과가 없습니다. 다른 단어로 검색해 보세요.":"No papers match. Try another word."}</p>`;
 }
