@@ -215,7 +215,7 @@ footer .wrap{align-items:center}
       <div>
       <div class="lbl" data-i18n="heroLbl">Research in Human Airway Mucosal Immunology</div>
       <h1 style="margin-top:.8rem" data-i18n-html="heroH">Exploring <em>the mucosal immune system of the upper airway</em> with unprecedented precision for clinical translation</h1>
-      <p class="sub" data-i18n="heroSub">We study how epithelial cells, immune cells, tissue stem cells and microbes interact in the human nasal and sinus mucosa, and how inflammatory memory keeps chronic airway disease going.</p>
+      <p class="sub">RHA LAB @ Yonsei University/Severance Hospital<br>Research in Human Airway Mucosal Immunology Lab<br>연세대학교 의과대학 나민석 교수 연구실</p>
       <div class="aff">
         <span class="yon-row"><img src="assets/yonsei-logo.png" alt="Yonsei University" width="44" height="44"><b data-i18n="aff1">Yonsei University College of Medicine</b></span>
         <span data-i18n="aff2">Severance Hospital · Dept. of Otorhinolaryngology</span>
@@ -248,12 +248,8 @@ footer .wrap{align-items:center}
 <!-- RESEARCH -->
 <section class="view wrap" id="v-research" data-view="research" hidden>
   <div class="page-h"><div class="lbl" data-i18n="nResearch">Research</div>
-  <p class="lead" data-i18n="resIntro">Our lab investigates the crosstalk among immune cells, epithelial cells, tissue stem cells and microbes in the upper airway mucosa. We focus on how inflammatory memory is sustained and how tissue immune homeostasis is maintained or reprogrammed, with the goal of better treatments for chronic airway diseases and respiratory infections.</p></div>
+  <p class="lead">RHA Lab explores the complex interplay among immune cells, epithelial cells, tissue stem cells, and microbial communities within the upper airway mucosa. Our research focuses on understanding the mechanisms underlying the persistence of inflammatory memory and the maintenance of tissue immune homeostasis. By integrating immunology, microbiology, tissue stem cell biology, and bioinformatics, we combine studies of human-derived samples with in vivo models to elucidate how mucosal immunity is maintained or reprogrammed at the airway barrier. Ultimately, we aim to translate these mechanistic insights into improved therapeutic strategies for chronic airway diseases and respiratory infections.</p></div>
   <div id="resTopics"></div>
-  <div class="sec">
-    <div class="side"><div class="lbl" data-i18n="lblApproach">Approach</div></div>
-    <div class="methods" id="methods"></div>
-  </div>
 </section>
 
 <!-- TEAM -->
@@ -352,13 +348,10 @@ const T={
  en:{},
  ko:{brandSub:"연세대학교 의과대학 나민석 교수 연구실",nHome:"홈",nResearch:"연구",nTeam:"구성원",nPubs:"논문",nNews:"소식",nGallery:"갤러리",nContact:"연락처",
   heroLbl:"Research in Human Airway Mucosal Immunology",
-  heroH:"<em>상기도 점막 면역계</em>를 전례 없는 정밀도로 탐구하고 임상으로 연결합니다",
-  heroSub:"코와 부비동 점막에서 상피세포, 면역세포, 조직 줄기세포, 미생물이 어떻게 상호작용하는지, 그리고 염증 기억이 어떻게 만성 기도질환을 지속시키는지 연구합니다.",
   aff1:"연세대학교 의과대학",aff2:"세브란스병원 이비인후과",aff3:"기도점막연구소",
   lblThemes:"연구 주제",lblAtGlance:"한눈에 보기",lblLatest:"최근 소식",allNews:"전체 소식 →",lblJoin:"함께하기",
   joinText:"박사후연구원, 대학원생, 학부연구생, 연구원을 모집하고 있습니다.",howApply:"지원 방법 →",
-    resIntro:"상기도 점막에서 면역세포, 상피세포, 조직 줄기세포, 미생물 사이의 상호작용을 연구합니다. 염증 기억이 어떻게 유지되는지, 조직 면역 항상성이 어떻게 유지되거나 재프로그래밍되는지에 집중하며, 만성 기도질환과 호흡기 감염의 더 나은 치료법을 목표로 합니다.",
-  lblApproach:"연구 방법",teamH:"구성원",piName:"나민석 교수 (MD, PhD)",piTitle:"연세대학교 의과대학 세브란스병원 이비인후과 조교수",
+  teamH:"구성원",piName:"나민석 교수 (MD, PhD)",piTitle:"연세대학교 의과대학 세브란스병원 이비인후과 조교수",
   copy:"복사",copied:"복사됨",eduCareer:"학력 및 경력",honors:"수상",lblMembers:"연구원",
   pubH:"논문",lblSelected:"대표 논문",lblAll:"전체 SCI(E) 논문",searchPh:"제목, 저자, 저널 검색",fAll:"전체",fFirst:"제1·교신저자",fCo:"공동저자",
   legend:"* 공동 제1저자 · # 공동 교신저자 · (correspondence) 교신저자",newsH:"소식",galH:"연구실 사진",g1:"단체 사진 · KAI 2025",g2:"단체 사진 · Cytokines 2024 & KAI 2024",
@@ -370,21 +363,16 @@ let lang="en";
 const L=(o)=>typeof o==="string"?o:(o[lang]||o.en);
 
 const topics=[
- {k:"01",t:{en:"Unraveling the immunopathogenesis and inflammatory memory of chronic airway diseases",ko:"만성 기도질환의 면역병인과 염증 기억"},
-  s:{en:"Chronic rhinosinusitis and allergic rhinitis",ko:"만성 비부비동염, 알레르기 비염"},
-  b:{en:["Map cellular diversity and spatial inflammatory niches in diseased mucosa","Identify inflammatory memory in epithelial cells, innate and adaptive immune cells, and bone marrow progenitors","Develop biomarkers and immunotherapies targeting airway mucosal inflammation","Study host–microbe interactions in chronic airway inflammation"],
-     ko:["병적 점막의 세포 다양성과 공간적 염증 니치 규명","상피세포, 선천·적응 면역세포, 골수 전구세포의 염증 기억 규명","기도 점막 염증을 표적으로 하는 바이오마커와 면역치료 개발","만성 기도 염증에서 숙주–미생물 상호작용 연구"]}},
- {k:"02",t:{en:"Decoding the immune system of the human upper airway mucosa",ko:"인간 상기도 점막 면역계의 해독"},
-  s:{en:"Nasal cavity, sinuses, tonsils and adenoids",ko:"비강, 부비동, 편도·아데노이드"},
-  b:{en:["Define roles of tissue-resident immune cells and epithelial–immune crosstalk","Examine immunosenescence of upper airway mucosal immunity","Build an epithelial–immune–microbe atlas of the human upper airway"],
-     ko:["조직상주 면역세포의 역할과 상피–면역 상호작용 규명","상기도 점막 면역의 면역노화 연구","인간 상기도의 상피–면역–미생물 아틀라스 구축"]}},
- {k:"03",t:{en:"Immune responses to respiratory pathogens",ko:"호흡기 병원체에 대한 면역 반응"},
-  s:{en:"The upper airway as the first line of defense",ko:"1차 방어선으로서의 상기도"},
-  b:{en:["Characterize antiviral immune responses in the upper airway mucosa","Develop immunotherapies and vaccine strategies that strengthen mucosal immunity"],
-     ko:["상기도 점막의 항바이러스 면역 반응 규명","점막 면역을 강화하는 면역치료·백신 전략 개발"]}}
+ {t:"Unraveling the immunopathogenesis and inflammatory memory of chronic airway diseases",
+  d:"Chronic rhinosinsutis and allergic rhinitis are highly prevalent and refractory diseases of the nasal cavity and paranasal sinuses, causing a substantial healthcare burden.",
+  b:["Dissect cellular heterogeneity and decipher inflammatory spatial niche in chronic airway diseases","Decode the pathogenic inflammatory memory encoded in epithelial cells, innate and adaptive immune cells, and bone marrow progenitors (central trained immunity) in chronic inflammatory diseases","Develop and validate biomarkers and immunotherapeutic strategies targeting airway mucosal inflammation","Investigate host–microbial interactions in the airway mucosa during chronic inflammation"]},
+ {t:"Decoding the immune system of the human upper airway mucosa",
+  d:"The nasal cavity, paranasal sinuses, and nasal-associated lymphoid tissue (including the palatine tonsils and adenoids) are immunologic sites characterized by well-orchestrated coordination between innate and adaptive immunity.",
+  b:["Define the roles of tissue-resident immune cells and epithelial–immune crosstalk in the upper airway mucosa","Elucidate immunosenescence in upper airway mucosal immunity","Construct an immune (epithelial-immune-microbe) atlas of the upper airway mucosa in humans"]},
+ {t:"Immune responses to respiratory pathogens",
+  d:"The upper airway mucosa act as a first-line barrier against respiratory pathogens. Due to its unique anatomic locations, the mucosal immune system in the upper airway mucosa plays a pivotal role in host defense.",
+  b:["Characterize host antiviral immune responses in the upper airway mucosa","Develop novel immunotherapeutics or vaccines strategies improving mucosal immune responses against respiratory pathogens"]}
 ];
-const methods={en:["Human tissue & nasal brushing","Single-cell profiling","Multi-parameter flow cytometry","In vivo models","Microbiome analysis","Bioinformatics","Large-scale clinical cohorts"],
- ko:["인체 조직·비강 브러싱 검체","단일세포 분석","다중 유세포분석","동물 모델","마이크로바이옴 분석","생물정보학","대규모 임상 코호트"]};
 
 const career=[["2024–","Assistant Professor","Dept. of Otorhinolaryngology, Yonsei University College of Medicine, Severance Hospital"],
 ["2022–2024","Translational Research Assistant Professor","Dept. of Biomedical Sciences & Dept. of Otorhinolaryngology, Yonsei University College of Medicine"],
@@ -449,7 +437,6 @@ const tagName={paper:{en:"Paper",ko:"논문"},award:{en:"Award",ko:"수상"},gra
 
 // publications: [authors, title, journal, year, cite, type]
 const P=`Cho A, Cho HJ, Kim CH, Kwak K, Rha MS (correspondence)|Predictive value of blood eosinophil count and serum total immunoglobulin E for type 2 chronic rhinosinusitis according to allergic sensitization status|European Archives of Otorhinolaryngology. In press. doi: 10.1007/s00405-026-10527-y|In press|f
-Kang M, Kim D, Seo J, Kim Y, Kim S, Rha MS, Kim CH, Cho HJ|Murine eosinophilic and neutrophilic chronic rhinosinusitis models reveal phenotype-specific steroid responses|American Journal of Rhinology & Allergy. In press. doi: 10.1177/19458924261456360|In press|c
 Moon S*, Lee M*, Jung I#, Rha MS# (correspondence)|Oral corticosteroids and adverse events in chronic rhinosinusitis with nasal polyps|JAMA Otolaryngol Head Neck Surg. 2026;152(8):735-743|2026|f
 Kim D, Cho HJ, Kim CH, Rha MS (correspondence)|Population-scale plasma proteomics reveals systemic inflammatory signatures associated with chronic rhinosinusitis|Clinical and Experimental Allergy. 2026;56(9):1131-1133|2026|f
 Kim G, Lee S, Koo MS, Moon S, Kim D, Cho HJ, Kim CH, Rha MS (correspondence)|Single-cell profiling of paired nasal brushing and tissue samples reveals distinct cellular landscapes and immune phenotypes|Journal of Allergy and Clinical Immunology. 2026;158(1):278-90|2026|f
@@ -457,6 +444,7 @@ Kim D, Lee SJ, Rha MS# (correspondence), Cho HJ#|Unsupervised multidimensional p
 Bae H, Kim G, Lee S, Koo MS, Cho HJ, Kim CH, Rha MS (correspondence)|Distinct inflammatory features and nasal Th2 cell profiles in allergic patients with chronic rhinosinusitis|Rhinology. 2026;64(2):197-205|2026|f
 Kim D, Cho HJ, Kim CH, Rha MS (correspondence)|Association of allergen signatures with individualized allergic phenotypes|Allergology International. 2026;75(1):150-157|2026|f
 Kim JY, Cho HJ, Kim CH, Rha MS (correspondence)|Prevalence and associated factors of olfactory and gustatory loss in patients with nasal septal deviation|Clinical Otolaryngology. 2026;51(1):101-110|2026|f
+Kang M, Kim D, Seo J, Kim Y, Kim S, Rha MS, Kim CH, Cho HJ|Murine eosinophilic and neutrophilic chronic rhinosinusitis models reveal phenotype-specific steroid responses|American Journal of Rhinology & Allergy. 2026;40(6):512-523|2026|c
 Jeong Y, Park JJ, Rha MS, Cho HJ|Posterior pillar hypertrophy as a novel anatomical predictor of surgical success in obstructive sleep apnea|Clinical and Experimental Otolaryngology. 2026;19(1):97-102|2026|c
 Kim D, Jung CM, Cho HJ, Kim CH, Rha MS (correspondence)|Distinct profiles of patient-reported outcomes across allergen signatures in chronic rhinosinusitis|Life. 2025;15(12):1835|2025|f
 Eo TS*, Rha MS*, Kim CH, Cho HJ|Prognostic significance of preoperative diagnosis in sinonasal inverted papilloma: recurrence-free survival analysis|European Archives of Otorhinolaryngology. 2025;282(8):4129-4137|2025|f
@@ -540,7 +528,7 @@ function renderStatic(){
   document.documentElement.lang=lang;
 }
 function renderHome(){
-  $("#homeTopics").innerHTML=topics.map(x=>`<a class="theme-card" href="#research"><span class="k">${L(x.s)}</span><h3>${L(x.t)}</h3><p>${L(x.b)[0]}.</p></a>`).join("");
+  $("#homeTopics").innerHTML=topics.map(x=>`<a class="theme-card" href="#research"><h3>${x.t}</h3><p>${x.d}</p></a>`).join("");
   const first=P.filter(p=>p.ty==="f").length;
   const s=[[P.length,t("stP","SCI(E) papers")],[first,t("stF","First / corresponding")],[1+5+4+3,t("stM","Lab members")]];
   $("#stats").innerHTML=s.map(([n,l])=>`<div><b>${n}</b><span>${l}</span></div>`).join("");
@@ -548,8 +536,7 @@ function renderHome(){
 }
 const newsRow=([d,k,x])=>`<li class="news-row"><time>${d}</time><div><span class="tag ${k==="award"?"award":""}">${L(tagName[k])}</span>${esc(L(x))}</div></li>`;
 function renderResearch(){
-  $("#resTopics").innerHTML=topics.map(x=>`<div class="sec"><div class="side"><div class="lbl">${L(x.s)}</div></div><div class="topic"><h3>${L(x.t)}</h3><ul>${L(x.b).map(b=>`<li>${b}</li>`).join("")}</ul></div></div>`).join("");
-  $("#methods").innerHTML=L(methods).map(m=>`<span>${m}</span>`).join("");
+  $("#resTopics").innerHTML=topics.map((x,i)=>`<div class="sec"><div class="side"><div class="lbl">Research ${i+1}</div></div><div class="topic"><h3>${x.t}</h3><p class="prose" style="margin:0;color:var(--muted)">${x.d}</p><ul>${x.b.map(b=>`<li>${b}</li>`).join("")}</ul></div></div>`).join("");
 }
 function renderTeam(){
   $("#cvCareer").innerHTML=career.map(([y,p,i])=>`<dt>${y}</dt><dd>${p}<small>${i}</small></dd>`).join("");
