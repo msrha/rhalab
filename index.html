@@ -156,6 +156,9 @@ main{min-height:60vh}
 .pub .t{font-weight:700;display:block;color:var(--ink);line-height:1.45}
 .pub .a{color:var(--muted);display:block;margin-top:.2rem;font-size:.85rem}
 .pub .a .corr{color:var(--accent);font-weight:500}
+.pub a.tl{text-decoration:none;color:var(--ink)}
+.pub a.tl:hover{color:var(--deep);text-decoration:underline;text-underline-offset:3px}
+.pub a.tl .ext{color:var(--muted);font-weight:400;font-size:.85em}
 .pub .a mark{background:none;color:var(--ink);font-weight:700;text-decoration:underline;text-decoration-color:var(--accent);text-underline-offset:3px}
 .pub .j{display:block;margin-top:.15rem;font-size:.85rem}
 .pub .j i{color:var(--deep);font-weight:500}
@@ -460,6 +463,9 @@ const $=s=>document.querySelector(s);
 const esc=s=>s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const initials=n=>n.replace(/,.*$/,"").split(/[\s-]+/).map(w=>w[0]).join("").slice(0,3).toUpperCase();
 const hl=a=>esc(a).replace(/Rha MS/g,"<mark>Rha MS</mark>").replace(/\(correspondence\)/g,'<span class="corr">(correspondence)</span>');
+const pmURL=t=>"https://pubmed.ncbi.nlm.nih.gov/?term="+encodeURIComponent('"'+t.replace(/[–—]/g,"-")+'"[Title]');
+const doiOf=j=>{const m=j.match(/doi:\s*(10\.\S+)/i);return m?m[1]:null};
+const linkT=(t,j)=>{const d=doiOf(j||"");if(/Accepted\s*$/.test(j||""))return `<span class="t">${esc(t)}</span>`;const u=d?"https://doi.org/"+d:pmURL(t);return `<a class="t tl" href="${esc(u)}" target="_blank" rel="noopener">${esc(t)}<span class="ext" aria-hidden="true"> ↗</span></a>`};
 const fmtJ=j=>{const m=j.match(/^(.*?)\.?\s*((?:\d{4}|In press).*)$/);return m?`<i>${esc(m[1])}</i>. <span class="mono" style="color:var(--muted)">${esc(m[2])}</span>`:esc(j)};
 const t=(k,fb)=>(T[lang]&&T[lang][k])||fb;
 
@@ -488,13 +494,13 @@ function renderTeam(){
 }
 let pubFilter="all";
 function renderPubs(){
-  $("#featured").innerHTML=featured.map(([j,ti,c,b,img])=>`<article class="pub">${img?`<img class="cover" src="assets/covers/${img}" alt="${esc(j)} cover" loading="lazy" width="88" height="117">`:`<div class="cover none" aria-hidden="true">${esc(j)}</div>`}<div class="body"><div class="jn">${j}</div><span class="t">${esc(ti)}</span><span class="j mono" style="color:var(--muted)">${c}</span>${b?`<span class="badge">★ ${b}</span>`:""}</div></article>`).join("");
+  $("#featured").innerHTML=featured.map(([j,ti,c,b,img])=>`<article class="pub">${img?`<img class="cover" src="assets/covers/${img}" alt="${esc(j)} cover" loading="lazy" width="88" height="117">`:`<div class="cover none" aria-hidden="true">${esc(j)}</div>`}<div class="body"><div class="jn">${j}</div>${linkT(ti,"")}<span class="j mono" style="color:var(--muted)">${c}</span>${b?`<span class="badge">★ ${b}</span>`:""}</div></article>`).join("");
   const q=($("#pubSearch").value||"").toLowerCase();
   const list=P.filter(p=>(pubFilter==="all"||(pubFilter==="first"?p.ty==="f":p.ty==="c"))&&(!q||(p.a+p.t+p.j+p.y).toLowerCase().includes(q)));
   $("#pubCount").textContent=`${list.length} / ${P.length}`;
   let out="",yr="";
   list.forEach(p=>{if(p.y!==yr){yr=p.y;out+=`<div class="year-h">${yr==="In press"?"Accepted / In press":yr}</div>`}
-    out+=`<div class="pub"><span class="t">${esc(p.t)}</span><span class="a">${hl(p.a)}</span><span class="j">${fmtJ(p.j)}</span></div>`});
+    out+=`<div class="pub">${linkT(p.t,p.j)}<span class="a">${hl(p.a)}</span><span class="j">${fmtJ(p.j)}</span></div>`});
   $("#pubList").innerHTML=out||`<p style="color:var(--muted)">${lang==="ko"?"검색 결과가 없습니다. 다른 단어로 검색해 보세요.":"No papers match. Try another word."}</p>`;
 }
 function renderNews(){ $("#newsList").innerHTML=news.map(newsRow).join(""); }
