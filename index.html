@@ -88,6 +88,7 @@ main{min-height:60vh}
 .page-h{margin-bottom:1.5rem}
 .page-h h2{font-size:var(--s3);font-weight:600;margin-top:.3rem}
 .page-h p{color:var(--muted);max-width:62ch;margin:.6rem 0 0}
+.page-h p.lead{font-family:var(--f-display);font-size:clamp(1.2rem,2.2vw,1.45rem);line-height:1.6;color:var(--ink);max-width:60ch;margin-top:.9rem}
 .prose{max-width:65ch}
 .prose p{margin:0 0 1em}
 /* home grid */
@@ -246,8 +247,8 @@ footer .wrap{align-items:center}
 
 <!-- RESEARCH -->
 <section class="view wrap" id="v-research" data-view="research" hidden>
-  <div class="page-h"><div class="lbl" data-i18n="nResearch">Research</div><h2 data-i18n="resH">How the upper airway mucosa remembers inflammation</h2>
-  <p data-i18n="resIntro">Our lab investigates the crosstalk among immune cells, epithelial cells, tissue stem cells and microbes in the upper airway mucosa. We focus on how inflammatory memory is sustained and how tissue immune homeostasis is maintained or reprogrammed, with the goal of better treatments for chronic airway diseases and respiratory infections.</p></div>
+  <div class="page-h"><div class="lbl" data-i18n="nResearch">Research</div>
+  <p class="lead" data-i18n="resIntro">Our lab investigates the crosstalk among immune cells, epithelial cells, tissue stem cells and microbes in the upper airway mucosa. We focus on how inflammatory memory is sustained and how tissue immune homeostasis is maintained or reprogrammed, with the goal of better treatments for chronic airway diseases and respiratory infections.</p></div>
   <div id="resTopics"></div>
   <div class="sec">
     <div class="side"><div class="lbl" data-i18n="lblApproach">Approach</div></div>
@@ -356,8 +357,7 @@ const T={
   aff1:"연세대학교 의과대학",aff2:"세브란스병원 이비인후과",aff3:"기도점막연구소",
   lblThemes:"연구 주제",lblAtGlance:"한눈에 보기",lblLatest:"최근 소식",allNews:"전체 소식 →",lblJoin:"함께하기",
   joinText:"박사후연구원, 대학원생, 학부연구생, 연구원을 모집하고 있습니다.",howApply:"지원 방법 →",
-  resH:"상기도 점막은 염증을 어떻게 기억하는가",
-  resIntro:"상기도 점막에서 면역세포, 상피세포, 조직 줄기세포, 미생물 사이의 상호작용을 연구합니다. 염증 기억이 어떻게 유지되는지, 조직 면역 항상성이 어떻게 유지되거나 재프로그래밍되는지에 집중하며, 만성 기도질환과 호흡기 감염의 더 나은 치료법을 목표로 합니다.",
+    resIntro:"상기도 점막에서 면역세포, 상피세포, 조직 줄기세포, 미생물 사이의 상호작용을 연구합니다. 염증 기억이 어떻게 유지되는지, 조직 면역 항상성이 어떻게 유지되거나 재프로그래밍되는지에 집중하며, 만성 기도질환과 호흡기 감염의 더 나은 치료법을 목표로 합니다.",
   lblApproach:"연구 방법",teamH:"구성원",piName:"나민석 교수 (MD, PhD)",piTitle:"연세대학교 의과대학 세브란스병원 이비인후과 조교수",
   copy:"복사",copied:"복사됨",eduCareer:"학력 및 경력",honors:"수상",lblMembers:"연구원",
   pubH:"논문",lblSelected:"대표 논문",lblAll:"전체 SCI(E) 논문",searchPh:"제목, 저자, 저널 검색",fAll:"전체",fFirst:"제1·교신저자",fCo:"공동저자",
@@ -370,7 +370,7 @@ let lang="en";
 const L=(o)=>typeof o==="string"?o:(o[lang]||o.en);
 
 const topics=[
- {k:"01",t:{en:"Immunopathogenesis and inflammatory memory of chronic airway diseases",ko:"만성 기도질환의 면역병인과 염증 기억"},
+ {k:"01",t:{en:"Unraveling the immunopathogenesis and inflammatory memory of chronic airway diseases",ko:"만성 기도질환의 면역병인과 염증 기억"},
   s:{en:"Chronic rhinosinusitis and allergic rhinitis",ko:"만성 비부비동염, 알레르기 비염"},
   b:{en:["Map cellular diversity and spatial inflammatory niches in diseased mucosa","Identify inflammatory memory in epithelial cells, innate and adaptive immune cells, and bone marrow progenitors","Develop biomarkers and immunotherapies targeting airway mucosal inflammation","Study host–microbe interactions in chronic airway inflammation"],
      ko:["병적 점막의 세포 다양성과 공간적 염증 니치 규명","상피세포, 선천·적응 면역세포, 골수 전구세포의 염증 기억 규명","기도 점막 염증을 표적으로 하는 바이오마커와 면역치료 개발","만성 기도 염증에서 숙주–미생물 상호작용 연구"]}},
