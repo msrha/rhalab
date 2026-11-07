@@ -7,16 +7,18 @@
 <meta property="og:title" content="RHA Lab">
 <meta property="og:description" content="Research in Human Airway Mucosal Immunology Lab, Yonsei University College of Medicine">
 <meta property="og:type" content="website">
+<meta property="og:image" content="assets/hero-960.jpg">
+<link rel="icon" type="image/png" href="assets/rhalab-mark.png">
 <title>RHA Lab</title>
 <meta name="description" content="RHA Lab — Research in Human Airway Mucosal Immunology, Yonsei University College of Medicine">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600;7..72,700&family=Noto+Sans+KR:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
-/* Layout: sticky slim header + hash-routed single page; hero carries a living ciliated-epithelium canvas; content in a 72rem column with a narrow side rail for section labels. */
+/* Layout: sticky slim header + hash-routed single page; hero is a full-bleed airway-mucosa illustration with the lab and Yonsei marks; content in a 72rem column with a narrow side rail for section labels. */
 :root{
   --bg:#f7f9fa; --surface:#ffffff; --ink:#10242c; --muted:#56707a; --line:#d9e3e7;
-  --deep:#0d3b4c; --accent:#c8506e; --accent-soft:#f6e3e8; --tint:#e6f0f3;
+  --deep:#0d3b4c; --accent:#c8506e; --accent-soft:#f6e3e8; --tint:#e6f0f3; --logo-filter:none;
   --f-display:"Literata", "Noto Serif KR", Georgia, serif;
   --f-body:"Noto Sans KR", "Apple SD Gothic Neo", system-ui, sans-serif;
   --f-mono:"JetBrains Mono", ui-monospace, Menlo, monospace;
@@ -24,10 +26,10 @@
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --bg:#0b1a20; --surface:#11252d; --ink:#e4eef1; --muted:#93acb4; --line:#24404a;
-  --deep:#8fd0e2; --accent:#f08aa4; --accent-soft:#3a1f29; --tint:#152f38; color-scheme:dark}}
+  --deep:#8fd0e2; --accent:#f08aa4; --accent-soft:#3a1f29; --tint:#152f38; --logo-filter:brightness(0) invert(.92); color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#0b1a20; --surface:#11252d; --ink:#e4eef1; --muted:#93acb4; --line:#24404a;
-  --deep:#8fd0e2; --accent:#f08aa4; --accent-soft:#3a1f29; --tint:#152f38; color-scheme:dark}
+  --deep:#8fd0e2; --accent:#f08aa4; --accent-soft:#3a1f29; --tint:#152f38; --logo-filter:brightness(0) invert(.92); color-scheme:dark}
 *{box-sizing:border-box}
 body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:var(--s0);line-height:1.65;-webkit-font-smoothing:antialiased}
 a{color:var(--deep)}
@@ -40,9 +42,11 @@ h1,h2,h3{font-family:var(--f-display);text-wrap:balance;line-height:1.2;margin:0
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
 header.site{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:color-mix(in srgb,var(--surface) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
 header.site .wrap{display:flex;align-items:center;gap:1rem;min-height:60px;flex-wrap:wrap;padding-block:.4rem}
-.brand{display:flex;align-items:baseline;gap:.5rem;text-decoration:none;color:var(--ink);margin-right:auto}
+.brand{display:flex;align-items:center;gap:.5rem;text-decoration:none;color:var(--ink);margin-right:auto}
 .brand b{font-family:var(--f-display);font-size:1.3rem;letter-spacing:.02em}
 .brand span{font-size:.75rem;color:var(--muted)}
+.brand img{height:34px;width:auto;filter:var(--logo-filter)}
+.brand .yon{height:30px;filter:none;margin-left:.2rem}
 nav.main{display:flex;gap:.15rem;flex-wrap:wrap}
 nav.main a{font-size:.9rem;text-decoration:none;color:var(--muted);padding:.35rem .6rem;border-radius:6px}
 nav.main a:hover{color:var(--ink);background:var(--tint)}
@@ -57,15 +61,21 @@ nav.main a[aria-current="page"]{color:var(--deep);font-weight:700}
   nav.main.open{display:flex}
   .brand span{display:none}
 }
-/* hero */
-.hero{position:relative;overflow:hidden;background:var(--surface);border-bottom:1px solid var(--line)}
-.hero .wrap{position:relative;z-index:1;padding-block:clamp(3rem,8vw,6rem) clamp(7rem,14vw,10rem)}
-.hero h1{font-size:var(--s4);font-weight:600;max-width:20ch}
-.hero h1 em{font-style:italic;color:var(--accent);font-weight:400}
-.hero p.sub{max-width:58ch;color:var(--muted);font-size:var(--s1);margin:1.2rem 0 0}
-.hero .aff{display:flex;flex-wrap:wrap;gap:.5rem 1.4rem;margin-top:1.8rem;font-size:.85rem;color:var(--muted)}
-.hero .aff b{color:var(--ink);font-weight:500}
-#cilia{position:absolute;left:0;right:0;bottom:0;width:100%;height:clamp(110px,16vw,170px);display:block}
+/* hero: always dark, sits on the illustration in both themes */
+.hero{position:relative;overflow:hidden;background:#081430 url("assets/hero.jpg") center/cover no-repeat;color:#eef4fb}
+@media (max-width:960px){.hero{background-image:url("assets/hero-960.jpg")}}
+.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(6,16,40,.88) 0%,rgba(6,16,40,.62) 48%,rgba(6,16,40,.12) 100%)}
+.hero .wrap{position:relative;z-index:1;padding-block:clamp(3rem,8vw,6.5rem);display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2rem;align-items:center}
+.hero .lbl{color:#ffb3c4}
+.hero h1{font-size:var(--s4);font-weight:600;max-width:20ch;color:#fff}
+.hero h1 em{font-style:italic;color:#ff9fb6;font-weight:400}
+.hero p.sub{max-width:58ch;color:#c9d7e6;font-size:var(--s1);margin:1.2rem 0 0}
+.hero .aff{display:flex;flex-wrap:wrap;align-items:center;gap:.6rem 1.4rem;margin-top:1.8rem;font-size:.85rem;color:#c9d7e6}
+.hero .aff b{color:#fff;font-weight:500}
+.hero .aff img{width:44px;height:44px;border-radius:50%;background:#fff;padding:2px}
+.hero .yon-row{display:flex;align-items:center;gap:.7rem}
+.hero .mark{width:clamp(150px,18vw,230px);height:auto;opacity:.95;filter:drop-shadow(0 4px 24px rgba(0,0,0,.4))}
+@media (max-width:760px){.hero .wrap{grid-template-columns:minmax(0,1fr)}.hero .mark{display:none}}
 /* sections */
 main{min-height:60vh}
 .view{padding-block:3rem 4rem}
@@ -142,7 +152,10 @@ main{min-height:60vh}
 .pub .j i{color:var(--deep);font-weight:500}
 .pub .badge{display:inline-block;align-self:flex-start;margin-top:.35rem;font-size:.75rem;color:var(--accent);background:var(--accent-soft);padding:.1rem .5rem;border-radius:4px}
 .feat{display:grid;grid-template-columns:repeat(auto-fill,minmax(19rem,1fr));gap:1rem}
-.feat .pub{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:1.1rem;display:flex;flex-direction:column}
+.feat .pub{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:1rem;display:grid;grid-template-columns:5.5rem minmax(0,1fr);gap:1rem;align-items:start}
+.feat .cover{width:5.5rem;max-width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:3px;box-shadow:0 2px 10px rgba(0,0,0,.18);display:block}
+.feat .cover.none{display:grid;place-items:center;background:var(--tint);color:var(--deep);font-family:var(--f-display);font-style:italic;font-size:.8rem;text-align:center;padding:.4rem;box-shadow:none;border:1px solid var(--line)}
+.feat .body{display:flex;flex-direction:column;min-width:0}
 .feat .jn{font-family:var(--f-display);font-style:italic;color:var(--deep);font-size:1.05rem;margin-bottom:.4rem}
 /* gallery */
 .gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(18rem,1fr));gap:1rem}
@@ -160,6 +173,10 @@ main{min-height:60vh}
 footer{border-top:1px solid var(--line);background:var(--surface)}
 footer .wrap{padding-block:2rem;display:flex;flex-wrap:wrap;gap:1rem 2rem;justify-content:space-between;font-size:.82rem;color:var(--muted)}
 footer a{color:var(--muted)}
+.foot-logos{display:flex;align-items:center;gap:1rem}
+.foot-logos img{height:48px;width:auto}
+.foot-logos .lablogo{height:64px;filter:var(--logo-filter)}
+footer .wrap{align-items:center}
 @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
 </style>
 
@@ -167,7 +184,7 @@ footer a{color:var(--muted)}
 <body>
 <header class="site">
   <div class="wrap">
-    <a class="brand" href="#home"><b>RHA LAB</b><span data-i18n="brandSub">Human Airway Mucosal Immunology</span></a>
+    <a class="brand" href="#home"><img src="assets/rhalab-mark.png" alt="" width="34" height="34"><b>RHA LAB</b><span data-i18n="brandSub">Human Airway Mucosal Immunology</span></a>
     <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mainNav">Menu</button>
     <nav class="main" id="mainNav" aria-label="Main">
       <a href="#home" data-i18n="nHome">Home</a>
@@ -190,16 +207,18 @@ footer a{color:var(--muted)}
 <section class="view" id="v-home" data-view="home" style="padding:0">
   <div class="hero">
     <div class="wrap">
+      <div>
       <div class="lbl" data-i18n="heroLbl">Research in Human Airway Mucosal Immunology</div>
       <h1 style="margin-top:.8rem" data-i18n-html="heroH">Exploring the mucosal immune system of the upper airway <em>with unprecedented precision</em> for clinical translation</h1>
       <p class="sub" data-i18n="heroSub">We study how epithelial cells, immune cells, tissue stem cells and microbes interact in the human nasal and sinus mucosa, and how inflammatory memory keeps chronic airway disease going.</p>
       <div class="aff">
-        <span><b data-i18n="aff1">Yonsei University College of Medicine</b></span>
+        <span class="yon-row"><img src="assets/yonsei-logo.png" alt="Yonsei University" width="44" height="44"><b data-i18n="aff1">Yonsei University College of Medicine</b></span>
         <span data-i18n="aff2">Severance Hospital · Dept. of Otorhinolaryngology</span>
         <span data-i18n="aff3">The Airway Mucosa Institute</span>
       </div>
     </div>
-    <canvas id="cilia" aria-hidden="true"></canvas>
+    <img class="mark" src="assets/rhalab-logo-white.png" alt="RHA Lab logo" width="230" height="230">
+    </div>
   </div>
   <div class="wrap">
     <div class="sec">
@@ -320,7 +339,7 @@ footer a{color:var(--muted)}
 </main>
 
 <footer><div class="wrap">
-  <span>© 2026 RHA Lab · Yonsei University College of Medicine</span>
+  <span class="foot-logos"><img src="assets/rhalab-logo.png" alt="RHA Lab" class="lablogo" width="64" height="64"><img src="assets/yonsei-logo.png" alt="Yonsei University" width="48" height="48"><span>© 2026 RHA Lab · Yonsei University College of Medicine</span></span>
   <span data-i18n="footNote">Draft redesign · content from the current Google Sites page</span>
 </div></footer>
 
@@ -491,18 +510,18 @@ Kang JW, Baek SH, Rha MS, Kim JH|The effects of alcohol consumption and smoking 
 Kim JW, Rha MS, Kim JH, Kang JW|Orbital apex syndrome caused by invasive aspergillosis|J Craniofac Surg|2014|25(2):e191-e193|c`.split("\n").map(l=>{const [a,t,j,y,c,ty]=l.split("|");return {a,t,j,y,c,ty}});
 
 const featured=[
- ["Immunity","PD-1-expressing SARS-CoV-2-specific CD8+ T cells are not exhausted, but functional in patients with COVID-19","2021;54(1):44-52.e3","Immunity Best of 2021"],
- ["Nature Communications","SARS-CoV-2 spike-specific nasal-resident CD49a+CD8+ memory T cells exert immediate effector functions with enhanced IFN-γ production","2024;15(1):8355",""],
- ["Nature Communications","SARS-CoV-2-specific T cell memory is sustained in COVID-19 convalescent patients for 10 months with successful development of stem cell-like memory T cells","2021;12(1):4043","2021 Top 25 COVID-19 Articles, Nat Commun"],
+ ["Immunity","PD-1-expressing SARS-CoV-2-specific CD8+ T cells are not exhausted, but functional in patients with COVID-19","2021;54(1):44-52.e3","Immunity Best of 2021","immunity-2021.jpg"],
+ ["Nature Communications","SARS-CoV-2 spike-specific nasal-resident CD49a+CD8+ memory T cells exert immediate effector functions with enhanced IFN-γ production","2024;15(1):8355","","ncomms.jpg"],
+ ["Nature Communications","SARS-CoV-2-specific T cell memory is sustained in COVID-19 convalescent patients for 10 months with successful development of stem cell-like memory T cells","2021;12(1):4043","2021 Top 25 COVID-19 Articles, Nat Commun","ncomms.jpg"],
  ["J Allergy Clin Immunol","Superantigen-related TH2 CD4+ T cells in nonasthmatic chronic rhinosinusitis with nasal polyps","2020;145(5):1378-1388.e10","Editor's Choice, JACI May 2020"],
- ["J Allergy Clin Immunol","IL-17A-producing sinonasal MAIT cells in patients with chronic rhinosinusitis with nasal polyps","2022;149(2):599-609.e7","Editor's Choice, JACI Feb 2022"],
- ["J Allergy Clin Immunol","Single-cell profiling of paired nasal brushing and tissue samples reveals distinct cellular landscapes and immune phenotypes","2026;158(1):278-290",""],
- ["Allergy","Epithelial lining fluid cystatin SN is a noninvasive biomarker for predicting type 2 chronic rhinosinusitis","2025;80(9):2572-2585",""],
- ["Allergy","Type 1/17 CD103+CD4+ nasal-resident memory T cells in non-eosinophilic chronic rhinosinusitis with nasal polyps","2024;79(7):1996-1999",""],
- ["Gut","Impaired antibacterial response of liver sinusoidal Vγ9+Vδ2+ T cells in patients with chronic liver disease","2022;71(3):605-615",""],
- ["J Hepatol","Identification of a distinct NK-like hepatic T-cell population activated by NKG2C in a TCR-independent manner","2022;77(4):1059-1070","Highlighted in J Hepatol, Oct 2022"],
- ["J Hepatol","Human liver CD8+ MAIT cells exert TCR/MR1-independent innate-like cytotoxicity in response to IL-15","2020;73(3):640-650",""],
- ["Cell Mol Immunol","Activation or exhaustion of CD8+ T cells in patients with COVID-19","2021;18(10):2325-2333",""]
+ ["J Allergy Clin Immunol","IL-17A-producing sinonasal MAIT cells in patients with chronic rhinosinusitis with nasal polyps","2022;149(2):599-609.e7","Editor's Choice, JACI Feb 2022","jaci-2022-02.jpg"],
+ ["J Allergy Clin Immunol","Single-cell profiling of paired nasal brushing and tissue samples reveals distinct cellular landscapes and immune phenotypes","2026;158(1):278-290","","jaci-2026-07.jpg"],
+ ["Allergy","Epithelial lining fluid cystatin SN is a noninvasive biomarker for predicting type 2 chronic rhinosinusitis","2025;80(9):2572-2585","","allergy-2025-09.jpg"],
+ ["Allergy","Type 1/17 CD103+CD4+ nasal-resident memory T cells in non-eosinophilic chronic rhinosinusitis with nasal polyps","2024;79(7):1996-1999","","allergy-2024-07.jpg"],
+ ["Gut","Impaired antibacterial response of liver sinusoidal Vγ9+Vδ2+ T cells in patients with chronic liver disease","2022;71(3):605-615","","gut-2022-03.jpg"],
+ ["J Hepatol","Identification of a distinct NK-like hepatic T-cell population activated by NKG2C in a TCR-independent manner","2022;77(4):1059-1070","Highlighted in J Hepatol, Oct 2022","jhep-2022-10.jpg"],
+ ["J Hepatol","Human liver CD8+ MAIT cells exert TCR/MR1-independent innate-like cytotoxicity in response to IL-15","2020;73(3):640-650","","jhep-2020-09.jpg"],
+ ["Cell Mol Immunol","Activation or exhaustion of CD8+ T cells in patients with COVID-19","2021;18(10):2325-2333","","cmi-2021-10.jpg"]
 ];
 
 const $=s=>document.querySelector(s);
@@ -539,7 +558,7 @@ function renderTeam(){
 }
 let pubFilter="all";
 function renderPubs(){
-  $("#featured").innerHTML=featured.map(([j,ti,c,b])=>`<article class="pub"><div class="jn">${j}</div><span class="t">${esc(ti)}</span><span class="j mono" style="color:var(--muted)">${c}</span>${b?`<span class="badge">★ ${b}</span>`:""}</article>`).join("");
+  $("#featured").innerHTML=featured.map(([j,ti,c,b,img])=>`<article class="pub">${img?`<img class="cover" src="assets/covers/${img}" alt="${esc(j)} cover" loading="lazy" width="88" height="117">`:`<div class="cover none" aria-hidden="true">${esc(j)}</div>`}<div class="body"><div class="jn">${j}</div><span class="t">${esc(ti)}</span><span class="j mono" style="color:var(--muted)">${c}</span>${b?`<span class="badge">★ ${b}</span>`:""}</div></article>`).join("");
   const q=($("#pubSearch").value||"").toLowerCase();
   const list=P.filter(p=>(pubFilter==="all"||(pubFilter==="first"?p.ty==="f":p.ty==="c"))&&(!q||(p.a+p.t+p.j+p.y).toLowerCase().includes(q)));
   $("#pubCount").textContent=`${list.length} / ${P.length}`;
@@ -568,45 +587,7 @@ document.addEventListener("click",e=>{const b=e.target.closest("[data-copy]");if
 try{const s=localStorage.getItem("rha-lang");if(s)lang=s}catch(e){}
 renderAll();route();
 
-/* Ciliated epithelium: a row of columnar cells with beating cilia (metachronal wave) */
-(function(){
-  const cv=$("#cilia"),ctx=cv.getContext("2d");
-  const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
-  let w,h,dpr;
-  function size(){dpr=devicePixelRatio||1;w=cv.clientWidth;h=cv.clientHeight;cv.width=w*dpr;cv.height=h*dpr;ctx.setTransform(dpr,0,0,dpr,0,0)}
-  const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
-  function draw(tm){
-    ctx.clearRect(0,0,w,h);
-    const deep=css("--deep"),acc=css("--accent"),tint=css("--tint"),line=css("--line");
-    const cellW=Math.max(34,w/36),base=h*0.48;
-    for(let x=-cellW,i=0;x<w+cellW;x+=cellW,i++){
-      // cell body
-      ctx.fillStyle=tint;ctx.strokeStyle=line;ctx.lineWidth=1;
-      ctx.beginPath();ctx.roundRect?ctx.roundRect(x+1,base,cellW-2,h-base+8,[6,6,0,0]):ctx.rect(x+1,base,cellW-2,h-base+8);ctx.fill();ctx.stroke();
-      // nucleus
-      ctx.fillStyle=deep;ctx.globalAlpha=.22;ctx.beginPath();ctx.ellipse(x+cellW/2,base+(h-base)*.6,cellW*.18,(h-base)*.18,0,0,7);ctx.fill();ctx.globalAlpha=1;
-      const goblet=i%7===3;
-      if(goblet){ctx.fillStyle=acc;ctx.globalAlpha=.35;ctx.beginPath();ctx.ellipse(x+cellW/2,base+(h-base)*.22,cellW*.28,(h-base)*.2,0,0,7);ctx.fill();ctx.globalAlpha=1;continue}
-      // cilia
-      ctx.strokeStyle=deep;ctx.lineWidth=1.2;ctx.globalAlpha=.55;
-      const n=6;
-      for(let c=0;c<n;c++){
-        const cx=x+cellW*(c+1)/(n+1);
-        const ph=(reduce?0:tm/520)-cx/90;
-        const sw=Math.sin(ph),L=h*0.32;
-        ctx.beginPath();ctx.moveTo(cx,base);
-        ctx.quadraticCurveTo(cx+sw*L*.25,base-L*.55,cx+sw*L*.55,base-L*(.95-Math.abs(sw)*.15));
-        ctx.stroke();
-      }
-      ctx.globalAlpha=1;
-    }
-    // mucus droplets drifting along the surface
-    if(!reduce){ctx.fillStyle=acc;ctx.globalAlpha=.5;for(let k=0;k<6;k++){const px=((tm/40+k*w/6)%(w+40))-20;ctx.beginPath();ctx.arc(px,base-h*.36+Math.sin(tm/700+k)*3,2.4,0,7);ctx.fill()}ctx.globalAlpha=1}
-    if(!reduce)requestAnimationFrame(draw);
-  }
-  size();addEventListener("resize",()=>{size();if(reduce)draw(0)});
-  reduce?draw(0):requestAnimationFrame(draw);
-})();
+
 </script>
 
 </body>
