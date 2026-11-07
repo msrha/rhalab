@@ -364,7 +364,7 @@ const T={
   legend:"* 공동 제1저자 · # 공동 교신저자 · (correspondence) 교신저자",newsH:"소식",galH:"연구실 사진",g1:"단체 사진 · KAI 2025",g2:"단체 사진 · Cytokines 2024 & KAI 2024",
   contactH:"연락처 및 지원",cAddrH:"위치",cAddr:"연세대학교 의과대학 세브란스병원<br>에비슨의생명연구센터(ABMRC) 2층 RHA Lab<br>서울특별시 서대문구 연세로 50-1 (03722)",
   cMap:"지도에서 보기 →",cJoinH:"모집 중",cJoin:"박사후연구원, 대학원생, 학부연구생, 연구원을 모집합니다. 연구 관심사와 강점을 담은 자기소개서와 CV를 나민석 교수에게 보내 주세요.",
-  cInstH:"기도점막연구소",cInst:"연세대학교 의과대학 기도점막연구소 (구 기도점액연구소)",cInstLink:"연구소 홈페이지 →",papers:"편", stP:"SCI(E) 논문", stF:"제1·교신저자 논문", stM:"구성원", stA:"PI 수상"}
+  cInstH:"기도점막연구소",cInst:"연세대학교 의과대학 기도점막연구소 (구 기도점액연구소)",cInstLink:"연구소 홈페이지 →",papers:"편", stP:"SCI(E) 논문", stF:"제1·교신저자 논문", stM:"구성원"}
 };
 let lang="en";
 const L=(o)=>typeof o==="string"?o:(o[lang]||o.en);
@@ -542,7 +542,7 @@ function renderStatic(){
 function renderHome(){
   $("#homeTopics").innerHTML=topics.map(x=>`<a class="theme-card" href="#research"><span class="k">${L(x.s)}</span><h3>${L(x.t)}</h3><p>${L(x.b)[0]}.</p></a>`).join("");
   const first=P.filter(p=>p.ty==="f").length;
-  const s=[[P.length,t("stP","SCI(E) papers")],[first,t("stF","First / corresponding")],[1+5+4+3,t("stM","Lab members")],[awards.length,t("stA","PI honors")]];
+  const s=[[P.length,t("stP","SCI(E) papers")],[first,t("stF","First / corresponding")],[1+5+4+3,t("stM","Lab members")]];
   $("#stats").innerHTML=s.map(([n,l])=>`<div><b>${n}</b><span>${l}</span></div>`).join("");
   $("#homeNews").innerHTML=news.slice(0,4).map(newsRow).join("");
 }
