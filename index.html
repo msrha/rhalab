@@ -147,6 +147,7 @@ main{min-height:60vh}
 .pub{padding:.8rem 0;border-bottom:1px solid var(--line);font-size:.93rem}
 .pub .t{font-weight:700;display:block;color:var(--ink);line-height:1.45}
 .pub .a{color:var(--muted);display:block;margin-top:.2rem;font-size:.85rem}
+.pub .a .corr{color:var(--accent);font-weight:500}
 .pub .a mark{background:none;color:var(--ink);font-weight:700;text-decoration:underline;text-decoration-color:var(--accent);text-underline-offset:3px}
 .pub .j{display:block;margin-top:.15rem;font-size:.85rem}
 .pub .j i{color:var(--deep);font-weight:500}
@@ -212,7 +213,7 @@ footer .wrap{align-items:center}
     <div class="wrap">
       <div>
       <div class="lbl" data-i18n="heroLbl">Research in Human Airway Mucosal Immunology</div>
-      <h1 style="margin-top:.8rem" data-i18n-html="heroH">Exploring the mucosal immune system of the upper airway <em>with unprecedented precision</em> for clinical translation</h1>
+      <h1 style="margin-top:.8rem" data-i18n-html="heroH">Exploring <em>the mucosal immune system of the upper airway</em> with unprecedented precision for clinical translation</h1>
       <p class="sub" data-i18n="heroSub">We study how epithelial cells, immune cells, tissue stem cells and microbes interact in the human nasal and sinus mucosa, and how inflammatory memory keeps chronic airway disease going.</p>
       <div class="aff">
         <span class="yon-row"><img src="assets/yonsei-logo.png" alt="Yonsei University" width="44" height="44"><b data-i18n="aff1">Yonsei University College of Medicine</b></span>
@@ -297,7 +298,7 @@ footer .wrap{align-items:center}
         </div>
         <span class="count" id="pubCount"></span>
       </div>
-      <div class="legend" data-i18n="legend">* equal contribution · # corresponding author</div>
+      <div class="legend" data-i18n="legend">* equal contribution · # co-corresponding author · (correspondence) corresponding author</div>
       <div id="pubList"></div>
     </div>
   </div>
@@ -350,7 +351,7 @@ const T={
  en:{},
  ko:{brandSub:"연세대학교 의과대학 나민석 교수 연구실",nHome:"홈",nResearch:"연구",nTeam:"구성원",nPubs:"논문",nNews:"소식",nGallery:"갤러리",nContact:"연락처",
   heroLbl:"Research in Human Airway Mucosal Immunology",
-  heroH:"상기도 점막 면역을 <em>전례 없는 정밀도로</em> 탐구하고 임상으로 연결합니다",
+  heroH:"<em>상기도 점막 면역계</em>를 전례 없는 정밀도로 탐구하고 임상으로 연결합니다",
   heroSub:"코와 부비동 점막에서 상피세포, 면역세포, 조직 줄기세포, 미생물이 어떻게 상호작용하는지, 그리고 염증 기억이 어떻게 만성 기도질환을 지속시키는지 연구합니다.",
   aff1:"연세대학교 의과대학",aff2:"세브란스병원 이비인후과",aff3:"기도점막연구소",
   lblThemes:"연구 주제",lblAtGlance:"한눈에 보기",lblLatest:"최근 소식",allNews:"전체 소식 →",lblJoin:"함께하기",
@@ -360,7 +361,7 @@ const T={
   lblApproach:"연구 방법",teamH:"구성원",piName:"나민석 교수 (MD, PhD)",piTitle:"연세대학교 의과대학 세브란스병원 이비인후과 조교수",
   copy:"복사",copied:"복사됨",eduCareer:"학력 및 경력",honors:"수상",lblMembers:"연구원",
   pubH:"논문",lblSelected:"대표 논문",lblAll:"전체 SCI(E) 논문",searchPh:"제목, 저자, 저널 검색",fAll:"전체",fFirst:"제1·교신저자",fCo:"공동저자",
-  legend:"* 공동 제1저자 · # 교신저자",newsH:"소식",galH:"연구실 사진",g1:"단체 사진 · KAI 2025",g2:"단체 사진 · Cytokines 2024 & KAI 2024",
+  legend:"* 공동 제1저자 · # 공동 교신저자 · (correspondence) 교신저자",newsH:"소식",galH:"연구실 사진",g1:"단체 사진 · KAI 2025",g2:"단체 사진 · Cytokines 2024 & KAI 2024",
   contactH:"연락처 및 지원",cAddrH:"위치",cAddr:"연세대학교 의과대학 세브란스병원<br>에비슨의생명연구센터(ABMRC) 2층 RHA Lab<br>서울특별시 서대문구 연세로 50-1 (03722)",
   cMap:"지도에서 보기 →",cJoinH:"모집 중",cJoin:"박사후연구원, 대학원생, 학부연구생, 연구원을 모집합니다. 연구 관심사와 강점을 담은 자기소개서와 CV를 나민석 교수에게 보내 주세요.",
   cInstH:"기도점막연구소",cInst:"연세대학교 의과대학 기도점막연구소 (구 기도점액연구소)",cInstLink:"연구소 홈페이지 →",papers:"편", stP:"SCI(E) 논문", stF:"제1·교신저자 논문", stM:"구성원", stA:"PI 수상"}
@@ -447,68 +448,68 @@ const news=[
 const tagName={paper:{en:"Paper",ko:"논문"},award:{en:"Award",ko:"수상"},grant:{en:"Grant",ko:"과제"},people:{en:"People",ko:"구성원"}};
 
 // publications: [authors, title, journal, year, cite, type]
-const P=`Cho A, Cho HJ, Kim CH, Kwak K, Rha MS|Predictive value of blood eosinophil count and serum total immunoglobulin E for type 2 chronic rhinosinusitis according to allergic sensitization status|Eur Arch Otorhinolaryngol|2026|in press|f
-Moon S*, Lee M*, Jung I#, Rha MS#|Oral corticosteroids and adverse events in chronic rhinosinusitis with nasal polyps|JAMA Otolaryngol Head Neck Surg|2026|152(8):735-743|f
-Kim D, Cho HJ, Kim CH, Rha MS|Population-scale plasma proteomics reveals systemic inflammatory signatures associated with chronic rhinosinusitis|Clin Exp Allergy|2026|56(9):1131-1133|f
-Kim G, Lee S, Koo MS, Moon S, Kim D, Cho HJ, Kim CH, Rha MS|Single-cell profiling of paired nasal brushing and tissue samples reveals distinct cellular landscapes and immune phenotypes|J Allergy Clin Immunol|2026|158(1):278-290|f
-Kim D, Lee SJ, Rha MS#, Cho HJ#|Unsupervised multidimensional phenotyping for personalized surgical treatment in obstructive sleep apnea|Otolaryngol Head Neck Surg|2026|174(4):1091-1101|f
-Bae H, Kim G, Lee S, Koo MS, Cho HJ, Kim CH, Rha MS|Distinct inflammatory features and nasal Th2 cell profiles in allergic patients with chronic rhinosinusitis|Rhinology|2026|64(2):197-205|f
-Kim D, Cho HJ, Kim CH, Rha MS|Association of allergen signatures with individualized allergic phenotypes|Allergol Int|2026|75(1):150-157|f
-Kim JY, Cho HJ, Kim CH, Rha MS|Prevalence and associated factors of olfactory and gustatory loss in patients with nasal septal deviation|Clin Otolaryngol|2026|51(1):101-110|f
-Kang M, Kim D, Seo J, Kim Y, Kim S, Rha MS, Kim CH, Cho HJ|Murine eosinophilic and neutrophilic chronic rhinosinusitis models reveal phenotype-specific steroid responses|Am J Rhinol Allergy|2026|in press|c
-Jeong Y, Park JJ, Rha MS, Cho HJ|Posterior pillar hypertrophy as a novel anatomical predictor of surgical success in obstructive sleep apnea|Clin Exp Otorhinolaryngol|2026|19(1):97-102|c
-Kim D, Jung CM, Cho HJ, Kim CH, Rha MS|Distinct profiles of patient-reported outcomes across allergen signatures in chronic rhinosinusitis|Life|2025|15(12):1835|f
-Eo TS*, Rha MS*, Kim CH, Cho HJ|Prognostic significance of preoperative diagnosis in sinonasal inverted papilloma: recurrence-free survival analysis|Eur Arch Otorhinolaryngol|2025|282(8):4129-4137|f
-Moon S*, Moon S*, Lee S, Kim G, Koo MS, Cho HJ, Kim CH, Rha MS|Epithelial lining fluid cystatin SN is a noninvasive biomarker for predicting type 2 chronic rhinosinusitis|Allergy|2025|80(9):2572-2585|f
-Moon IS*, Rha MS*, Yeo IS, Kim CH|A century of otorhinolaryngology at Yonsei University College of Medicine and engagement with US Missionaries|Laryngoscope Investig Otolaryngol|2025|10(1):e70088|f
-Kim Y, Kang M, Seo J, Kim S, Rha MS, Kim CH, Cho HJ|Cell-type specific IL-5Rα distribution and IL-5-induced CCL11 expression in human nasal epithelium|Allergy|2025|80(9):2654-2659|c
-Kim H, Hwang I, Seo J, Kim C, Choi IJ, Kang M, Rha MS, Hong Y, Kim J, Baek SK, Park JH, Cho HJ, Kwak K|Dissolving microneedle for maintaining the integrity of HPV virus-like particles enabling durable sterile protection across various mucosal tissues|Adv Healthc Mater|2025|14(24):e2500963|c
-Kim BR, Rha MS, Cho HJ, Yoon JH, Kim CH|Spatiotemporal regulation by downstream genes of Prok2 in the olfactory system: from development to function|Front Cell Dev Biol|2025|13:1550845|c
-Kim SI, Rha MS, Kim JS, Ahn SH, Ryu JH, Cho HJ, Kim CH|Inflammation-driven periostin in ECRS has contrasting effects on tissue structural integrity and osteitis|Front Immunol|2025|16:1596746|c
-Jeong Y, Rha MS, Kim CH, Cho HJ|First prospective study on single-port robotic tongue base resection for sleep apnea|Head Neck|2025|47(4):1071-1078|c
-Kim AR, Koh JY, Rha MS, Jung JH, Ko JH, Choi HK, Jeon JH, Seok H, Park DW, Peck KR, Choi JY, Park SH, Choi WS, Jeong HW, Shin EC|Patients with mild COVID-19 exhibit paradoxically low functional avidity of SARS-CoV-2 membrane protein-reactive CD4+ T cells|Immune Netw|2025|25(2):e4|c
-Ahn SH, Oh JT, Kim DH, Lee EJ, Rha MS, Cho HJ, Kim CH|S100A9 induces tissue remodeling of human nasal epithelium in chronic rhinosinusitis with nasal polyp|Int Forum Allergy Rhinol|2025|15(2):135-148|c
-Koo MS*, Moon S*, Rha MS|Mucosal inflammatory memory in chronic rhinosinusitis|Cells|2024|13(23):1947|f
-Moon S, Rha MS|Revisiting T cells in chronic rhinosinusitis|Allergy Asthma Immunol Res|2024|16(6):585-600|f
-Eo TS, Jeong Y, Cho HJ, Rha MS#, Kim CH#|Comparative analyses of post-infectious olfactory dysfunction between COVID-19 and non-COVID-19 cases|Sci Rep|2024|14(1):23511|f
-Noh HE*, Rha MS*, Jeong Y, Kim CH, Cho HJ|Outcomes and predictors of success following multilevel surgery in positional and non-positional obstructive sleep apnea|Otolaryngol Head Neck Surg|2024|171(5):1562-1571|f
-Rha MS, Kim G, Lee S, Kim J, Jeong Y, Jung CM, Kim J, Noh HE, Lee HY, Noh JY, Kim YM, Cho HJ, Kim CH#, Shin EC#|SARS-CoV-2 spike-specific nasal-resident CD49a+CD8+ memory T cells exert immediate effector functions with enhanced IFN-γ production|Nat Commun|2024|15(1):8355|f
-Kim CH, Cho HJ, Kim CH, Rha MS|Sinonasal seromucinous hamartoma: a single institution case series combined with a narrative review of the literature|Eur Arch Otorhinolaryngol|2024|281(10):5311-5317|f
-Rha MS#, Kim G, Lee S, Jung CM, Lee YW, Noh HE, Jeong Y, Cho HJ, Kim CH#|Type 1/17 CD103+CD4+ nasal-resident memory T cells in non-eosinophilic chronic rhinosinusitis with nasal polyps|Allergy|2024|79(7):1996-1999|f
-Noh HE, Rha MS|Mucosal immunity against SARS-CoV-2 in the respiratory tract|Pathogens|2024|13(2):113|f
-Noh HE, Rha MS, Jeong Y, Seo JH, Kang M, Moon UY, Kim CH, Cho HJ|Differential regulation of viral entry-associated genes modulated by inflammatory cytokines|J Med Virol|2024|96(9):e29913|c
-Jeong D, Chung YW, Ji H, Kim J, Seo JH, Han S, Moon S, Rha MS, Cho HJ, Kim CH, Ryu JH, Kim HH, Yoon JH|Let-7a-5p inhibits IL-4-induced MUC5AC expression and mucus hypersecretion and is transported in nasal lavage extracellular vesicles|Am J Respir Cell Mol Biol|2024|71(3):375-379|c
-Moon S, Han S, Jang IH, Ryu J, Rha MS, Cho HJ, Yoon SS, Nam KT, Kim CH, Park MS, Seong JK, Lee WJ, Yoon JH, Chung YW, Ryu JH|Airway epithelial CD47 plays a critical role in inducing influenza virus-mediated bacterial super-infection|Nat Commun|2024|15(1):3666|c
-Jung CM*, Han M*, Cho HJ, Kim CH, Jung I#, Rha MS#|Impact of non-pharmaceutical interventions on the incidence and treatment of chronic rhinosinusitis during the COVID-19 pandemic: a nationwide retrospective cohort study|J Clin Med|2023|12(20):6629|f
-Eo TS, Lee HY, Cho HJ, Yoon JH, Rha MS#, Kim CH#|Clinical characteristics and associated factors of qualitative olfactory dysfunction|Rhinology|2023|61(5):432-440|f
-Rha MS, Jeong Y, Kim CH, Yoon JH, Cho HJ|Clinical characteristics and surgical outcomes of obstructive sleep apnea patients with mixed apnea components|Otolaryngol Head Neck Surg|2023|168(3):521-527|f
-Rha MS, Jeong Y, Alyahya KA, Yoon JH, Kim CH, Cho HJ|Comparison of clinical features and surgical outcomes between hypopnea- and apnea-predominant obstructive sleep apnea|Clin Otolaryngol|2023|48(2):167-174|f
-Ha JG, Kim BR, Cho A, Jeong Y, Rha MS, Kang JW, Cho HJ, Yoon JH, Kim CH|Visualization of the relationship between electrogustometry and whole mouth test using multidimensional scaling|Sci Rep|2023|13:8798|c
-Kim BR, Rha MS, Cho HJ, Yoon JH, Kim CH|Spatiotemporal dynamics of the development of mouse olfactory system from prenatal to postnatal period|Front Neuroanat|2023|17:1157224|c
-Ahn SH, Shin KH, Oh JT, Park SC, Rha MS, Kim SI, Cho HJ, Yoon JH, Kim CH|Calprotectin in chronic rhinosinusitis eosinophil extracellular traps|Int Forum Allergy Rhinol|2023|13(10):1926-1936|c
-Choi SJ, Koh JY, Rha MS, Seo IH, Lee H, Jeong S, Park SH, Shin EC|KIR+CD8+ and NKG2A+CD8+ T cells are distinct innate-like populations in humans|Cell Rep|2023|42(3):112236|c
-Koh JY*, Rha MS*, Choi SJ*, Lee HS, Han JW, Nam HJ, Kim DW, Lee JG, Kim MS, Park JY, Park SH#, Joo DJ#, Shin EC#|Identification of a distinct NK-like hepatic T-cell population activated by NKG2C in a TCR-independent manner|J Hepatol|2022|77(4):1059-1070|f
-Rha MS, Cho HJ, Yoon JH, Moon SJ, Kim CH|Gustatory dysfunction in patients with olfactory dysfunction and the associated factors|Rhinology|2022|60(3):200-206|f
-Rha MS, Jeong Y, Kim J, Kim CH, Yoon JH, Cho HJ|Is obstructive sleep apnea associated with erythrocytosis? A systematic review and meta-analysis|Laryngoscope Investig Otolaryngol|2022|7(2):627-635|f
-Rha MS, Han JW, Koh JY, Lee HS, Kim JH, Cho KJ, Kim SI, Kim MS, Lee JG, Park SH, Joo DJ, Park JY#, Shin EC#|Impaired antibacterial response of liver sinusoidal Vγ9+Vδ2+ T cells in patients with chronic liver disease|Gut|2022|71(3):605-615|f
-Rha MS, Cho HJ, Yoon JH, Kim CH|Association between the use of electronic cigarettes and the prevalence of chronic rhinosinusitis and allergic rhinitis: a nationwide cross-sectional study|Rhinology|2022|60(1):20-28|f
-Rha MS, Kim CH, Yoon JH, Cho HJ|Association of the human papillomavirus infection with the recurrence of sinonasal inverted papilloma: a systematic review and meta-analysis|Rhinology|2022|60(1):2-10|f
-Rha MS, Yoon YH, Koh JY, Jung JH, Lee HS, Park SK, Park SH, Kim YM#, Rha KS#, Shin EC#|IL-17A-producing sinonasal MAIT cells in patients with chronic rhinosinusitis with nasal polyps|J Allergy Clin Immunol|2022|149(2):599-609.e7|f
-Kim TS*, Rha MS*, Shin EC|IFN-γ induces IL-15 trans-presentation by epithelial cells via IRF1|J Immunol|2022|208(2):338-346|f
-Rha MS, Shin EC|Activation or exhaustion of CD8+ T cells in patients with COVID-19|Cell Mol Immunol|2021|18(10):2325-2333|f
-Rha MS, Kim CH|Are electronic cigarettes harmful? Mucin may be the key|Clin Exp Otorhinolaryngol|2021|14(3):249-250|f
-Jung JH*, Rha MS*, Sa M, Choi HK, Jeon JH, Seok H, Park DW, Park SH, Jeong HW, Choi WS, Shin EC|SARS-CoV-2-specific T cell memory is sustained in COVID-19 convalescent patients for 10 months with successful development of stem cell-like memory T cells|Nat Commun|2021|12(1):4043|f
-Rha MS*, Kim AR*, Shin EC|SARS-CoV-2-specific T cell responses in patients with COVID-19 and unexposed individuals|Immune Netw|2021|21(1):e2|f
-Rha MS*, Jeong HW*, Ko JH*, Choi SJ, Seo IH, Lee JS, Sa M, Kim AR, Joo EJ, Ahn JY, Kim JH, Song KH, Kim ES, Oh DH, Ahn MY, Choi HK, Jeon JH, Choi JP, Kim HB, Kim YK, Park SH, Choi WS#, Choi JY#, Peck KR#, Shin EC#|PD-1-expressing SARS-CoV-2-specific CD8+ T cells are not exhausted, but functional in patients with COVID-19|Immunity|2021|54(1):44-52.e3|f
-Rha MS, Kim CH, Yoon JH, Cho HJ|Association between the neutrophil-to-lymphocyte ratio and obstructive sleep apnea: a meta-analysis|Sci Rep|2020|10(1):10862|f
-Rha MS, Han JW, Kim JH, Koh JY, Park HJ, Kim SI, Kim MS, Lee JG, Lee HW, Lee DH, Kim W, Park JY, Joo DJ#, Park SH#, Shin EC#|Human liver CD8+ MAIT cells exert TCR/MR1-independent innate-like cytotoxicity in response to IL-15|J Hepatol|2020|73(3):640-650|f
-Rha MS*, Kim SW*, Chang DY*, Lee JK, Kim J, Park SH, Khalmuratova R, Lim HS, Eun KM, Hong SN, Kim DW#, Shin EC#|Superantigen-related TH2 CD4+ T cells in nonasthmatic chronic rhinosinusitis with nasal polyps|J Allergy Clin Immunol|2020|145(5):1378-1388.e10|f
-Lee MJ, Lee E, Han SK, Choi YH, Kwon DI, Choi H, Lee K, Park ES, Rha MS, Joo DJ, Shin EC, Kim S, Kim JK, Lee YJ|Single-cell RNA sequencing identifies shared differentiation paths of mouse thymic innate T cells|Nat Commun|2020|11(1):4367|c
-Kim JH, Han JW, Choi YJ, Rha MS, Koh JY, Kim KH, Kim CG, Lee YJ, Kim AR, Park J, Kim HK, Min BS, Seo SI, Kang M, Park HJ, Han DH, Kim SI, Kim MS, Lee JG, Lee DH, Kim W, Park JY, Park SH, Joo DJ, Shin EC|Functions of human liver CD69+CD103-CD8+ T cells depend on HIF-2α activity in healthy and pathologic livers|J Hepatol|2020|72(6):1170-1181|c
-Han JW, Joo DJ, Kim JH, Rha MS, Koh JY, Park HJ, Lee JG, Kim MS, Kim SI, Shin EC, Park JY, Park SH|Early reduction of regulatory T cells is associated with acute rejection in liver transplantation under tacrolimus-based immunosuppression with basiliximab induction|Am J Transplant|2020|20(8):2058-2069|c
-Rha MS, Jeong SW, Cho HJ, Yoon JH, Kim CH|Sinonasal pleomorphic adenoma: a single institution case series combined with a comprehensive review of literatures|Auris Nasus Larynx|2019|46(2):223-229|f
-Kang JW, Baek SH, Rha MS, Kim JH|The effects of alcohol consumption and smoking on allergy risk in Korean adults|Am J Rhinol Allergy|2014|28(1):e35-e39|c
-Kim JW, Rha MS, Kim JH, Kang JW|Orbital apex syndrome caused by invasive aspergillosis|J Craniofac Surg|2014|25(2):e191-e193|c`.split("\n").map(l=>{const [a,t,j,y,c,ty]=l.split("|");return {a,t,j,y,c,ty}});
+const P=`Cho A, Cho HJ, Kim CH, Kwak K, Rha MS (correspondence)|Predictive value of blood eosinophil count and serum total immunoglobulin E for type 2 chronic rhinosinusitis according to allergic sensitization status|European Archives of Otorhinolaryngology. In press. doi: 10.1007/s00405-026-10527-y|In press|f
+Kang M, Kim D, Seo J, Kim Y, Kim S, Rha MS, Kim CH, Cho HJ|Murine eosinophilic and neutrophilic chronic rhinosinusitis models reveal phenotype-specific steroid responses|American Journal of Rhinology & Allergy. In press. doi: 10.1177/19458924261456360|In press|c
+Moon S*, Lee M*, Jung I#, Rha MS# (correspondence)|Oral corticosteroids and adverse events in chronic rhinosinusitis with nasal polyps|JAMA Otolaryngol Head Neck Surg. 2026;152(8):735-743|2026|f
+Kim D, Cho HJ, Kim CH, Rha MS (correspondence)|Population-scale plasma proteomics reveals systemic inflammatory signatures associated with chronic rhinosinusitis|Clinical and Experimental Allergy. 2026;56(9):1131-1133|2026|f
+Kim G, Lee S, Koo MS, Moon S, Kim D, Cho HJ, Kim CH, Rha MS (correspondence)|Single-cell profiling of paired nasal brushing and tissue samples reveals distinct cellular landscapes and immune phenotypes|Journal of Allergy and Clinical Immunology. 2026;158(1):278-90|2026|f
+Kim D, Lee SJ, Rha MS# (correspondence), Cho HJ#|Unsupervised multidimensional phenotyping for personalized surgical treatment in obstructive sleep apnea|Otolaryngology-Head and Neck Surgery. 2026;174(4):1091-1101|2026|f
+Bae H, Kim G, Lee S, Koo MS, Cho HJ, Kim CH, Rha MS (correspondence)|Distinct inflammatory features and nasal Th2 cell profiles in allergic patients with chronic rhinosinusitis|Rhinology. 2026;64(2):197-205|2026|f
+Kim D, Cho HJ, Kim CH, Rha MS (correspondence)|Association of allergen signatures with individualized allergic phenotypes|Allergology International. 2026;75(1):150-157|2026|f
+Kim JY, Cho HJ, Kim CH, Rha MS (correspondence)|Prevalence and associated factors of olfactory and gustatory loss in patients with nasal septal deviation|Clinical Otolaryngology. 2026;51(1):101-110|2026|f
+Jeong Y, Park JJ, Rha MS, Cho HJ|Posterior pillar hypertrophy as a novel anatomical predictor of surgical success in obstructive sleep apnea|Clinical and Experimental Otolaryngology. 2026;19(1):97-102|2026|c
+Kim D, Jung CM, Cho HJ, Kim CH, Rha MS (correspondence)|Distinct profiles of patient-reported outcomes across allergen signatures in chronic rhinosinusitis|Life. 2025;15(12):1835|2025|f
+Eo TS*, Rha MS*, Kim CH, Cho HJ|Prognostic significance of preoperative diagnosis in sinonasal inverted papilloma: recurrence-free survival analysis|European Archives of Otorhinolaryngology. 2025;282(8):4129-4137|2025|f
+Moon S*, Moon S*, Lee S, Kim G, Koo MS, Cho HJ, Kim CH, Rha MS (correspondence)|Epithelial lining fluid cystatin SN is a noninvasive biomarker for predicting type 2 chronic rhinosinusitis|Allergy. 2025;80(9):2572-2585|2025|f
+Moon IS*, Rha MS*, Yeo IS, Kim CH|A century of otorhinolaryngology at Yonsei University College of Medicine and engagement with US Missionaries|Laryngoscope Investigative Otolaryngology. 2025;10(1):e70088|2025|f
+Kim Y, Kang M, Seo J, Kim S, Rha MS, Kim CH, Cho HJ|Cell-type specific IL-5Rα distribution and IL-5-Induced CCL11 expression in human nasal epithelium|Allergy. 2025;80(9):2654-2659|2025|c
+Kim H, Hwang I, Seo J, Kim C, Choi IJ, Kang M, Rha MS, Hong Y, Kim J, Baek SK, Park JH, Cho HJ, Kwak K|Dissolving microneedle for maintaining the integrity of HPV virus-like particles enabling durable sterile protection across various mucosal tissues|Advanced Healthcare Materials. 2025;14(24):e2500963|2025|c
+Kim BR, Rha MS, Cho HJ, Yoon JH, Kim CH|Spatiotemporal Regulation by Downstream Genes of Prok2 in the Olfactory System: From Development to Function|Frontiers in Cell and Developmental Biology. 2025;13:1550845|2025|c
+Kim SI, Rha MS, Kim JS, Ahn SH, Ryu JH, Cho HJ, Kim CH|Inflammation-driven periostin in ECRS has contrasting effects on tissue structural integrity and osteitis|Frontiers in Immunology. 2025;16:1596746|2025|c
+Jeong Y, Rha MS, Kim CH, Cho HJ|First prospective study on single-port robotic tongue base resection for sleep apnea|Head & Neck. 2025;47(4):1071-1078|2025|c
+Kim AR, Koh JY, Rha MS, Jung JH, Ko JH, Choi HK, Jeon JH, Seok H, Park DW, Peck KR, Choi JY, Park SH, Choi WS, Jeong HW, Shin EC|Patients with mild COVID-19 exhibit paradoxically low functional avidity of SARS-CoV-2 membrane protein-reactive CD4+ T cells|Immune Network. 2025;25(2):e4|2025|c
+Ahn SH, Oh JT, Kim DH, Lee EJ, Rha MS, Cho HJ, Kim CH|S100A9 induces tissue remodeling of human nasal epithelium in chronic rhinosinusitis with nasal polyp|International Forum of Allergy & Rhinology. 2025;15(2):135-148|2025|c
+Koo MS*, Moon S*, Rha MS (correspondence)|Mucosal inflammatory memory in chronic rhinosinusitis|Cells. 2024;13(23):1947|2024|f
+Moon S, Rha MS (correspondence)|Revisiting T cells in chronic rhinosinusitis|Allergy Asthma & Immunology Research. 2024;16(6):585-600|2024|f
+Eo TS, Jeong Y, Cho HJ, Rha MS#, Kim CH# (correspondence)|Comparative analyses of post-infectious olfactory dysfunction between COVID-19 and non-COVID-19 cases|Scientific Reports. 2024;14(1):23511|2024|f
+Noh HE*, Rha MS*, Jeong Y, Kim CH, Cho HJ|Outcomes and predictors of success following multilevel surgery in positional and non-positional obstructive sleep apnea|Otolaryngology-Head and Neck Surgery. 2024;171(5):1562-1571|2024|f
+Rha MS, Kim G, Lee S, Kim J, Jeong Y, Jung CM, Kim J, Noh HE, Lee HY, Noh JY, Kim YM, Cho HJ, Kim CH#, Shin EC#|SARS-CoV-2 spike-specific nasal-resident CD49a+CD8+ memory T cells exert immediate effector functions with enhanced IFN-γ production|Nature Communications. 2024;15(1):8355|2024|f
+Kim CH, Cho HJ, Kim CH, Rha MS (correspondence)|Sinonasal seromucinous hamartoma: A single institution case series combined with a narrative review of the literature|European Archives of Otorhinolaryngology. 2024;281(10):5311–5317|2024|f
+Rha MS# (correspondence), Kim G, Lee S, Jung CM, Lee YW, Noh HE, Jeong Y, Cho HJ, Kim CH#|Type 1/17 CD103+CD4+ nasal-resident memory T cells in non-eosinophilic chronic rhinosinusitis with nasal polyps|Allergy. 2024;79(7):1996-1999|2024|f
+Noh HE, Rha MS (correspondence)|Mucosal immunity against SARS-CoV-2 in the respiratory tract|Pathogens. 2024;13(2):113|2024|f
+Noh HE, Rha MS, Jeong Y, Seo JH, Kang M, Moon UY, Kim CH, Cho HJ|Differential regulation of viral entry-associated genes modulated by inflammatory cytokines|Journal of Medical Virology. 2024;96(9):e29913|2024|c
+Jeong D, Chung YW, Ji H, Kim J, Seo JH, Han S, Moon S, Rha MS, Cho HJ, Kim CH, Ryu JH, Kim HH, Yoon JH|Let-7a-5p Inhibits IL-4-induced MUC5AC Expression and Mucus Hypersecretion and Is Transported in Nasal Lavage Extracellular Vesicles|American Journal of Respiratory Cell and Molecular Biology. 2024;71(3):375-379|2024|c
+Moon S, Han S, Jang IH, Ryu J, Rha MS, Cho HJ, Yoon SS, Nam KT, Kim CH, Park MS, Seong JK, Lee WJ, Yoon JH, Chung YW, Ryu JH|Airway epithelial CD47 plays a critical role in inducing influenza virus-mediated bacterial super-infection|Nature Communications. 2024;15(1):3666|2024|c
+Jung CM*, Han M*, Cho HJ, Kim CH, Jung I#, Rha MS# (correspondence)|Impact of non-pharmaceutical interventions on the incidence and treatment of chronic rhinosinusitis during the COVID-19 pandemic: A nationwide retrospective cohort study|Journal of Clinical Medicine. 2023;12(20):6629|2023|f
+Eo TS, Lee HY, Cho HJ, Yoon JH, Rha MS#, Kim CH# (correspondence)|Clinical characteristics and associated factors of qualitative olfactory dysfunction|Rhinology. 2023;61(5):432-440|2023|f
+Rha MS, Jeong Y, Kim CH, Yoon JH, Cho HJ|Clinical characteristics and surgical outcomes of obstructive sleep apnea patients with mixed apnea components|Otolaryngology-Head and Neck Surgery. 2023;168(3):521-527|2023|f
+Rha MS, Jeong Y, Alyahya KA, Yoon JH, Kim CH, Cho HJ|Comparison of clinical features and surgical outcomes between hypopnea- and apnea-predominant obstructive sleep apnea|Clinical Otolaryngology. 2023;48(2):167-174|2023|f
+Ha JG, Kim BR, Cho A, Jeong Y, Rha MS, Kang JW, Cho HJ, Yoon JH, Kim CH|Visualization of the relationship between electrogustometry and whole mouth test using multidimensional scaling|Scientific Reports. 2023;13:8798|2023|c
+Kim BR, Rha MS, Cho HJ, Yoon JH, Kim CH|Spatiotemporal dynamics of the development of mouse olfactory system from prenatal to postnatal period|Frontiers in Neuroanatomy. 2023;17:1157224|2023|c
+Ahn SH, Shin KH, Oh JT, Park SC, Rha MS, Kim SI, Cho HJ, Yoon JH, Kim CH|Calprotectin in chronic rhinosinusitis eosinophil extracellular traps|International Forum of Allergy & Rhinology. 2023;13(10):1926-1936|2023|c
+Choi SJ, Koh JY, Rha MS, Seo IH, Lee H, Jeong S, Park SH, Shin EC|KIR+CD8+ and NKG2A+CD8+ T cells are distinct innate-like populations in humans|Cell Reports. 2023;42(3):112236|2023|c
+Koh JY*, Rha MS*, Choi SJ*, Lee HS, Han JW, Nam HJ, Kim DW, Lee JG, Kim MS, Park JY, Park SH#, Joo DJ#, Shin EC#|Identification of a distinct NK-like hepatic T-cell population activated by NKG2C in a TCR-independent manner|Journal of Hepatology. 2022;77(4):1059-1070|2022|f
+Rha MS, Cho HJ, Yoon JH, Moon SJ, Kim CH|Gustatory dysfunction in patients with olfactory dysfunction and the associated factors|Rhinology. 2022;60(3):200-206|2022|f
+Rha MS, Jeong Y, Kim J, Kim CH, Yoon JH, Cho HJ|Is obstructive sleep apnea associated with erythrocytosis? A systematic review and meta-analysis|Laryngoscope Investigative Otolaryngology. 2022;7(2):627-635|2022|f
+Rha MS, Han JW, Koh JY, Lee HS, Kim JH, Cho KJ, Kim SI, Kim MS, Lee JG, Park SH, Joo DJ, Park JY#, Shin EC#|Impaired antibacterial response of liver sinusoidal Vγ9+Vδ2+ T cells in patients with chronic liver disease|Gut. 2022;71(3):605-615|2022|f
+Rha MS, Cho HJ, Yoon JH, Kim CH|Association between the use of electronic cigarettes and the prevalence of chronic rhinosinusitis and allergic rhinitis: a nationwide cross-sectional study|Rhinology. 2022;60(1):20-28|2022|f
+Rha MS, Kim CH, Yoon JH, Cho HJ|Association of the human papillomavirus infection with the recurrence of sinonasal inverted papilloma: A systematic review and meta-analysis|Rhinology. 2022;60(1):2-10|2022|f
+Rha MS, Yoon YH, Koh JY, Jung JH, Lee HS, Park SK, Park SH, Kim YM#, Rha KS#, Shin EC#|IL-17A-producing sinonasal MAIT cells in patients with chronic rhinosinusitis with nasal polyps|Journal of Allergy and Clinical Immunology. 2022;149(2):599-609.e7|2022|f
+Kim TS*, Rha MS*, Shin EC|IFN-γ induces IL-15 trans-presentation by epithelial cells via IRF1|Journal of Immunology. 2022;208(2):338-346|2022|f
+Rha MS, Shin EC|Activation or exhaustion of CD8+ T cells in patients with COVID-19|Cellular & Molecular Immunology. 2021;18(10):2325-2333|2021|f
+Rha MS, Kim CH|Are electronic cigarettes harmful? Mucin may be the key|Clinical and Experimental Otorhinolaryngology. 2021;14(3):249-250|2021|f
+Jung JH*, Rha MS*, Sa M, Choi HK, Jeon JH, Seok H, Park DW, Park SH, Jeong HW, Choi WS, Shin EC|SARS-CoV-2-specific T cell memory is sustained in COVID-19 convalescent patients for 10 months with successful development of stem cell-like memory T cells|Nature Communications. 2021;12(1):4043|2021|f
+Rha MS*, Kim AR*, Shin EC|SARS-CoV-2-specific T cell responses in patients with COVID-19 and unexposed individuals|Immune Network. 2021;21(1):e2|2021|f
+Rha MS*, Jeong HW*, Ko JH*, Choi SJ, Seo IH, Lee JS, Sa M, Kim AR, Joo EJ, Ahn JY, Kim JH, Song KH, Kim ES, Oh DH, Ahn MY, Choi HK, Jeon JH, Choi JP, Kim HB, Kim YK, Park SH, Choi WS#, Choi JY#, Peck KR#, Shin EC#|PD-1-expressing SARS-CoV-2-specific CD8+ T cells are not exhausted, but functional in patients with COVID-19|Immunity. 2021;54(1):44-52.e3|2021|f
+Rha MS, Kim CH, Yoon JH, Cho HJ|Association between the neutrophil-to-lymphocyte ratio and obstructive sleep apnea: a meta-analysis|Scientific Reports. 2020;10(1):10862|2020|f
+Rha MS, Han JW, Kim JH, Koh JY, Park HJ, Kim SI, Kim MS, Lee JG, Lee HW, Lee DH, Kim W, Park JY, Joo DJ#, Park SH#, Shin EC#|Human liver CD8+ MAIT cells exert TCR/MR1-independent innate-like cytotoxicity in response to IL-15|Journal of Hepatology. 2020;73(3):640-650|2020|f
+Rha MS*, Kim SW*, Chang DY*, Lee JK, Kim J, Park SH, Khalmuratova R, Lim HS, Eun KM, Hong SN, Kim DW#, Shin EC#|Superantigen-related TH2 CD4+ T cells in nonasthmatic chronic rhinosinusitis with nasal polyps|Journal of Allergy and Clinical Immunology. 2020;145(5):1378-1388.e10|2020|f
+Lee MJ, Lee E, Han SK, Choi YH, Kwon DI, Choi H, Lee K, Park ES, Rha MS, Joo DJ, Shin EC, Kim S, Kim JK, Lee YJ|Single-cell RNA sequencing identifies shared differentiation paths of mouse thymic innate T cells|Nature Communications. 2020;11(1):4367|2020|c
+Kim JH, Han JW, Choi YJ, Rha MS, Koh JY, Kim KH, Kim CG, Lee YJ, Kim AR, Park J, Kim HK, Min BS, Seo SI, Kang M, Park HJ, Han DH, Kim SI, Kim MS, Lee JG, Lee DH, Kim W, Park JY, Park SH, Joo DJ, Shin EC|Functions of human liver CD69+CD103-CD8+ T cells depend on HIF-2α activity in healthy and pathologic livers|Journal of Hepatology. 2020;72(6):1170-1181|2020|c
+Han JW, Joo DJ, Kim JH, Rha MS, Koh JY, Park HJ, Lee JG, Kim MS, Kim SI, Shin EC, Park JY, Park SH|Early reduction of regulatory T cells is associated with acute rejection in liver transplantation under tacrolimus-based immunosuppression with basiliximab induction|American Journal of Transplantation. 2020;20(8):2058-2069|2020|c
+Rha MS, Jeong SW, Cho HJ, Yoon JH, Kim CH|Sinonasal pleomorphic adenoma: a single institution case series combined with a comprehensive review of literatures|Auris Nasus Larynx. 2019;46(2):223-229|2019|f
+Kang JW, Baek SH, Rha MS, Kim JH|The effects of alcohol consumption and smoking on allergy risk in Korean adults|American Journal of Rhinology & Allergy. 2014;28(1):e35-e39|2014|c
+Kim JW, Rha MS, Kim JH, Kang JW|Orbital apex syndrome caused by invasive aspergillosis|Journal of Craniofacial Surgery. 2014;25(2):e191-e193|2014|c`.split("\n").map(l=>{const [a,t,j,y,ty]=l.split("|");return {a,t,j,y,ty}});
 
 const featured=[
  ["Immunity","PD-1-expressing SARS-CoV-2-specific CD8+ T cells are not exhausted, but functional in patients with COVID-19","2021;54(1):44-52.e3","Immunity Best of 2021","immunity-2021.jpg"],
@@ -516,7 +517,7 @@ const featured=[
  ["Nature Communications","SARS-CoV-2-specific T cell memory is sustained in COVID-19 convalescent patients for 10 months with successful development of stem cell-like memory T cells","2021;12(1):4043","2021 Top 25 COVID-19 Articles, Nat Commun","ncomms.jpg"],
  ["J Allergy Clin Immunol","Superantigen-related TH2 CD4+ T cells in nonasthmatic chronic rhinosinusitis with nasal polyps","2020;145(5):1378-1388.e10","Editor's Choice, JACI May 2020","jaci-2020-05.jpg"],
  ["J Allergy Clin Immunol","IL-17A-producing sinonasal MAIT cells in patients with chronic rhinosinusitis with nasal polyps","2022;149(2):599-609.e7","Editor's Choice, JACI Feb 2022","jaci-2022-02.jpg"],
- ["J Allergy Clin Immunol","Single-cell profiling of paired nasal brushing and tissue samples reveals distinct cellular landscapes and immune phenotypes","2026;158(1):278-290","","jaci-2026-07.jpg"],
+ ["J Allergy Clin Immunol","Single-cell profiling of paired nasal brushing and tissue samples reveals distinct cellular landscapes and immune phenotypes","2026;158(1):278-90","","jaci-2026-07.jpg"],
  ["Allergy","Epithelial lining fluid cystatin SN is a noninvasive biomarker for predicting type 2 chronic rhinosinusitis","2025;80(9):2572-2585","","allergy-2025-09.jpg"],
  ["Allergy","Type 1/17 CD103+CD4+ nasal-resident memory T cells in non-eosinophilic chronic rhinosinusitis with nasal polyps","2024;79(7):1996-1999","","allergy-2024-07.jpg"],
  ["Gut","Impaired antibacterial response of liver sinusoidal Vγ9+Vδ2+ T cells in patients with chronic liver disease","2022;71(3):605-615","","gut-2022-03.jpg"],
@@ -528,7 +529,8 @@ const featured=[
 const $=s=>document.querySelector(s);
 const esc=s=>s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const initials=n=>n.replace(/,.*$/,"").split(/[\s-]+/).map(w=>w[0]).join("").slice(0,3).toUpperCase();
-const hl=a=>esc(a).replace(/Rha MS/g,"<mark>Rha MS</mark>");
+const hl=a=>esc(a).replace(/Rha MS/g,"<mark>Rha MS</mark>").replace(/\(correspondence\)/g,'<span class="corr">(correspondence)</span>');
+const fmtJ=j=>{const m=j.match(/^(.*?)\.?\s*((?:\d{4}|In press).*)$/);return m?`<i>${esc(m[1])}</i>. <span class="mono" style="color:var(--muted)">${esc(m[2])}</span>`:esc(j)};
 const t=(k,fb)=>(T[lang]&&T[lang][k])||fb;
 
 function renderStatic(){
@@ -565,7 +567,7 @@ function renderPubs(){
   $("#pubCount").textContent=`${list.length} / ${P.length}`;
   let out="",yr="";
   list.forEach(p=>{if(p.y!==yr){yr=p.y;out+=`<div class="year-h">${yr}</div>`}
-    out+=`<div class="pub"><span class="t">${esc(p.t)}</span><span class="a">${hl(p.a)}</span><span class="j"><i>${esc(p.j)}</i> <span class="mono" style="color:var(--muted)">${p.y}${p.c==="in press"?" · in press":";"+esc(p.c)}</span></span></div>`});
+    out+=`<div class="pub"><span class="t">${esc(p.t)}</span><span class="a">${hl(p.a)}</span><span class="j">${fmtJ(p.j)}</span></div>`});
   $("#pubList").innerHTML=out||`<p style="color:var(--muted)">${lang==="ko"?"검색 결과가 없습니다. 다른 단어로 검색해 보세요.":"No papers match. Try another word."}</p>`;
 }
 function renderNews(){ $("#newsList").innerHTML=news.map(newsRow).join(""); }

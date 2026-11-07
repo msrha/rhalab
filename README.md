@@ -13,5 +13,5 @@ All content lives in `index.html`:
 - PI career and awards: `career`, `awards`
 - Members: `memberGroups`, `interns`, `staff`, `alumni`
 - News: `news` (newest first)
-- Publications: the `P` block, one paper per line as `authors|title|journal|year|volume(issue):pages|f or c` (`f` = first/corresponding, `c` = co-author)
+- Publications: the `P` block, one paper per line as `authors|title|citation line as on the old site|year (or In press)|f or c` (`f` = first/corresponding, `c` = co-author). Mark the corresponding author with `(correspondence)` after the name.
 - Selected papers: `featured`
