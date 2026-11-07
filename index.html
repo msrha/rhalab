@@ -119,7 +119,7 @@ main{min-height:60vh}
 .pi{display:grid;grid-template-columns:9rem minmax(0,1fr);gap:1.8rem;align-items:start}
 @media (max-width:560px){.pi{grid-template-columns:minmax(0,1fr)}}
 .avatar{aspect-ratio:1;max-width:100%;border-radius:50%;background:var(--tint);display:grid;place-items:center;font-family:var(--f-display);color:var(--deep);font-weight:600;overflow:hidden}
-.pi .avatar{font-size:2.6rem;border-radius:12px}
+.pi-photo{width:9rem;max-width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;border-radius:10px;display:block}
 .cv{display:grid;grid-template-columns:7.5rem minmax(0,1fr);gap:.35rem 1rem;font-size:.92rem;margin:0}
 .cv dt{font-family:var(--f-mono);font-size:.8rem;color:var(--muted);font-variant-numeric:tabular-nums;padding-top:.1rem}
 .cv dd{margin:0}
@@ -158,10 +158,13 @@ main{min-height:60vh}
 .feat .body{display:flex;flex-direction:column;min-width:0}
 .feat .jn{font-family:var(--f-display);font-style:italic;color:var(--deep);font-size:1.05rem;margin-bottom:.4rem}
 /* gallery */
-.gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(18rem,1fr));gap:1rem}
+.gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,24rem),1fr));gap:1.5rem}
 .ph{aspect-ratio:4/3;max-width:100%;border-radius:10px;background:var(--tint);border:1px dashed var(--line);display:flex;align-items:flex-end;padding:1rem;color:var(--muted);font-size:.88rem;position:relative;overflow:hidden}
 .ph::before{content:"";position:absolute;inset:0;background:repeating-radial-gradient(circle at 30% 40%,transparent 0 18px,color-mix(in srgb,var(--deep) 7%,transparent) 18px 19px)}
 .ph span{position:relative}
+.shot{margin:0;display:flex;flex-direction:column;gap:.5rem}
+.shot img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;border-radius:10px;display:block}
+.shot figcaption{font-size:.88rem;color:var(--muted)}
 /* contact */
 .contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));gap:1.5rem}
 .box{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:1.4rem}
@@ -257,7 +260,7 @@ footer .wrap{align-items:center}
   <div class="sec">
     <div class="side"><div class="lbl">PI</div></div>
     <div class="pi">
-      <div class="avatar" aria-hidden="true">MSR</div>
+      <img class="pi-photo" src="assets/pi.jpg" alt="Prof. Min-Seok Rha" width="144" height="192">
       <div>
         <h3 style="font-size:var(--s2)" data-i18n="piName">Min-Seok Rha, MD, PhD</h3>
         <div style="color:var(--muted);margin:.3rem 0 1rem" data-i18n="piTitle">Assistant Professor, Department of Otorhinolaryngology, Yonsei University College of Medicine, Severance Hospital</div>
@@ -310,8 +313,8 @@ footer .wrap{align-items:center}
 <section class="view wrap" id="v-gallery" data-view="gallery" hidden>
   <div class="page-h"><div class="lbl" data-i18n="nGallery">Gallery</div><h2 data-i18n="galH">Lab life</h2></div>
   <div class="gal">
-    <div class="ph"><span data-i18n="g1">Group photo · KAI 2025</span></div>
-    <div class="ph"><span data-i18n="g2">Group photo · Cytokines 2024 &amp; KAI 2024</span></div>
+    <figure class="shot"><img src="assets/gallery-kai-2025.jpg" alt="RHA Lab group photo at KAI 2025" loading="lazy" width="1400" height="1050"><figcaption data-i18n="g1">Group photo · KAI 2025</figcaption></figure>
+    <figure class="shot"><img src="assets/gallery-kai-2024.jpg" alt="RHA Lab group photo at Cytokines 2024 and KAI 2024" loading="lazy" width="1400" height="1050"><figcaption data-i18n="g2">Group photo · Cytokines 2024 &amp; KAI 2024</figcaption></figure>
   </div>
 </section>
 
@@ -511,7 +514,7 @@ const featured=[
  ["Immunity","PD-1-expressing SARS-CoV-2-specific CD8+ T cells are not exhausted, but functional in patients with COVID-19","2021;54(1):44-52.e3","Immunity Best of 2021","immunity-2021.jpg"],
  ["Nature Communications","SARS-CoV-2 spike-specific nasal-resident CD49a+CD8+ memory T cells exert immediate effector functions with enhanced IFN-γ production","2024;15(1):8355","","ncomms.jpg"],
  ["Nature Communications","SARS-CoV-2-specific T cell memory is sustained in COVID-19 convalescent patients for 10 months with successful development of stem cell-like memory T cells","2021;12(1):4043","2021 Top 25 COVID-19 Articles, Nat Commun","ncomms.jpg"],
- ["J Allergy Clin Immunol","Superantigen-related TH2 CD4+ T cells in nonasthmatic chronic rhinosinusitis with nasal polyps","2020;145(5):1378-1388.e10","Editor's Choice, JACI May 2020"],
+ ["J Allergy Clin Immunol","Superantigen-related TH2 CD4+ T cells in nonasthmatic chronic rhinosinusitis with nasal polyps","2020;145(5):1378-1388.e10","Editor's Choice, JACI May 2020","jaci-2020-05.jpg"],
  ["J Allergy Clin Immunol","IL-17A-producing sinonasal MAIT cells in patients with chronic rhinosinusitis with nasal polyps","2022;149(2):599-609.e7","Editor's Choice, JACI Feb 2022","jaci-2022-02.jpg"],
  ["J Allergy Clin Immunol","Single-cell profiling of paired nasal brushing and tissue samples reveals distinct cellular landscapes and immune phenotypes","2026;158(1):278-290","","jaci-2026-07.jpg"],
  ["Allergy","Epithelial lining fluid cystatin SN is a noninvasive biomarker for predicting type 2 chronic rhinosinusitis","2025;80(9):2572-2585","","allergy-2025-09.jpg"],
