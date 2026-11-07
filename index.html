@@ -491,7 +491,7 @@ function renderHome(){
 }
 const newsRow=([d,k,x,j,links])=>`<li class="news-row"><time>${d}</time><div><span class="tag ${k}">${L(tagName[k])}</span>${esc(L(x))}${j?`<span class="nj">${esc(j)}</span>`:""}${links.length?`<span class="nl">${links.map(([l,u])=>`<a href="${esc(u)}" target="_blank" rel="noopener">${l} ↗</a>`).join("")}</span>`:""}</div></li>`;
 function renderResearch(){
-  $("#resTopics").innerHTML=topics.map((x,i)=>`<div class="sec"><div class="side"><div class="lbl">${lang==="ko"?"연구 주제 "+(i+1):"Research "+(i+1)}</div></div><div class="topic-wrap"><div class="topic"><h3>${L(x.t)}</h3><p class="prose" style="margin:0;color:var(--muted)">${L(x.d)}</p><ul>${L(x.b).map(b=>`<li>${b}</li>`).join("")}</ul></div><figure class="topic-fig"><img src="assets/research/${x.img}.jpg" alt="${esc(L(x.t))}" loading="lazy"></figure></div></div>`).join("");
+  $("#resTopics").innerHTML=topics.map((x,i)=>`<div class="sec"><div class="side"><div class="lbl">${lang==="ko"?"연구 주제 "+(i+1):"Research theme "+(i+1)}</div></div><div class="topic-wrap"><div class="topic"><h3>${L(x.t)}</h3><p class="prose" style="margin:0;color:var(--muted)">${L(x.d)}</p><ul>${L(x.b).map(b=>`<li>${b}</li>`).join("")}</ul></div><figure class="topic-fig"><img src="assets/research/${x.img}.jpg" alt="${esc(L(x.t))}" loading="lazy"></figure></div></div>`).join("");
 }
 function renderTeam(){
   $("#cvCareer").innerHTML=career.map(([y,e,k])=>`<dt>${y}</dt><dd>${esc(lang==="ko"?k:e)}</dd>`).join("");
