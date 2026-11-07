@@ -38,6 +38,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{ou
 .wrap{max-width:72rem;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
 h1,h2,h3{font-family:var(--f-display);text-wrap:balance;line-height:1.2;margin:0;color:var(--ink)}
 .lbl{font-family:var(--f-mono);font-size:.95rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.hero .sub b.u{text-decoration:underline;text-underline-offset:.18em;text-decoration-thickness:.08em}
 .mono{font-family:var(--f-mono)}
 /* header */
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
@@ -233,7 +234,7 @@ footer .wrap{align-items:center}
       <div>
       <div class="lbl" data-i18n="heroLbl">Research in Human Airway Mucosal Immunology</div>
       <h1 style="margin-top:.8rem" data-i18n-html="heroH">Exploring <em>the mucosal immune system of the upper airway</em> with unprecedented precision for clinical translation</h1>
-      <p class="sub">RHA LAB @ Yonsei University/Severance Hospital<br><b>R</b>esearch in <b>H</b>uman <b>A</b>irway Mucosal Immunology (RHA) Lab<br><span data-i18n="heroLab">Prof. Min-Seok Rha's Lab, Yonsei University College of Medicine</span></p>
+      <p class="sub">RHA LAB @ Yonsei University/Severance Hospital<br><b class="u">R</b>esearch in <b class="u">H</b>uman <b class="u">A</b>irway Mucosal Immunology (RHA) Lab<br><span data-i18n="heroLab">Prof. Min-Seok Rha's Lab, Yonsei University College of Medicine</span></p>
       <div class="aff">
         <span class="yon-row"><img src="assets/yonsei-logo.png" alt="Yonsei University" width="44" height="44"><b data-i18n="aff1">Yonsei University College of Medicine</b></span>
         <span data-i18n="aff2">Severance Hospital · Dept. of Otorhinolaryngology</span>
