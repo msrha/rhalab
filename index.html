@@ -466,7 +466,7 @@ const hl=a=>esc(a).replace(/Rha MS/g,"<mark>Rha MS</mark>").replace(/\(correspon
 const pmURL=t=>"https://pubmed.ncbi.nlm.nih.gov/?term="+encodeURIComponent('"'+t.replace(/[–—]/g,"-")+'"[Title]');
 const doiOf=j=>{const m=j.match(/doi:\s*(10\.\S+)/i);return m?m[1]:null};
 const linkT=(t,j)=>{const d=doiOf(j||"");if(/Accepted\s*$/.test(j||""))return `<span class="t">${esc(t)}</span>`;const u=d?"https://doi.org/"+d:pmURL(t);return `<a class="t tl" href="${esc(u)}" target="_blank" rel="noopener">${esc(t)}<span class="ext" aria-hidden="true"> ↗</span></a>`};
-const fmtJ=j=>{const m=j.match(/^(.*?)\.?\s*((?:\d{4}|In press).*)$/);return m?`<i>${esc(m[1])}</i>. <span class="mono" style="color:var(--muted)">${esc(m[2])}</span>`:esc(j)};
+const fmtJ=j=>{const m=j.match(/^(.*?)\.?\s*((?:\d{4}|In press|Accepted).*)$/);return m?`<i>${esc(m[1])}</i>. <span class="mono" style="color:var(--muted)">${esc(m[2])}</span>`:esc(j)};
 const t=(k,fb)=>(T[lang]&&T[lang][k])||fb;
 
 function renderStatic(){
