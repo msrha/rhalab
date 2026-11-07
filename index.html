@@ -1,0 +1,613 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>html{color-scheme:light}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<meta property="og:title" content="RHA Lab">
+<meta property="og:description" content="Research in Human Airway Mucosal Immunology Lab, Yonsei University College of Medicine">
+<meta property="og:type" content="website">
+<title>RHA Lab</title>
+<meta name="description" content="RHA Lab — Research in Human Airway Mucosal Immunology, Yonsei University College of Medicine">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600;7..72,700&family=Noto+Sans+KR:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: sticky slim header + hash-routed single page; hero carries a living ciliated-epithelium canvas; content in a 72rem column with a narrow side rail for section labels. */
+:root{
+  --bg:#f7f9fa; --surface:#ffffff; --ink:#10242c; --muted:#56707a; --line:#d9e3e7;
+  --deep:#0d3b4c; --accent:#c8506e; --accent-soft:#f6e3e8; --tint:#e6f0f3;
+  --f-display:"Literata", "Noto Serif KR", Georgia, serif;
+  --f-body:"Noto Sans KR", "Apple SD Gothic Neo", system-ui, sans-serif;
+  --f-mono:"JetBrains Mono", ui-monospace, Menlo, monospace;
+  --s-1:.8125rem; --s0:1rem; --s1:1.125rem; --s2:1.5rem; --s3:2.125rem; --s4:clamp(2.2rem,5vw,3.6rem);
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0b1a20; --surface:#11252d; --ink:#e4eef1; --muted:#93acb4; --line:#24404a;
+  --deep:#8fd0e2; --accent:#f08aa4; --accent-soft:#3a1f29; --tint:#152f38; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0b1a20; --surface:#11252d; --ink:#e4eef1; --muted:#93acb4; --line:#24404a;
+  --deep:#8fd0e2; --accent:#f08aa4; --accent-soft:#3a1f29; --tint:#152f38; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:var(--s0);line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:var(--deep)}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.wrap{max-width:72rem;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;line-height:1.2;margin:0;color:var(--ink)}
+.lbl{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.mono{font-family:var(--f-mono)}
+/* header */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+header.site{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:color-mix(in srgb,var(--surface) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;gap:1rem;min-height:60px;flex-wrap:wrap;padding-block:.4rem}
+.brand{display:flex;align-items:baseline;gap:.5rem;text-decoration:none;color:var(--ink);margin-right:auto}
+.brand b{font-family:var(--f-display);font-size:1.3rem;letter-spacing:.02em}
+.brand span{font-size:.75rem;color:var(--muted)}
+nav.main{display:flex;gap:.15rem;flex-wrap:wrap}
+nav.main a{font-size:.9rem;text-decoration:none;color:var(--muted);padding:.35rem .6rem;border-radius:6px}
+nav.main a:hover{color:var(--ink);background:var(--tint)}
+nav.main a[aria-current="page"]{color:var(--deep);font-weight:700}
+.lang{display:flex;border:1px solid var(--line);border-radius:999px;overflow:hidden}
+.lang button{border:0;background:none;color:var(--muted);font:500 .75rem var(--f-mono);padding:.3rem .65rem;cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--deep);color:var(--surface)}
+.menu-btn{display:none;border:1px solid var(--line);background:none;color:var(--ink);border-radius:6px;padding:.3rem .6rem;font-size:.85rem;cursor:pointer}
+@media (max-width:860px){
+  .menu-btn{display:block}
+  nav.main{display:none;width:100%;order:5;padding-bottom:.4rem}
+  nav.main.open{display:flex}
+  .brand span{display:none}
+}
+/* hero */
+.hero{position:relative;overflow:hidden;background:var(--surface);border-bottom:1px solid var(--line)}
+.hero .wrap{position:relative;z-index:1;padding-block:clamp(3rem,8vw,6rem) clamp(7rem,14vw,10rem)}
+.hero h1{font-size:var(--s4);font-weight:600;max-width:20ch}
+.hero h1 em{font-style:italic;color:var(--accent);font-weight:400}
+.hero p.sub{max-width:58ch;color:var(--muted);font-size:var(--s1);margin:1.2rem 0 0}
+.hero .aff{display:flex;flex-wrap:wrap;gap:.5rem 1.4rem;margin-top:1.8rem;font-size:.85rem;color:var(--muted)}
+.hero .aff b{color:var(--ink);font-weight:500}
+#cilia{position:absolute;left:0;right:0;bottom:0;width:100%;height:clamp(110px,16vw,170px);display:block}
+/* sections */
+main{min-height:60vh}
+.view{padding-block:3rem 4rem}
+.view[hidden]{display:none}
+.sec{display:grid;grid-template-columns:11rem minmax(0,1fr);gap:1rem 2.5rem;padding-block:2.2rem;border-top:1px solid var(--line)}
+.sec:first-of-type{border-top:0}
+.sec>.side{padding-top:.35rem}
+.sec>div{min-width:0}
+@media (max-width:760px){.sec{grid-template-columns:minmax(0,1fr)}}
+.page-h{margin-bottom:1.5rem}
+.page-h h2{font-size:var(--s3);font-weight:600;margin-top:.3rem}
+.page-h p{color:var(--muted);max-width:62ch;margin:.6rem 0 0}
+.prose{max-width:65ch}
+.prose p{margin:0 0 1em}
+/* home grid */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1rem}
+.theme-card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:1.4rem;display:flex;flex-direction:column;gap:.6rem;text-decoration:none;color:inherit}
+.theme-card:hover{border-color:var(--deep)}
+.theme-card h3{font-size:var(--s1);font-weight:600}
+.theme-card p{margin:0;color:var(--muted);font-size:.92rem}
+.theme-card .k{font-family:var(--f-mono);font-size:.72rem;color:var(--deep)}
+.stats{display:flex;flex-wrap:wrap;gap:2rem 3rem}
+.stats div{display:flex;flex-direction:column}
+.stats b{font-family:var(--f-display);font-size:2.2rem;font-weight:600;color:var(--deep);font-variant-numeric:tabular-nums;line-height:1.1}
+.stats span{font-size:.85rem;color:var(--muted)}
+.list-plain{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.news-row{display:grid;grid-template-columns:5.5rem minmax(0,1fr);gap:1rem;padding:.75rem 0;border-bottom:1px solid var(--line)}
+.news-row time{font-family:var(--f-mono);font-size:.82rem;color:var(--muted);padding-top:.15rem;font-variant-numeric:tabular-nums}
+.tag{display:inline-block;font-family:var(--f-mono);font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;padding:.1rem .45rem;border-radius:4px;margin-right:.45rem;vertical-align:.1em;background:var(--tint);color:var(--deep)}
+.tag.award{background:var(--accent-soft);color:var(--accent)}
+.more{display:inline-block;margin-top:1rem;font-size:.9rem;font-weight:500}
+/* research */
+.topic{display:grid;grid-template-columns:minmax(0,1fr);gap:.7rem}
+.topic h3{font-size:var(--s2);font-weight:600}
+.topic ul{margin:.2rem 0 0;padding-left:1.1rem;max-width:65ch}
+.topic li{margin:.3rem 0}
+.topic li::marker{color:var(--accent)}
+.methods{display:flex;flex-wrap:wrap;gap:.5rem}
+.methods span{border:1px solid var(--line);border-radius:999px;padding:.25rem .8rem;font-size:.85rem;background:var(--surface)}
+/* team */
+.pi{display:grid;grid-template-columns:9rem minmax(0,1fr);gap:1.8rem;align-items:start}
+@media (max-width:560px){.pi{grid-template-columns:minmax(0,1fr)}}
+.avatar{aspect-ratio:1;max-width:100%;border-radius:50%;background:var(--tint);display:grid;place-items:center;font-family:var(--f-display);color:var(--deep);font-weight:600;overflow:hidden}
+.pi .avatar{font-size:2.6rem;border-radius:12px}
+.cv{display:grid;grid-template-columns:7.5rem minmax(0,1fr);gap:.35rem 1rem;font-size:.92rem;margin:0}
+.cv dt{font-family:var(--f-mono);font-size:.8rem;color:var(--muted);font-variant-numeric:tabular-nums;padding-top:.1rem}
+.cv dd{margin:0}
+.cv dd small{color:var(--muted);display:block;font-size:.84rem}
+.members{display:grid;grid-template-columns:repeat(auto-fill,minmax(14rem,1fr));gap:1rem}
+.member{display:grid;grid-template-columns:3.4rem minmax(0,1fr);gap:.9rem;align-items:start;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:1rem}
+.member .avatar{font-size:1.1rem}
+.member b{display:block;font-weight:700}
+.member .role{font-size:.82rem;color:var(--deep)}
+.member p{margin:.35rem 0 0;font-size:.84rem;color:var(--muted)}
+.group-h{font-family:var(--f-body);font-size:.95rem;font-weight:700;margin:1.8rem 0 .8rem;color:var(--muted)}
+.group-h:first-child{margin-top:0}
+.simple-list{display:flex;flex-wrap:wrap;gap:.5rem 1.5rem;font-size:.92rem}
+.simple-list span small{color:var(--muted)}
+/* pubs */
+.toolbar{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;margin-bottom:1rem}
+.toolbar input,.toolbar select{font:inherit;font-size:.9rem;padding:.45rem .7rem;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink)}
+.toolbar input{flex:1 1 16rem;min-width:0}
+.seg{display:flex;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.seg button{border:0;background:var(--surface);color:var(--muted);font:inherit;font-size:.85rem;padding:.45rem .8rem;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--deep);color:var(--surface)}
+.count{font-family:var(--f-mono);font-size:.8rem;color:var(--muted)}
+.legend{font-size:.8rem;color:var(--muted);margin:.2rem 0 1.4rem}
+.year-h{font-family:var(--f-display);font-size:1.4rem;font-weight:600;color:var(--deep);margin:1.6rem 0 .3rem;font-variant-numeric:tabular-nums}
+.pub{padding:.8rem 0;border-bottom:1px solid var(--line);font-size:.93rem}
+.pub .t{font-weight:700;display:block;color:var(--ink);line-height:1.45}
+.pub .a{color:var(--muted);display:block;margin-top:.2rem;font-size:.85rem}
+.pub .a mark{background:none;color:var(--ink);font-weight:700;text-decoration:underline;text-decoration-color:var(--accent);text-underline-offset:3px}
+.pub .j{display:block;margin-top:.15rem;font-size:.85rem}
+.pub .j i{color:var(--deep);font-weight:500}
+.pub .badge{display:inline-block;align-self:flex-start;margin-top:.35rem;font-size:.75rem;color:var(--accent);background:var(--accent-soft);padding:.1rem .5rem;border-radius:4px}
+.feat{display:grid;grid-template-columns:repeat(auto-fill,minmax(19rem,1fr));gap:1rem}
+.feat .pub{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:1.1rem;display:flex;flex-direction:column}
+.feat .jn{font-family:var(--f-display);font-style:italic;color:var(--deep);font-size:1.05rem;margin-bottom:.4rem}
+/* gallery */
+.gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(18rem,1fr));gap:1rem}
+.ph{aspect-ratio:4/3;max-width:100%;border-radius:10px;background:var(--tint);border:1px dashed var(--line);display:flex;align-items:flex-end;padding:1rem;color:var(--muted);font-size:.88rem;position:relative;overflow:hidden}
+.ph::before{content:"";position:absolute;inset:0;background:repeating-radial-gradient(circle at 30% 40%,transparent 0 18px,color-mix(in srgb,var(--deep) 7%,transparent) 18px 19px)}
+.ph span{position:relative}
+/* contact */
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));gap:1.5rem}
+.box{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:1.4rem}
+.box h3{font-size:var(--s1);margin-bottom:.6rem}
+.copy{display:flex;gap:.5rem;align-items:center;flex-wrap:wrap;margin-top:.4rem}
+.copy code{font-family:var(--f-mono);font-size:.95rem;background:var(--tint);padding:.25rem .55rem;border-radius:6px;user-select:all}
+.btn{border:1px solid var(--deep);background:var(--deep);color:var(--surface);font:inherit;font-size:.82rem;padding:.3rem .8rem;border-radius:6px;cursor:pointer}
+.btn.ghost{background:none;color:var(--deep)}
+footer{border-top:1px solid var(--line);background:var(--surface)}
+footer .wrap{padding-block:2rem;display:flex;flex-wrap:wrap;gap:1rem 2rem;justify-content:space-between;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+</style>
+
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="#home"><b>RHA LAB</b><span data-i18n="brandSub">Human Airway Mucosal Immunology</span></a>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mainNav">Menu</button>
+    <nav class="main" id="mainNav" aria-label="Main">
+      <a href="#home" data-i18n="nHome">Home</a>
+      <a href="#research" data-i18n="nResearch">Research</a>
+      <a href="#team" data-i18n="nTeam">Team</a>
+      <a href="#publications" data-i18n="nPubs">Publications</a>
+      <a href="#news" data-i18n="nNews">News</a>
+      <a href="#gallery" data-i18n="nGallery">Gallery</a>
+      <a href="#contact" data-i18n="nContact">Contact</a>
+    </nav>
+    <div class="lang" role="group" aria-label="Language">
+      <button id="lang-ko" data-lang="ko" aria-pressed="false">KO</button>
+      <button id="lang-en" data-lang="en" aria-pressed="true">EN</button>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- HOME -->
+<section class="view" id="v-home" data-view="home" style="padding:0">
+  <div class="hero">
+    <div class="wrap">
+      <div class="lbl" data-i18n="heroLbl">Research in Human Airway Mucosal Immunology</div>
+      <h1 style="margin-top:.8rem" data-i18n-html="heroH">Exploring the mucosal immune system of the upper airway <em>with unprecedented precision</em> for clinical translation</h1>
+      <p class="sub" data-i18n="heroSub">We study how epithelial cells, immune cells, tissue stem cells and microbes interact in the human nasal and sinus mucosa, and how inflammatory memory keeps chronic airway disease going.</p>
+      <div class="aff">
+        <span><b data-i18n="aff1">Yonsei University College of Medicine</b></span>
+        <span data-i18n="aff2">Severance Hospital · Dept. of Otorhinolaryngology</span>
+        <span data-i18n="aff3">The Airway Mucosa Institute</span>
+      </div>
+    </div>
+    <canvas id="cilia" aria-hidden="true"></canvas>
+  </div>
+  <div class="wrap">
+    <div class="sec">
+      <div class="side"><div class="lbl" data-i18n="lblThemes">Research themes</div></div>
+      <div class="cards" id="homeTopics"></div>
+    </div>
+    <div class="sec">
+      <div class="side"><div class="lbl" data-i18n="lblAtGlance">At a glance</div></div>
+      <div class="stats" id="stats"></div>
+    </div>
+    <div class="sec">
+      <div class="side"><div class="lbl" data-i18n="lblLatest">Latest news</div></div>
+      <div><ul class="list-plain" id="homeNews"></ul><a class="more" href="#news" data-i18n="allNews">All news →</a></div>
+    </div>
+    <div class="sec">
+      <div class="side"><div class="lbl" data-i18n="lblJoin">Join us</div></div>
+      <div class="prose"><p data-i18n="joinText">We are recruiting postdocs, graduate students, undergraduate researchers and research associates.</p><a class="more" href="#contact" style="margin-top:0" data-i18n="howApply">How to apply →</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH -->
+<section class="view wrap" id="v-research" data-view="research" hidden>
+  <div class="page-h"><div class="lbl" data-i18n="nResearch">Research</div><h2 data-i18n="resH">How the upper airway mucosa remembers inflammation</h2>
+  <p data-i18n="resIntro">Our lab investigates the crosstalk among immune cells, epithelial cells, tissue stem cells and microbes in the upper airway mucosa. We focus on how inflammatory memory is sustained and how tissue immune homeostasis is maintained or reprogrammed, with the goal of better treatments for chronic airway diseases and respiratory infections.</p></div>
+  <div id="resTopics"></div>
+  <div class="sec">
+    <div class="side"><div class="lbl" data-i18n="lblApproach">Approach</div></div>
+    <div class="methods" id="methods"></div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="view wrap" id="v-team" data-view="team" hidden>
+  <div class="page-h"><div class="lbl" data-i18n="nTeam">Team</div><h2 data-i18n="teamH">People</h2></div>
+  <div class="sec">
+    <div class="side"><div class="lbl">PI</div></div>
+    <div class="pi">
+      <div class="avatar" aria-hidden="true">MSR</div>
+      <div>
+        <h3 style="font-size:var(--s2)" data-i18n="piName">Min-Seok Rha, MD, PhD</h3>
+        <div style="color:var(--muted);margin:.3rem 0 1rem" data-i18n="piTitle">Assistant Professor, Department of Otorhinolaryngology, Yonsei University College of Medicine, Severance Hospital</div>
+        <div class="copy"><code>msrha@yuhs.ac</code><button class="btn ghost" data-copy="msrha@yuhs.ac" data-i18n="copy">Copy</button></div>
+        <h4 class="group-h" style="margin-top:1.6rem" data-i18n="eduCareer">Education &amp; career</h4>
+        <dl class="cv" id="cvCareer"></dl>
+        <h4 class="group-h" data-i18n="honors">Honors &amp; awards</h4>
+        <dl class="cv" id="cvAwards"></dl>
+      </div>
+    </div>
+  </div>
+  <div class="sec">
+    <div class="side"><div class="lbl" data-i18n="lblMembers">Members</div></div>
+    <div id="memberGroups"></div>
+  </div>
+</section>
+
+<!-- PUBLICATIONS -->
+<section class="view wrap" id="v-publications" data-view="publications" hidden>
+  <div class="page-h"><div class="lbl" data-i18n="nPubs">Publications</div><h2 data-i18n="pubH">Publications</h2></div>
+  <div class="sec">
+    <div class="side"><div class="lbl" data-i18n="lblSelected">Selected</div></div>
+    <div class="feat" id="featured"></div>
+  </div>
+  <div class="sec">
+    <div class="side"><div class="lbl" data-i18n="lblAll">All SCI(E) papers</div></div>
+    <div>
+      <div class="toolbar">
+        <input id="pubSearch" type="search" placeholder="Search title, author, journal" data-i18n-ph="searchPh" aria-label="Search publications">
+        <div class="seg" role="group" aria-label="Authorship">
+          <button id="seg-all" data-f="all" aria-pressed="true" data-i18n="fAll">All</button>
+          <button id="seg-first" data-f="first" aria-pressed="false" data-i18n="fFirst">First / corresponding</button>
+          <button id="seg-co" data-f="co" aria-pressed="false" data-i18n="fCo">Co-author</button>
+        </div>
+        <span class="count" id="pubCount"></span>
+      </div>
+      <div class="legend" data-i18n="legend">* equal contribution · # corresponding author</div>
+      <div id="pubList"></div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWS -->
+<section class="view wrap" id="v-news" data-view="news" hidden>
+  <div class="page-h"><div class="lbl" data-i18n="nNews">News</div><h2 data-i18n="newsH">News</h2></div>
+  <ul class="list-plain" id="newsList"></ul>
+</section>
+
+<!-- GALLERY -->
+<section class="view wrap" id="v-gallery" data-view="gallery" hidden>
+  <div class="page-h"><div class="lbl" data-i18n="nGallery">Gallery</div><h2 data-i18n="galH">Lab life</h2></div>
+  <div class="gal">
+    <div class="ph"><span data-i18n="g1">Group photo · KAI 2025</span></div>
+    <div class="ph"><span data-i18n="g2">Group photo · Cytokines 2024 &amp; KAI 2024</span></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="view wrap" id="v-contact" data-view="contact" hidden>
+  <div class="page-h"><div class="lbl" data-i18n="nContact">Contact</div><h2 data-i18n="contactH">Contact &amp; join</h2></div>
+  <div class="contact-grid">
+    <div class="box">
+      <h3 data-i18n="cAddrH">Location</h3>
+      <p style="margin:0" data-i18n-html="cAddr">RHA Lab, 2nd floor, Avison Biomedical Research Center (ABMRC)<br>Yonsei University College of Medicine, Severance Hospital<br>50-1 Yonsei-ro, Seodaemun-gu, Seoul 03722, Korea</p>
+      <a class="more" href="https://map.naver.com/p/search/%EC%97%90%EB%B9%84%EC%8A%A8%EC%9D%98%EC%83%9D%EB%AA%85%EC%97%B0%EA%B5%AC%EC%84%BC%ED%84%B0" target="_blank" rel="noopener" data-i18n="cMap">Open in map →</a>
+    </div>
+    <div class="box">
+      <h3 data-i18n="cJoinH">Open positions</h3>
+      <p style="margin:0 0 .6rem" data-i18n="cJoin">We are recruiting postdocs, graduate students, undergraduate researchers and research associates. Send a cover letter describing your scientific interests and strengths, with your CV, to Prof. Min-Seok Rha.</p>
+      <div class="copy"><code>msrha@yuhs.ac</code><button class="btn" data-copy="msrha@yuhs.ac" data-i18n="copy">Copy</button></div>
+    </div>
+    <div class="box">
+      <h3 data-i18n="cInstH">The Airway Mucosa Institute</h3>
+      <p style="margin:0 0 .6rem" data-i18n="cInst">Yonsei University College of Medicine, formerly the Airway Mucus Institute.</p>
+      <a class="more" style="margin-top:0" href="https://medicine.yonsei.ac.kr/medicine-en/research/airway-hucus.do" target="_blank" rel="noopener" data-i18n="cInstLink">Institute website →</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap">
+  <span>© 2026 RHA Lab · Yonsei University College of Medicine</span>
+  <span data-i18n="footNote">Draft redesign · content from the current Google Sites page</span>
+</div></footer>
+
+<script>
+const T={
+ en:{},
+ ko:{brandSub:"연세대학교 의과대학 나민석 교수 연구실",nHome:"홈",nResearch:"연구",nTeam:"구성원",nPubs:"논문",nNews:"소식",nGallery:"갤러리",nContact:"연락처",
+  heroLbl:"Research in Human Airway Mucosal Immunology",
+  heroH:"상기도 점막 면역을 <em>전례 없는 정밀도로</em> 탐구하고 임상으로 연결합니다",
+  heroSub:"코와 부비동 점막에서 상피세포, 면역세포, 조직 줄기세포, 미생물이 어떻게 상호작용하는지, 그리고 염증 기억이 어떻게 만성 기도질환을 지속시키는지 연구합니다.",
+  aff1:"연세대학교 의과대학",aff2:"세브란스병원 이비인후과",aff3:"기도점막연구소",
+  lblThemes:"연구 주제",lblAtGlance:"한눈에 보기",lblLatest:"최근 소식",allNews:"전체 소식 →",lblJoin:"함께하기",
+  joinText:"박사후연구원, 대학원생, 학부연구생, 연구원을 모집하고 있습니다.",howApply:"지원 방법 →",
+  resH:"상기도 점막은 염증을 어떻게 기억하는가",
+  resIntro:"상기도 점막에서 면역세포, 상피세포, 조직 줄기세포, 미생물 사이의 상호작용을 연구합니다. 염증 기억이 어떻게 유지되는지, 조직 면역 항상성이 어떻게 유지되거나 재프로그래밍되는지에 집중하며, 만성 기도질환과 호흡기 감염의 더 나은 치료법을 목표로 합니다.",
+  lblApproach:"연구 방법",teamH:"구성원",piName:"나민석 교수 (MD, PhD)",piTitle:"연세대학교 의과대학 세브란스병원 이비인후과 조교수",
+  copy:"복사",copied:"복사됨",eduCareer:"학력 및 경력",honors:"수상",lblMembers:"연구원",
+  pubH:"논문",lblSelected:"대표 논문",lblAll:"전체 SCI(E) 논문",searchPh:"제목, 저자, 저널 검색",fAll:"전체",fFirst:"제1·교신저자",fCo:"공동저자",
+  legend:"* 공동 제1저자 · # 교신저자",newsH:"소식",galH:"연구실 사진",g1:"단체 사진 · KAI 2025",g2:"단체 사진 · Cytokines 2024 & KAI 2024",
+  contactH:"연락처 및 지원",cAddrH:"위치",cAddr:"연세대학교 의과대학 세브란스병원<br>에비슨의생명연구센터(ABMRC) 2층 RHA Lab<br>서울특별시 서대문구 연세로 50-1 (03722)",
+  cMap:"지도에서 보기 →",cJoinH:"모집 중",cJoin:"박사후연구원, 대학원생, 학부연구생, 연구원을 모집합니다. 연구 관심사와 강점을 담은 자기소개서와 CV를 나민석 교수에게 보내 주세요.",
+  cInstH:"기도점막연구소",cInst:"연세대학교 의과대학 기도점막연구소 (구 기도점액연구소)",cInstLink:"연구소 홈페이지 →",
+  footNote:"개편 시안 · 현재 구글 사이트 내용 기반", papers:"편", stP:"SCI(E) 논문", stF:"제1·교신저자 논문", stM:"구성원", stA:"PI 수상"}
+};
+let lang="en";
+const L=(o)=>typeof o==="string"?o:(o[lang]||o.en);
+
+const topics=[
+ {k:"01",t:{en:"Immunopathogenesis and inflammatory memory of chronic airway diseases",ko:"만성 기도질환의 면역병인과 염증 기억"},
+  s:{en:"Chronic rhinosinusitis and allergic rhinitis",ko:"만성 비부비동염, 알레르기 비염"},
+  b:{en:["Map cellular diversity and spatial inflammatory niches in diseased mucosa","Identify inflammatory memory in epithelial cells, innate and adaptive immune cells, and bone marrow progenitors","Develop biomarkers and immunotherapies targeting airway mucosal inflammation","Study host–microbe interactions in chronic airway inflammation"],
+     ko:["병적 점막의 세포 다양성과 공간적 염증 니치 규명","상피세포, 선천·적응 면역세포, 골수 전구세포의 염증 기억 규명","기도 점막 염증을 표적으로 하는 바이오마커와 면역치료 개발","만성 기도 염증에서 숙주–미생물 상호작용 연구"]}},
+ {k:"02",t:{en:"Decoding the immune system of the human upper airway mucosa",ko:"인간 상기도 점막 면역계의 해독"},
+  s:{en:"Nasal cavity, sinuses, tonsils and adenoids",ko:"비강, 부비동, 편도·아데노이드"},
+  b:{en:["Define roles of tissue-resident immune cells and epithelial–immune crosstalk","Examine immunosenescence of upper airway mucosal immunity","Build an epithelial–immune–microbe atlas of the human upper airway"],
+     ko:["조직상주 면역세포의 역할과 상피–면역 상호작용 규명","상기도 점막 면역의 면역노화 연구","인간 상기도의 상피–면역–미생물 아틀라스 구축"]}},
+ {k:"03",t:{en:"Immune responses to respiratory pathogens",ko:"호흡기 병원체에 대한 면역 반응"},
+  s:{en:"The upper airway as the first line of defense",ko:"1차 방어선으로서의 상기도"},
+  b:{en:["Characterize antiviral immune responses in the upper airway mucosa","Develop immunotherapies and vaccine strategies that strengthen mucosal immunity"],
+     ko:["상기도 점막의 항바이러스 면역 반응 규명","점막 면역을 강화하는 면역치료·백신 전략 개발"]}}
+];
+const methods={en:["Human tissue & nasal brushing","Single-cell profiling","Multi-parameter flow cytometry","In vivo models","Microbiome analysis","Bioinformatics","Large-scale clinical cohorts"],
+ ko:["인체 조직·비강 브러싱 검체","단일세포 분석","다중 유세포분석","동물 모델","마이크로바이옴 분석","생물정보학","대규모 임상 코호트"]};
+
+const career=[["2024–","Assistant Professor","Dept. of Otorhinolaryngology, Yonsei University College of Medicine, Severance Hospital"],
+["2022–2024","Translational Research Assistant Professor","Dept. of Biomedical Sciences & Dept. of Otorhinolaryngology, Yonsei University College of Medicine"],
+["2021–2022","Clinical Instructor (Rhinology)","Dept. of Otorhinolaryngology, Severance Hospital"],
+["2020–2021","Postdoctoral Researcher","Laboratory of Immunology and Infectious Disease, GSMSE, KAIST"],
+["2017–2020","PhD in Medical Science (Immunology)","Graduate School of Medical Science and Engineering, KAIST"],
+["2014–2017","MS in Otorhinolaryngology","The Graduate School, Yonsei University College of Medicine"],
+["2013–2017","Resident","Dept. of Otorhinolaryngology, Severance Hospital"],
+["2006–2012","MD","Yonsei University College of Medicine"]];
+const awards=[["2026","Future Physician-Scientist Award","The Korean Rhinologic Society"],
+["2025","Dain Leading Researcher Award","Korean Society of Otorhinolaryngology-Head and Neck Surgery"],
+["2025","The 58th Yuhan Medical Award (Young Medical Scientist Award)","Seoul Medical Association & Yuhan Corporation"],
+["2025","Best Oral Presentation Award","69th Korean Rhinologic Society Annual Congress"],
+["2024","O-Kong Academic Award","O-Kong-Hoe (Yonsei Otorhinolaryngology Alumni)"],
+["2023","Oral Sessions Prize Winner & EAACI Travel Grant","EAACI Congress 2023"],
+["2023","Best Oral Presentation Award","Korean Society of Sleep and Breathing, Spring Conference"],
+["2023","Best Oral Presentation Award, 1st Place","ICORL-HNS 2023"],
+["2022","O-Kong Academic Award","O-Kong-Hoe"],
+["2022","Flash Talks Sessions Prize Winner","EAACI Congress 2022"],
+["2022","Young Immunologist Award","Korean Association of Immunologists & Seegene Medical Foundation"],
+["2022","Best Oral Presentation Award","63rd Korean Rhinologic Society Annual Congress"],
+["2021","O-Kong Academic Award, 1st Place","O-Kong-Hoe"],
+["2021","The 31st Wunsch Medical Award (Young Medical Scientist Award)","Korean Academy of Medical Sciences & Boehringer Ingelheim"],
+["2021","Agarwal Award","KAIST Biomedical Research Center"],
+["2020","O-Kong Academic Award, 1st Place","O-Kong-Hoe"],
+["2019","Travel Award","26th International Symposium on Hepatitis C Virus and Related Viruses"],
+["2018","Best Oral Presentation Award","Korean Association of Immunologists International Meeting"],
+["2017–2020","Korean Government Graduate Student Scholarship",""],
+["2008–2010","Scholarship for Academic Excellence","Yonsei University College of Medicine"]];
+
+const memberGroups=[
+ {g:{en:"Postdoctoral researcher",ko:"박사후연구원"},m:[["Sungmin Moon, PhD","",{en:"Postdoc (2024–)",ko:"박사후연구원 (2024–)"},{en:"PhD, Yonsei Univ. College of Medicine (2024); BS, Konkuk Univ. (2016). Airway epithelial cell biology and immunopathogenesis of chronic airway inflammation.",ko:"연세대 의대 박사(2024), 건국대 학사(2016). 기도 상피세포 생물학, 만성 기도 염증의 면역병인."}]]},
+ {g:{en:"Graduate students",ko:"대학원생"},m:[
+  ["Gyeongyeop Kim, MS","",{en:"PhD student (2024–)",ko:"박사과정 (2024–)"},{en:"Research associate 2022–2024. Mucosal B and T cell biology.",ko:"연구원 2022–2024. 점막 B·T세포 생물학."}],
+  ["Sol Lee, BS","",{en:"MS student (2025–)",ko:"석사과정 (2025–)"},{en:"Research associate 2023–2025. Metabolic–immune remodeling.",ko:"연구원 2023–2025. 대사–면역 리모델링."}],
+  ["Min-Seok Koo","",{en:"Integrated MS/PhD (2024–)",ko:"석박통합과정 (2024–)"},{en:"Nasal microbiome.",ko:"비강 마이크로바이옴."}],
+  ["Yu Jin Lee, MS","",{en:"PhD student (2026–)",ko:"박사과정 (2026–)"},{en:"Innate immunity of the airway mucosa.",ko:"기도 점막의 선천 면역."}]]},
+];
+const interns=[["Hyunjoon Cho, BS",{en:"Intern",ko:"인턴"}],["Youngjoo Park, MD",{en:"Medical intern, Severance Hospital",ko:"세브란스병원 인턴"}],["Hajeong Bae",{en:"Medical student, Yonsei",ko:"연세대 의대 학생"}],["Hankyo Jung",{en:"Medical student, Yonsei",ko:"연세대 의대 학생"}]];
+const staff=[["Gahee Choi",""],["Seonju Ryu",""],["Hyemin Yoon, RN",""]];
+const alumni=[["Yeong-Jun Jeon, MD",{en:"Former resident, Dept. of ORL, Severance Hospital",ko:"세브란스병원 이비인후과 전공의 (전)"}]];
+
+const news=[
+ ["2026.07","award",{en:"Our research was selected as one of the Top 30 Outstanding Achievements in Korea Health and Medical R&D 2026.",ko:"2026 보건의료 R&D 우수성과 30선에 선정되었습니다."}],
+ ["2026.06","paper",{en:"New paper in JAMA Otolaryngology–Head & Neck Surgery on oral corticosteroids and adverse events in CRSwNP.",ko:"JAMA Otolaryngology–HNS 게재: 비용종 동반 만성 비부비동염에서 경구 스테로이드와 부작용."}],
+ ["2026.03","award",{en:"Prof. Min-Seok Rha received the Future Physician-Scientist Award from the Korean Rhinologic Society.",ko:"나민석 교수, 대한비과학회 미래의사과학자상 수상."}],
+ ["2026.03","people",{en:"Yu Jin Lee joined the lab as a graduate student.",ko:"이유진 대학원생 합류."}],
+ ["2026.02","paper",{en:"New paper in J Allergy Clin Immunol on cellular landscapes and immune phenotypes in nasal brushing samples.",ko:"JACI 게재: 비강 브러싱 검체의 세포 지형과 면역 표현형."}],
+ ["2025.11","paper",{en:"New paper in Rhinology on nasal TH2 cell profiles in allergic patients with CRS.",ko:"Rhinology 게재: 알레르기 동반 만성 비부비동염의 비강 TH2 세포 특성."}],
+ ["2025.10","paper",{en:"New paper in Allergology International on allergen signatures and allergic phenotypes.",ko:"Allergology International 게재: 알레르겐 시그니처와 알레르기 표현형."}],
+ ["2025.10","grant",{en:"Prof. Rha received an NRL 2.0 (National Research Lab) grant from the National Research Foundation of Korea.",ko:"한국연구재단 NRL 2.0 (국가연구실) 과제 선정."}],
+ ["2025.09","grant",{en:"Prof. Rha received a Global Physician-Scientist Program (Leader Track) grant from KHIDI.",ko:"한국보건산업진흥원 글로벌 의사과학자 (리더 트랙) 과제 선정."}],
+ ["2025.09","paper",{en:"New paper in Allergy: epithelial lining fluid cystatin SN as a biomarker for type 2 CRS.",ko:"Allergy 게재: 2형 만성 비부비동염 예측 바이오마커 cystatin SN."}],
+ ["2025.09","grant",{en:"Min-Seok Koo received a Master's Research Encouragement Grant from the Ministry of Education.",ko:"구민석 학생, 교육부 석사과정생 연구장려금 선정."}],
+ ["2025.08","award",{en:"Featured as an Outstanding Research achievement by Yonsei University College of Medicine.",ko:"연세대 의대 우수 연구성과로 소개되었습니다."}],
+ ["2025.07","grant",{en:"Dr. Sungmin Moon received a PostDoc growth-type research grant from the Ministry of Education.",ko:"문성민 박사, 교육부 박사후연구원 성장형 과제 선정."}],
+ ["2025.04","award",{en:"Prof. Rha selected for the Dain Leading Researcher Award (KORL-HNS).",ko:"나민석 교수, 대한이비인후과학회 다인 리딩 연구자상 선정."}],
+ ["2025.04","award",{en:"Prof. Rha selected for the 58th Yuhan Medical Award (Young Investigator), Seoul Medical Association.",ko:"나민석 교수, 제58회 유한의학상 (젊은의학자상) 선정."}],
+ ["2025.03","grant",{en:"Prof. Rha received an Excellent Young Researcher grant (NRF Basic Science Research Program).",ko:"한국연구재단 우수신진연구 과제 선정."}]
+];
+const tagName={paper:{en:"Paper",ko:"논문"},award:{en:"Award",ko:"수상"},grant:{en:"Grant",ko:"과제"},people:{en:"People",ko:"구성원"}};
+
+// publications: [authors, title, journal, year, cite, type]
+const P=`Cho A, Cho HJ, Kim CH, Kwak K, Rha MS|Predictive value of blood eosinophil count and serum total immunoglobulin E for type 2 chronic rhinosinusitis according to allergic sensitization status|Eur Arch Otorhinolaryngol|2026|in press|f
+Moon S*, Lee M*, Jung I#, Rha MS#|Oral corticosteroids and adverse events in chronic rhinosinusitis with nasal polyps|JAMA Otolaryngol Head Neck Surg|2026|152(8):735-743|f
+Kim D, Cho HJ, Kim CH, Rha MS|Population-scale plasma proteomics reveals systemic inflammatory signatures associated with chronic rhinosinusitis|Clin Exp Allergy|2026|56(9):1131-1133|f
+Kim G, Lee S, Koo MS, Moon S, Kim D, Cho HJ, Kim CH, Rha MS|Single-cell profiling of paired nasal brushing and tissue samples reveals distinct cellular landscapes and immune phenotypes|J Allergy Clin Immunol|2026|158(1):278-290|f
+Kim D, Lee SJ, Rha MS#, Cho HJ#|Unsupervised multidimensional phenotyping for personalized surgical treatment in obstructive sleep apnea|Otolaryngol Head Neck Surg|2026|174(4):1091-1101|f
+Bae H, Kim G, Lee S, Koo MS, Cho HJ, Kim CH, Rha MS|Distinct inflammatory features and nasal Th2 cell profiles in allergic patients with chronic rhinosinusitis|Rhinology|2026|64(2):197-205|f
+Kim D, Cho HJ, Kim CH, Rha MS|Association of allergen signatures with individualized allergic phenotypes|Allergol Int|2026|75(1):150-157|f
+Kim JY, Cho HJ, Kim CH, Rha MS|Prevalence and associated factors of olfactory and gustatory loss in patients with nasal septal deviation|Clin Otolaryngol|2026|51(1):101-110|f
+Kang M, Kim D, Seo J, Kim Y, Kim S, Rha MS, Kim CH, Cho HJ|Murine eosinophilic and neutrophilic chronic rhinosinusitis models reveal phenotype-specific steroid responses|Am J Rhinol Allergy|2026|in press|c
+Jeong Y, Park JJ, Rha MS, Cho HJ|Posterior pillar hypertrophy as a novel anatomical predictor of surgical success in obstructive sleep apnea|Clin Exp Otorhinolaryngol|2026|19(1):97-102|c
+Kim D, Jung CM, Cho HJ, Kim CH, Rha MS|Distinct profiles of patient-reported outcomes across allergen signatures in chronic rhinosinusitis|Life|2025|15(12):1835|f
+Eo TS*, Rha MS*, Kim CH, Cho HJ|Prognostic significance of preoperative diagnosis in sinonasal inverted papilloma: recurrence-free survival analysis|Eur Arch Otorhinolaryngol|2025|282(8):4129-4137|f
+Moon S*, Moon S*, Lee S, Kim G, Koo MS, Cho HJ, Kim CH, Rha MS|Epithelial lining fluid cystatin SN is a noninvasive biomarker for predicting type 2 chronic rhinosinusitis|Allergy|2025|80(9):2572-2585|f
+Moon IS*, Rha MS*, Yeo IS, Kim CH|A century of otorhinolaryngology at Yonsei University College of Medicine and engagement with US Missionaries|Laryngoscope Investig Otolaryngol|2025|10(1):e70088|f
+Kim Y, Kang M, Seo J, Kim S, Rha MS, Kim CH, Cho HJ|Cell-type specific IL-5Rα distribution and IL-5-induced CCL11 expression in human nasal epithelium|Allergy|2025|80(9):2654-2659|c
+Kim H, Hwang I, Seo J, Kim C, Choi IJ, Kang M, Rha MS, Hong Y, Kim J, Baek SK, Park JH, Cho HJ, Kwak K|Dissolving microneedle for maintaining the integrity of HPV virus-like particles enabling durable sterile protection across various mucosal tissues|Adv Healthc Mater|2025|14(24):e2500963|c
+Kim BR, Rha MS, Cho HJ, Yoon JH, Kim CH|Spatiotemporal regulation by downstream genes of Prok2 in the olfactory system: from development to function|Front Cell Dev Biol|2025|13:1550845|c
+Kim SI, Rha MS, Kim JS, Ahn SH, Ryu JH, Cho HJ, Kim CH|Inflammation-driven periostin in ECRS has contrasting effects on tissue structural integrity and osteitis|Front Immunol|2025|16:1596746|c
+Jeong Y, Rha MS, Kim CH, Cho HJ|First prospective study on single-port robotic tongue base resection for sleep apnea|Head Neck|2025|47(4):1071-1078|c
+Kim AR, Koh JY, Rha MS, Jung JH, Ko JH, Choi HK, Jeon JH, Seok H, Park DW, Peck KR, Choi JY, Park SH, Choi WS, Jeong HW, Shin EC|Patients with mild COVID-19 exhibit paradoxically low functional avidity of SARS-CoV-2 membrane protein-reactive CD4+ T cells|Immune Netw|2025|25(2):e4|c
+Ahn SH, Oh JT, Kim DH, Lee EJ, Rha MS, Cho HJ, Kim CH|S100A9 induces tissue remodeling of human nasal epithelium in chronic rhinosinusitis with nasal polyp|Int Forum Allergy Rhinol|2025|15(2):135-148|c
+Koo MS*, Moon S*, Rha MS|Mucosal inflammatory memory in chronic rhinosinusitis|Cells|2024|13(23):1947|f
+Moon S, Rha MS|Revisiting T cells in chronic rhinosinusitis|Allergy Asthma Immunol Res|2024|16(6):585-600|f
+Eo TS, Jeong Y, Cho HJ, Rha MS#, Kim CH#|Comparative analyses of post-infectious olfactory dysfunction between COVID-19 and non-COVID-19 cases|Sci Rep|2024|14(1):23511|f
+Noh HE*, Rha MS*, Jeong Y, Kim CH, Cho HJ|Outcomes and predictors of success following multilevel surgery in positional and non-positional obstructive sleep apnea|Otolaryngol Head Neck Surg|2024|171(5):1562-1571|f
+Rha MS, Kim G, Lee S, Kim J, Jeong Y, Jung CM, Kim J, Noh HE, Lee HY, Noh JY, Kim YM, Cho HJ, Kim CH#, Shin EC#|SARS-CoV-2 spike-specific nasal-resident CD49a+CD8+ memory T cells exert immediate effector functions with enhanced IFN-γ production|Nat Commun|2024|15(1):8355|f
+Kim CH, Cho HJ, Kim CH, Rha MS|Sinonasal seromucinous hamartoma: a single institution case series combined with a narrative review of the literature|Eur Arch Otorhinolaryngol|2024|281(10):5311-5317|f
+Rha MS#, Kim G, Lee S, Jung CM, Lee YW, Noh HE, Jeong Y, Cho HJ, Kim CH#|Type 1/17 CD103+CD4+ nasal-resident memory T cells in non-eosinophilic chronic rhinosinusitis with nasal polyps|Allergy|2024|79(7):1996-1999|f
+Noh HE, Rha MS|Mucosal immunity against SARS-CoV-2 in the respiratory tract|Pathogens|2024|13(2):113|f
+Noh HE, Rha MS, Jeong Y, Seo JH, Kang M, Moon UY, Kim CH, Cho HJ|Differential regulation of viral entry-associated genes modulated by inflammatory cytokines|J Med Virol|2024|96(9):e29913|c
+Jeong D, Chung YW, Ji H, Kim J, Seo JH, Han S, Moon S, Rha MS, Cho HJ, Kim CH, Ryu JH, Kim HH, Yoon JH|Let-7a-5p inhibits IL-4-induced MUC5AC expression and mucus hypersecretion and is transported in nasal lavage extracellular vesicles|Am J Respir Cell Mol Biol|2024|71(3):375-379|c
+Moon S, Han S, Jang IH, Ryu J, Rha MS, Cho HJ, Yoon SS, Nam KT, Kim CH, Park MS, Seong JK, Lee WJ, Yoon JH, Chung YW, Ryu JH|Airway epithelial CD47 plays a critical role in inducing influenza virus-mediated bacterial super-infection|Nat Commun|2024|15(1):3666|c
+Jung CM*, Han M*, Cho HJ, Kim CH, Jung I#, Rha MS#|Impact of non-pharmaceutical interventions on the incidence and treatment of chronic rhinosinusitis during the COVID-19 pandemic: a nationwide retrospective cohort study|J Clin Med|2023|12(20):6629|f
+Eo TS, Lee HY, Cho HJ, Yoon JH, Rha MS#, Kim CH#|Clinical characteristics and associated factors of qualitative olfactory dysfunction|Rhinology|2023|61(5):432-440|f
+Rha MS, Jeong Y, Kim CH, Yoon JH, Cho HJ|Clinical characteristics and surgical outcomes of obstructive sleep apnea patients with mixed apnea components|Otolaryngol Head Neck Surg|2023|168(3):521-527|f
+Rha MS, Jeong Y, Alyahya KA, Yoon JH, Kim CH, Cho HJ|Comparison of clinical features and surgical outcomes between hypopnea- and apnea-predominant obstructive sleep apnea|Clin Otolaryngol|2023|48(2):167-174|f
+Ha JG, Kim BR, Cho A, Jeong Y, Rha MS, Kang JW, Cho HJ, Yoon JH, Kim CH|Visualization of the relationship between electrogustometry and whole mouth test using multidimensional scaling|Sci Rep|2023|13:8798|c
+Kim BR, Rha MS, Cho HJ, Yoon JH, Kim CH|Spatiotemporal dynamics of the development of mouse olfactory system from prenatal to postnatal period|Front Neuroanat|2023|17:1157224|c
+Ahn SH, Shin KH, Oh JT, Park SC, Rha MS, Kim SI, Cho HJ, Yoon JH, Kim CH|Calprotectin in chronic rhinosinusitis eosinophil extracellular traps|Int Forum Allergy Rhinol|2023|13(10):1926-1936|c
+Choi SJ, Koh JY, Rha MS, Seo IH, Lee H, Jeong S, Park SH, Shin EC|KIR+CD8+ and NKG2A+CD8+ T cells are distinct innate-like populations in humans|Cell Rep|2023|42(3):112236|c
+Koh JY*, Rha MS*, Choi SJ*, Lee HS, Han JW, Nam HJ, Kim DW, Lee JG, Kim MS, Park JY, Park SH#, Joo DJ#, Shin EC#|Identification of a distinct NK-like hepatic T-cell population activated by NKG2C in a TCR-independent manner|J Hepatol|2022|77(4):1059-1070|f
+Rha MS, Cho HJ, Yoon JH, Moon SJ, Kim CH|Gustatory dysfunction in patients with olfactory dysfunction and the associated factors|Rhinology|2022|60(3):200-206|f
+Rha MS, Jeong Y, Kim J, Kim CH, Yoon JH, Cho HJ|Is obstructive sleep apnea associated with erythrocytosis? A systematic review and meta-analysis|Laryngoscope Investig Otolaryngol|2022|7(2):627-635|f
+Rha MS, Han JW, Koh JY, Lee HS, Kim JH, Cho KJ, Kim SI, Kim MS, Lee JG, Park SH, Joo DJ, Park JY#, Shin EC#|Impaired antibacterial response of liver sinusoidal Vγ9+Vδ2+ T cells in patients with chronic liver disease|Gut|2022|71(3):605-615|f
+Rha MS, Cho HJ, Yoon JH, Kim CH|Association between the use of electronic cigarettes and the prevalence of chronic rhinosinusitis and allergic rhinitis: a nationwide cross-sectional study|Rhinology|2022|60(1):20-28|f
+Rha MS, Kim CH, Yoon JH, Cho HJ|Association of the human papillomavirus infection with the recurrence of sinonasal inverted papilloma: a systematic review and meta-analysis|Rhinology|2022|60(1):2-10|f
+Rha MS, Yoon YH, Koh JY, Jung JH, Lee HS, Park SK, Park SH, Kim YM#, Rha KS#, Shin EC#|IL-17A-producing sinonasal MAIT cells in patients with chronic rhinosinusitis with nasal polyps|J Allergy Clin Immunol|2022|149(2):599-609.e7|f
+Kim TS*, Rha MS*, Shin EC|IFN-γ induces IL-15 trans-presentation by epithelial cells via IRF1|J Immunol|2022|208(2):338-346|f
+Rha MS, Shin EC|Activation or exhaustion of CD8+ T cells in patients with COVID-19|Cell Mol Immunol|2021|18(10):2325-2333|f
+Rha MS, Kim CH|Are electronic cigarettes harmful? Mucin may be the key|Clin Exp Otorhinolaryngol|2021|14(3):249-250|f
+Jung JH*, Rha MS*, Sa M, Choi HK, Jeon JH, Seok H, Park DW, Park SH, Jeong HW, Choi WS, Shin EC|SARS-CoV-2-specific T cell memory is sustained in COVID-19 convalescent patients for 10 months with successful development of stem cell-like memory T cells|Nat Commun|2021|12(1):4043|f
+Rha MS*, Kim AR*, Shin EC|SARS-CoV-2-specific T cell responses in patients with COVID-19 and unexposed individuals|Immune Netw|2021|21(1):e2|f
+Rha MS*, Jeong HW*, Ko JH*, Choi SJ, Seo IH, Lee JS, Sa M, Kim AR, Joo EJ, Ahn JY, Kim JH, Song KH, Kim ES, Oh DH, Ahn MY, Choi HK, Jeon JH, Choi JP, Kim HB, Kim YK, Park SH, Choi WS#, Choi JY#, Peck KR#, Shin EC#|PD-1-expressing SARS-CoV-2-specific CD8+ T cells are not exhausted, but functional in patients with COVID-19|Immunity|2021|54(1):44-52.e3|f
+Rha MS, Kim CH, Yoon JH, Cho HJ|Association between the neutrophil-to-lymphocyte ratio and obstructive sleep apnea: a meta-analysis|Sci Rep|2020|10(1):10862|f
+Rha MS, Han JW, Kim JH, Koh JY, Park HJ, Kim SI, Kim MS, Lee JG, Lee HW, Lee DH, Kim W, Park JY, Joo DJ#, Park SH#, Shin EC#|Human liver CD8+ MAIT cells exert TCR/MR1-independent innate-like cytotoxicity in response to IL-15|J Hepatol|2020|73(3):640-650|f
+Rha MS*, Kim SW*, Chang DY*, Lee JK, Kim J, Park SH, Khalmuratova R, Lim HS, Eun KM, Hong SN, Kim DW#, Shin EC#|Superantigen-related TH2 CD4+ T cells in nonasthmatic chronic rhinosinusitis with nasal polyps|J Allergy Clin Immunol|2020|145(5):1378-1388.e10|f
+Lee MJ, Lee E, Han SK, Choi YH, Kwon DI, Choi H, Lee K, Park ES, Rha MS, Joo DJ, Shin EC, Kim S, Kim JK, Lee YJ|Single-cell RNA sequencing identifies shared differentiation paths of mouse thymic innate T cells|Nat Commun|2020|11(1):4367|c
+Kim JH, Han JW, Choi YJ, Rha MS, Koh JY, Kim KH, Kim CG, Lee YJ, Kim AR, Park J, Kim HK, Min BS, Seo SI, Kang M, Park HJ, Han DH, Kim SI, Kim MS, Lee JG, Lee DH, Kim W, Park JY, Park SH, Joo DJ, Shin EC|Functions of human liver CD69+CD103-CD8+ T cells depend on HIF-2α activity in healthy and pathologic livers|J Hepatol|2020|72(6):1170-1181|c
+Han JW, Joo DJ, Kim JH, Rha MS, Koh JY, Park HJ, Lee JG, Kim MS, Kim SI, Shin EC, Park JY, Park SH|Early reduction of regulatory T cells is associated with acute rejection in liver transplantation under tacrolimus-based immunosuppression with basiliximab induction|Am J Transplant|2020|20(8):2058-2069|c
+Rha MS, Jeong SW, Cho HJ, Yoon JH, Kim CH|Sinonasal pleomorphic adenoma: a single institution case series combined with a comprehensive review of literatures|Auris Nasus Larynx|2019|46(2):223-229|f
+Kang JW, Baek SH, Rha MS, Kim JH|The effects of alcohol consumption and smoking on allergy risk in Korean adults|Am J Rhinol Allergy|2014|28(1):e35-e39|c
+Kim JW, Rha MS, Kim JH, Kang JW|Orbital apex syndrome caused by invasive aspergillosis|J Craniofac Surg|2014|25(2):e191-e193|c`.split("\n").map(l=>{const [a,t,j,y,c,ty]=l.split("|");return {a,t,j,y,c,ty}});
+
+const featured=[
+ ["Immunity","PD-1-expressing SARS-CoV-2-specific CD8+ T cells are not exhausted, but functional in patients with COVID-19","2021;54(1):44-52.e3","Immunity Best of 2021"],
+ ["Nature Communications","SARS-CoV-2 spike-specific nasal-resident CD49a+CD8+ memory T cells exert immediate effector functions with enhanced IFN-γ production","2024;15(1):8355",""],
+ ["Nature Communications","SARS-CoV-2-specific T cell memory is sustained in COVID-19 convalescent patients for 10 months with successful development of stem cell-like memory T cells","2021;12(1):4043","2021 Top 25 COVID-19 Articles, Nat Commun"],
+ ["J Allergy Clin Immunol","Superantigen-related TH2 CD4+ T cells in nonasthmatic chronic rhinosinusitis with nasal polyps","2020;145(5):1378-1388.e10","Editor's Choice, JACI May 2020"],
+ ["J Allergy Clin Immunol","IL-17A-producing sinonasal MAIT cells in patients with chronic rhinosinusitis with nasal polyps","2022;149(2):599-609.e7","Editor's Choice, JACI Feb 2022"],
+ ["J Allergy Clin Immunol","Single-cell profiling of paired nasal brushing and tissue samples reveals distinct cellular landscapes and immune phenotypes","2026;158(1):278-290",""],
+ ["Allergy","Epithelial lining fluid cystatin SN is a noninvasive biomarker for predicting type 2 chronic rhinosinusitis","2025;80(9):2572-2585",""],
+ ["Allergy","Type 1/17 CD103+CD4+ nasal-resident memory T cells in non-eosinophilic chronic rhinosinusitis with nasal polyps","2024;79(7):1996-1999",""],
+ ["Gut","Impaired antibacterial response of liver sinusoidal Vγ9+Vδ2+ T cells in patients with chronic liver disease","2022;71(3):605-615",""],
+ ["J Hepatol","Identification of a distinct NK-like hepatic T-cell population activated by NKG2C in a TCR-independent manner","2022;77(4):1059-1070","Highlighted in J Hepatol, Oct 2022"],
+ ["J Hepatol","Human liver CD8+ MAIT cells exert TCR/MR1-independent innate-like cytotoxicity in response to IL-15","2020;73(3):640-650",""],
+ ["Cell Mol Immunol","Activation or exhaustion of CD8+ T cells in patients with COVID-19","2021;18(10):2325-2333",""]
+];
+
+const $=s=>document.querySelector(s);
+const esc=s=>s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const initials=n=>n.replace(/,.*$/,"").split(/[\s-]+/).map(w=>w[0]).join("").slice(0,3).toUpperCase();
+const hl=a=>esc(a).replace(/Rha MS/g,"<mark>Rha MS</mark>");
+const t=(k,fb)=>(T[lang]&&T[lang][k])||fb;
+
+function renderStatic(){
+  document.querySelectorAll("[data-i18n]").forEach(el=>{el.dataset.en ??= el.textContent;el.textContent=lang==="en"?el.dataset.en:(T.ko[el.dataset.i18n]||el.dataset.en)});
+  document.querySelectorAll("[data-i18n-html]").forEach(el=>{el.dataset.enh ??= el.innerHTML;el.innerHTML=lang==="en"?el.dataset.enh:(T.ko[el.dataset.i18nHtml]||el.dataset.enh)});
+  document.querySelectorAll("[data-i18n-ph]").forEach(el=>{el.dataset.enp ??= el.placeholder;el.placeholder=lang==="en"?el.dataset.enp:(T.ko[el.dataset.i18nPh]||el.dataset.enp)});
+  document.documentElement.lang=lang;
+}
+function renderHome(){
+  $("#homeTopics").innerHTML=topics.map(x=>`<a class="theme-card" href="#research"><span class="k">${L(x.s)}</span><h3>${L(x.t)}</h3><p>${L(x.b)[0]}.</p></a>`).join("");
+  const first=P.filter(p=>p.ty==="f").length;
+  const s=[[P.length,t("stP","SCI(E) papers")],[first,t("stF","First / corresponding")],[1+5+4+3,t("stM","Lab members")],[awards.length,t("stA","PI honors")]];
+  $("#stats").innerHTML=s.map(([n,l])=>`<div><b>${n}</b><span>${l}</span></div>`).join("");
+  $("#homeNews").innerHTML=news.slice(0,4).map(newsRow).join("");
+}
+const newsRow=([d,k,x])=>`<li class="news-row"><time>${d}</time><div><span class="tag ${k==="award"?"award":""}">${L(tagName[k])}</span>${esc(L(x))}</div></li>`;
+function renderResearch(){
+  $("#resTopics").innerHTML=topics.map(x=>`<div class="sec"><div class="side"><div class="lbl">${L(x.s)}</div></div><div class="topic"><h3>${L(x.t)}</h3><ul>${L(x.b).map(b=>`<li>${b}</li>`).join("")}</ul></div></div>`).join("");
+  $("#methods").innerHTML=L(methods).map(m=>`<span>${m}</span>`).join("");
+}
+function renderTeam(){
+  $("#cvCareer").innerHTML=career.map(([y,p,i])=>`<dt>${y}</dt><dd>${p}<small>${i}</small></dd>`).join("");
+  $("#cvAwards").innerHTML=awards.map(([y,p,i])=>`<dt>${y}</dt><dd>${p}${i?`<small>${i}</small>`:""}</dd>`).join("");
+  let h=memberGroups.map(g=>`<h4 class="group-h">${L(g.g)}</h4><div class="members">${g.m.map(([n,k,r,b])=>`<div class="member"><div class="avatar" aria-hidden="true">${initials(n)}</div><div><b>${n}</b><span class="role">${L(r)}</span><p>${L(b)}</p></div></div>`).join("")}</div>`).join("");
+  const simple=(title,arr)=>`<h4 class="group-h">${title}</h4><div class="simple-list">${arr.map(([n,r])=>`<span>${n}${r?` <small>· ${L(r)}</small>`:""}</span>`).join("")}</div>`;
+  h+=simple(lang==="ko"?"인턴·학부연구생":"Interns",interns)+simple(lang==="ko"?"행정":"Administrative staff",staff)+simple(lang==="ko"?"졸업생":"Alumni",alumni);
+  $("#memberGroups").innerHTML=h;
+}
+let pubFilter="all";
+function renderPubs(){
+  $("#featured").innerHTML=featured.map(([j,ti,c,b])=>`<article class="pub"><div class="jn">${j}</div><span class="t">${esc(ti)}</span><span class="j mono" style="color:var(--muted)">${c}</span>${b?`<span class="badge">★ ${b}</span>`:""}</article>`).join("");
+  const q=($("#pubSearch").value||"").toLowerCase();
+  const list=P.filter(p=>(pubFilter==="all"||(pubFilter==="first"?p.ty==="f":p.ty==="c"))&&(!q||(p.a+p.t+p.j+p.y).toLowerCase().includes(q)));
+  $("#pubCount").textContent=`${list.length} / ${P.length}`;
+  let out="",yr="";
+  list.forEach(p=>{if(p.y!==yr){yr=p.y;out+=`<div class="year-h">${yr}</div>`}
+    out+=`<div class="pub"><span class="t">${esc(p.t)}</span><span class="a">${hl(p.a)}</span><span class="j"><i>${esc(p.j)}</i> <span class="mono" style="color:var(--muted)">${p.y}${p.c==="in press"?" · in press":";"+esc(p.c)}</span></span></div>`});
+  $("#pubList").innerHTML=out||`<p style="color:var(--muted)">${lang==="ko"?"검색 결과가 없습니다. 다른 단어로 검색해 보세요.":"No papers match. Try another word."}</p>`;
+}
+function renderNews(){ $("#newsList").innerHTML=news.map(newsRow).join(""); }
+function renderAll(){renderStatic();renderHome();renderResearch();renderTeam();renderPubs();renderNews();
+  document.querySelectorAll(".lang button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.lang===lang));}
+
+const views=["home","research","team","publications","news","gallery","contact"];
+function route(){const v=views.includes(location.hash.slice(1))?location.hash.slice(1):"home";
+  document.querySelectorAll("[data-view]").forEach(s=>s.hidden=s.dataset.view!==v);
+  document.querySelectorAll("nav.main a").forEach(a=>{if(a.getAttribute("href")==="#"+v)a.setAttribute("aria-current","page");else a.removeAttribute("aria-current")});
+  $("#mainNav").classList.remove("open");$("#menuBtn").setAttribute("aria-expanded","false");
+  window.scrollTo(0,0);}
+addEventListener("hashchange",route);
+$("#menuBtn").addEventListener("click",()=>{const o=$("#mainNav").classList.toggle("open");$("#menuBtn").setAttribute("aria-expanded",o)});
+document.querySelectorAll(".lang button").forEach(b=>b.addEventListener("click",()=>{lang=b.dataset.lang;try{localStorage.setItem("rha-lang",lang)}catch(e){};renderAll()}));
+document.querySelectorAll(".seg button").forEach(b=>b.addEventListener("click",()=>{pubFilter=b.dataset.f;document.querySelectorAll(".seg button").forEach(x=>x.setAttribute("aria-pressed",x===b));renderPubs()}));
+$("#pubSearch").addEventListener("input",renderPubs);
+document.addEventListener("click",e=>{const b=e.target.closest("[data-copy]");if(!b)return;const done=()=>{const o=b.textContent;b.textContent=t("copied","Copied");setTimeout(()=>b.textContent=o,1400)};
+  navigator.clipboard?.writeText(b.dataset.copy).then(done).catch(()=>{const c=b.previousElementSibling;const r=document.createRange();r.selectNodeContents(c);const s=getSelection();s.removeAllRanges();s.addRange(r)})});
+try{const s=localStorage.getItem("rha-lang");if(s)lang=s}catch(e){}
+renderAll();route();
+
+/* Ciliated epithelium: a row of columnar cells with beating cilia (metachronal wave) */
+(function(){
+  const cv=$("#cilia"),ctx=cv.getContext("2d");
+  const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let w,h,dpr;
+  function size(){dpr=devicePixelRatio||1;w=cv.clientWidth;h=cv.clientHeight;cv.width=w*dpr;cv.height=h*dpr;ctx.setTransform(dpr,0,0,dpr,0,0)}
+  const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  function draw(tm){
+    ctx.clearRect(0,0,w,h);
+    const deep=css("--deep"),acc=css("--accent"),tint=css("--tint"),line=css("--line");
+    const cellW=Math.max(34,w/36),base=h*0.48;
+    for(let x=-cellW,i=0;x<w+cellW;x+=cellW,i++){
+      // cell body
+      ctx.fillStyle=tint;ctx.strokeStyle=line;ctx.lineWidth=1;
+      ctx.beginPath();ctx.roundRect?ctx.roundRect(x+1,base,cellW-2,h-base+8,[6,6,0,0]):ctx.rect(x+1,base,cellW-2,h-base+8);ctx.fill();ctx.stroke();
+      // nucleus
+      ctx.fillStyle=deep;ctx.globalAlpha=.22;ctx.beginPath();ctx.ellipse(x+cellW/2,base+(h-base)*.6,cellW*.18,(h-base)*.18,0,0,7);ctx.fill();ctx.globalAlpha=1;
+      const goblet=i%7===3;
+      if(goblet){ctx.fillStyle=acc;ctx.globalAlpha=.35;ctx.beginPath();ctx.ellipse(x+cellW/2,base+(h-base)*.22,cellW*.28,(h-base)*.2,0,0,7);ctx.fill();ctx.globalAlpha=1;continue}
+      // cilia
+      ctx.strokeStyle=deep;ctx.lineWidth=1.2;ctx.globalAlpha=.55;
+      const n=6;
+      for(let c=0;c<n;c++){
+        const cx=x+cellW*(c+1)/(n+1);
+        const ph=(reduce?0:tm/520)-cx/90;
+        const sw=Math.sin(ph),L=h*0.32;
+        ctx.beginPath();ctx.moveTo(cx,base);
+        ctx.quadraticCurveTo(cx+sw*L*.25,base-L*.55,cx+sw*L*.55,base-L*(.95-Math.abs(sw)*.15));
+        ctx.stroke();
+      }
+      ctx.globalAlpha=1;
+    }
+    // mucus droplets drifting along the surface
+    if(!reduce){ctx.fillStyle=acc;ctx.globalAlpha=.5;for(let k=0;k<6;k++){const px=((tm/40+k*w/6)%(w+40))-20;ctx.beginPath();ctx.arc(px,base-h*.36+Math.sin(tm/700+k)*3,2.4,0,7);ctx.fill()}ctx.globalAlpha=1}
+    if(!reduce)requestAnimationFrame(draw);
+  }
+  size();addEventListener("resize",()=>{size();if(reduce)draw(0)});
+  reduce?draw(0):requestAnimationFrame(draw);
+})();
+</script>
+
+</body>
+</html>
