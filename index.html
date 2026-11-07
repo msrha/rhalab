@@ -110,6 +110,10 @@ main{min-height:60vh}
 .news-row .nj{display:block;font-size:.85rem;color:var(--muted);font-style:italic;margin-top:.15rem}
 .news-row .nl{display:flex;flex-wrap:wrap;gap:.3rem .9rem;margin-top:.3rem;font-size:.82rem}
 .tag.award{background:var(--accent-soft);color:var(--accent)}
+.tag.paper{background:#dcebf7;color:#1f4f86}
+.tag.grant{background:#f6ead0;color:#8a5a00}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .tag.paper{background:#17293d;color:#9cc4f0}:root:not([data-theme="light"]) .tag.grant{background:#33280f;color:#e8c27a}}
+:root[data-theme="dark"] .tag.paper{background:#17293d;color:#9cc4f0}:root[data-theme="dark"] .tag.grant{background:#33280f;color:#e8c27a}
 .more{display:inline-block;margin-top:1rem;font-size:.9rem;font-weight:500}
 /* research */
 .topic-wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,22rem);gap:2rem;align-items:start}
@@ -485,7 +489,7 @@ function renderHome(){
   $("#stats").innerHTML=s.map(([n,l])=>`<div><b>${n}</b><span>${l}</span></div>`).join("");
   $("#homeNews").innerHTML=news.slice(0,4).map(newsRow).join("");
 }
-const newsRow=([d,k,x,j,links])=>`<li class="news-row"><time>${d}</time><div><span class="tag ${k==="award"?"award":""}">${L(tagName[k])}</span>${esc(L(x))}${j?`<span class="nj">${esc(j)}</span>`:""}${links.length?`<span class="nl">${links.map(([l,u])=>`<a href="${esc(u)}" target="_blank" rel="noopener">${l} ↗</a>`).join("")}</span>`:""}</div></li>`;
+const newsRow=([d,k,x,j,links])=>`<li class="news-row"><time>${d}</time><div><span class="tag ${k}">${L(tagName[k])}</span>${esc(L(x))}${j?`<span class="nj">${esc(j)}</span>`:""}${links.length?`<span class="nl">${links.map(([l,u])=>`<a href="${esc(u)}" target="_blank" rel="noopener">${l} ↗</a>`).join("")}</span>`:""}</div></li>`;
 function renderResearch(){
   $("#resTopics").innerHTML=topics.map((x,i)=>`<div class="sec"><div class="side"><div class="lbl">${lang==="ko"?"연구 주제 "+(i+1):"Research "+(i+1)}</div></div><div class="topic-wrap"><div class="topic"><h3>${L(x.t)}</h3><p class="prose" style="margin:0;color:var(--muted)">${L(x.d)}</p><ul>${L(x.b).map(b=>`<li>${b}</li>`).join("")}</ul></div><figure class="topic-fig"><img src="assets/research/${x.img}.jpg" alt="${esc(L(x.t))}" loading="lazy"></figure></div></div>`).join("");
 }
