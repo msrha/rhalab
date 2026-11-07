@@ -8,7 +8,7 @@
 <meta property="og:description" content="Research in Human Airway Mucosal Immunology Lab, Yonsei University College of Medicine">
 <meta property="og:type" content="website">
 <meta property="og:image" content="assets/hero-960.jpg">
-<link rel="icon" type="image/png" href="assets/rhalab-mark.png">
+<link rel="icon" type="image/png" href="assets/rhalab-mark-2607.png">
 <title>RHA Lab</title>
 <meta name="description" content="RHA Lab — Research in Human Airway Mucosal Immunology, Yonsei University College of Medicine">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,6 +31,7 @@
   --bg:#0b1a20; --surface:#11252d; --ink:#e4eef1; --muted:#93acb4; --line:#24404a;
   --deep:#8fd0e2; --accent:#f08aa4; --accent-soft:#3a1f29; --tint:#152f38; --logo-filter:brightness(0) invert(.92); color-scheme:dark}
 *{box-sizing:border-box}
+html:lang(ko){word-break:keep-all}
 body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:var(--s0);line-height:1.65;-webkit-font-smoothing:antialiased}
 a{color:var(--deep)}
 a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
@@ -130,6 +131,9 @@ main{min-height:60vh}
 .members{display:grid;grid-template-columns:repeat(auto-fill,minmax(14rem,1fr));gap:1rem}
 .member{display:grid;grid-template-columns:3.4rem minmax(0,1fr);gap:.9rem;align-items:start;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:1rem}
 .member .avatar{font-size:1.1rem}
+.member .mphoto{width:4.5rem;max-width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;border-radius:6px;display:block}
+.member .en-name{font-weight:400;color:var(--muted);font-size:.8rem}
+.member:has(.mphoto){grid-template-columns:4.5rem minmax(0,1fr)}
 .member b{display:block;font-weight:700}
 .member .role{font-size:.82rem;color:var(--deep);display:block}
 .member p{margin:.35rem 0 0;font-size:.84rem;color:var(--muted)}
@@ -191,7 +195,7 @@ footer .wrap{align-items:center}
 <body>
 <header class="site">
   <div class="wrap">
-    <a class="brand" href="#home"><img src="assets/rhalab-mark.png" alt="" width="34" height="34"><b>RHA LAB</b><span data-i18n="brandSub">Human Airway Mucosal Immunology</span></a>
+    <a class="brand" href="#home"><img src="assets/rhalab-mark-2607.png" alt="" width="34" height="34"><b>RHA LAB</b><span data-i18n="brandSub">Human Airway Mucosal Immunology</span></a>
     <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mainNav">Menu</button>
     <nav class="main" id="mainNav" aria-label="Main">
       <a href="#home" data-i18n="nHome">Home</a>
@@ -224,7 +228,7 @@ footer .wrap{align-items:center}
         <span data-i18n="aff3">The Airway Mucosa Institute</span>
       </div>
     </div>
-    <img class="mark" src="assets/rhalab-logo-white.png" alt="RHA Lab logo" width="230" height="230">
+    <img class="mark" src="assets/rhalab-logo-white-2607.png" alt="RHA Lab logo" width="230" height="230">
     </div>
   </div>
   <div class="wrap">
@@ -242,7 +246,7 @@ footer .wrap{align-items:center}
     </div>
     <div class="sec">
       <div class="side"><div class="lbl" data-i18n="lblJoin">Join us</div></div>
-      <div class="prose"><p>We are always recruiting passionate researchers (postdocs, graduate students, undergraduates, and research associates) to join our lab.</p><a class="more" href="#contact" style="margin-top:0" data-i18n="howApply">How to apply →</a></div>
+      <div class="prose"><p data-i18n="joinText">We are always recruiting passionate researchers (postdocs, graduate students, undergraduates, and research associates) to join our lab.</p><a class="more" href="#contact" style="margin-top:0" data-i18n="howApply">How to apply →</a></div>
     </div>
   </div>
 </section>
@@ -250,7 +254,7 @@ footer .wrap{align-items:center}
 <!-- RESEARCH -->
 <section class="view wrap" id="v-research" data-view="research" hidden>
   <div class="page-h"><div class="lbl" data-i18n="nResearch">Research</div>
-  <p class="lead">RHA Lab explores the complex interplay among immune cells, epithelial cells, tissue stem cells, and microbial communities within the upper airway mucosa. Our research focuses on understanding the mechanisms underlying the persistence of inflammatory memory and the maintenance of tissue immune homeostasis. By integrating immunology, microbiology, tissue stem cell biology, and bioinformatics, we combine studies of human-derived samples with in vivo models to elucidate how mucosal immunity is maintained or reprogrammed at the airway barrier. Ultimately, we aim to translate these mechanistic insights into improved therapeutic strategies for chronic airway diseases and respiratory infections.</p></div>
+  <p class="lead" data-i18n="resIntro">RHA Lab explores the complex interplay among immune cells, epithelial cells, tissue stem cells, and microbial communities within the upper airway mucosa. Our research focuses on understanding the mechanisms underlying the persistence of inflammatory memory and the maintenance of tissue immune homeostasis. By integrating immunology, microbiology, tissue stem cell biology, and bioinformatics, we combine studies of human-derived samples with in vivo models to elucidate how mucosal immunity is maintained or reprogrammed at the airway barrier. Ultimately, we aim to translate these mechanistic insights into improved therapeutic strategies for chronic airway diseases and respiratory infections.</p></div>
   <div id="resTopics"></div>
 </section>
 
@@ -263,11 +267,11 @@ footer .wrap{align-items:center}
       <img class="pi-photo" src="assets/pi.jpg" alt="Prof. Min-Seok Rha" width="144" height="192">
       <div>
         <h3 style="font-size:var(--s2)" data-i18n="piName">Min-Seok Rha, MD, PhD</h3>
-        <div style="color:var(--muted);margin:.3rem 0 1rem" data-i18n="piTitle">Assistant Professor, Department of Otorhinolaryngology, Yonsei University College of Medicine, Severance Hospital</div>
+        <div style="color:var(--muted);margin:.3rem 0 1rem" data-i18n="piTitle">Assistant Professor</div>
         <div class="copy"><code>msrha@yuhs.ac</code><button class="btn ghost" data-copy="msrha@yuhs.ac" data-i18n="copy">Copy</button></div>
-        <h4 class="group-h" style="margin-top:1.6rem" data-i18n="eduCareer">Education &amp; career</h4>
+        <h4 class="group-h" style="margin-top:1.6rem" data-i18n="eduCareer">Educational background &amp; Professional experience</h4>
         <dl class="cv" id="cvCareer"></dl>
-        <h4 class="group-h" data-i18n="honors">Honors &amp; awards</h4>
+        <h4 class="group-h" data-i18n="honors">Honors &amp; Awards</h4>
         <dl class="cv" id="cvAwards"></dl>
       </div>
     </div>
@@ -313,8 +317,8 @@ footer .wrap{align-items:center}
 <section class="view wrap" id="v-gallery" data-view="gallery" hidden>
   <div class="page-h"><div class="lbl" data-i18n="nGallery">Gallery</div><h2 data-i18n="galH">Lab life</h2></div>
   <div class="gal">
-    <figure class="shot"><img src="assets/gallery-kai-2025.jpg" alt="RHA Lab group photo at KAI 2025" loading="lazy" width="1400" height="1050"><figcaption>Group photo (@ KAI 2025)</figcaption></figure>
-    <figure class="shot"><img src="assets/gallery-kai-2024.jpg" alt="RHA Lab group photo at Cytokines 2024 and KAI 2024" loading="lazy" width="1400" height="1050"><figcaption>Group photo (@ Cytokines 2024 &amp; KAI 2024)</figcaption></figure>
+    <figure class="shot"><img src="assets/gallery-kai-2025.jpg" alt="RHA Lab group photo at KAI 2025" loading="lazy" width="1400" height="1050"><figcaption data-i18n="g1">Group photo (@ KAI 2025)</figcaption></figure>
+    <figure class="shot"><img src="assets/gallery-kai-2024.jpg" alt="RHA Lab group photo at Cytokines 2024 and KAI 2024" loading="lazy" width="1400" height="1050"><figcaption data-i18n="g2">Group photo (@ Cytokines 2024 &amp; KAI 2024)</figcaption></figure>
   </div>
 </section>
 
@@ -323,17 +327,17 @@ footer .wrap{align-items:center}
   <div class="page-h"><div class="lbl" data-i18n="nContact">Contact</div><h2 data-i18n="nContact">Contact</h2></div>
   <div class="contact-grid">
     <div class="box">
-      <h3>Location</h3>
-      <p style="margin:0">RHA Lab is located on the 2nd floor of Avison Biomedical Research Center (ABMRC), Yonsei University College of Medicine, Severance Hospital<br>50-1, Yonsei-Ro, Seodaemun-gu, Seoul 03722, Republic of Korea</p>
+      <h3 data-i18n="cAddrH">Location</h3>
+      <p style="margin:0" data-i18n-html="cAddr">RHA Lab is located on the 2nd floor of Avison Biomedical Research Center (ABMRC), Yonsei University College of Medicine, Severance Hospital<br>50-1, Yonsei-Ro, Seodaemun-gu, Seoul 03722, Republic of Korea</p>
       <a class="more" href="https://map.naver.com/p/search/%EC%97%90%EB%B9%84%EC%8A%A8%EC%9D%98%EC%83%9D%EB%AA%85%EC%97%B0%EA%B5%AC%EC%84%BC%ED%84%B0" target="_blank" rel="noopener" data-i18n="cMap">Open in map →</a>
     </div>
     <div class="box">
-      <h3>We are recruiting!</h3>
-      <p style="margin:0 0 .4rem">We are always recruiting passionate researchers (postdocs, graduate students, undergraduates, and research associates) to join our lab.</p><p style="margin:0 0 .3rem">Please contact Prof. Min-Seok Rha with the following documents:</p><ul style="margin:0 0 .7rem;padding-left:1.1rem"><li>Cover letter describing your scientific interests and strengths</li><li>Curriculum vitae (or Resume)</li></ul>
+      <h3 data-i18n="cJoinH">We are recruiting!</h3>
+      <p style="margin:0 0 .4rem" data-i18n="cJoin">We are always recruiting passionate researchers (postdocs, graduate students, undergraduates, and research associates) to join our lab.</p><p style="margin:0 0 .3rem" data-i18n="cJoin2">Please contact Prof. Min-Seok Rha with the following documents:</p><ul style="margin:0 0 .7rem;padding-left:1.1rem"><li data-i18n="cDoc1">Cover letter describing your scientific interests and strengths</li><li data-i18n="cDoc2">Curriculum vitae (or Resume)</li></ul>
       <div class="copy"><code>msrha@yuhs.ac</code><button class="btn" data-copy="msrha@yuhs.ac" data-i18n="copy">Copy</button></div>
     </div>
     <div class="box">
-      <h3>The Airway Mucosa Institute</h3>
+      <h3 data-i18n="cInstH">The Airway Mucosa Institute</h3>
       <p style="margin:0 0 .6rem">연세대학교 의과대학 기도점막연구소(이전 명칭: 기도점액연구소)<br>The Airway Mucosa Institute, Yonsei University College of Medicine</p>
       <a class="more" style="margin-top:0" href="https://medicine.yonsei.ac.kr/medicine-en/research/airway-hucus.do" target="_blank" rel="noopener" data-i18n="cInstLink">Institute website →</a>
     </div>
@@ -342,247 +346,33 @@ footer .wrap{align-items:center}
 </main>
 
 <footer><div class="wrap">
-  <span class="foot-logos"><img src="assets/rhalab-logo.png" alt="RHA Lab" class="lablogo" width="64" height="64"><img src="assets/yonsei-logo.png" alt="Yonsei University" width="48" height="48"><span>© 2026 RHA Lab · Yonsei University College of Medicine</span></span>
+  <span class="foot-logos"><img src="assets/rhalab-logo-2607.png" alt="RHA Lab" class="lablogo" width="64" height="64"><img src="assets/yonsei-logo.png" alt="Yonsei University" width="48" height="48"><span>© 2026 RHA Lab · Yonsei University College of Medicine</span></span>
 </div></footer>
 
 <script>
 const T={
  en:{},
- ko:{brandSub:"연세대학교 의과대학 나민석 교수 연구실",nHome:"홈",nResearch:"연구",nTeam:"구성원",nPubs:"논문",nNews:"소식",nGallery:"갤러리",nContact:"연락처",
+ ko:{resIntro:"RHA Lab은 상기도 점막에서 면역세포, 상피세포, 조직 줄기세포, 미생물 군집 사이의 복잡한 상호작용을 연구합니다. 특히 염증 기억이 지속되는 기전과 조직 면역 항상성이 유지되는 기전을 밝히는 데 집중하고 있습니다. 면역학, 미생물학, 조직 줄기세포 생물학, 생물정보학을 아우르며, 인체 유래 검체 연구와 생체 내(in vivo) 모델 연구를 결합해 기도 점막 장벽에서 점막 면역이 어떻게 유지되고 재프로그래밍되는지 규명합니다. 궁극적으로는 이러한 기전 연구의 성과를 만성 기도질환과 호흡기 감염의 더 나은 치료 전략으로 연결하는 것을 목표로 합니다.",heroH:"<em>상기도 점막 면역계</em>를 전례 없는 정밀도로 탐구하고, 그 성과를 임상으로 연결합니다",cAddrH:"위치",cAddr:"RHA Lab은 연세대학교 의과대학 세브란스병원 에비슨의생명연구센터(ABMRC) 2층에 있습니다.<br>(03722) 서울특별시 서대문구 연세로 50-1",cJoinH:"연구원을 모집합니다!",cJoin:"열정 있는 연구자(박사후연구원, 대학원생, 학부연구생, 연구원)를 상시 모집하고 있습니다.",cJoin2:"아래 서류를 준비하여 나민석 교수에게 연락해 주세요.",cDoc1:"연구 관심 분야와 강점을 기술한 자기소개서",cDoc2:"이력서(CV)",cInstH:"기도점막연구소",g1:"단체 사진 (KAI 2025)",g2:"단체 사진 (Cytokines 2024 & KAI 2024)",joinText:"열정 있는 연구자(박사후연구원, 대학원생, 학부연구생, 연구원)를 상시 모집하고 있습니다.",eduCareer:"학력 및 경력",honors:"수상",brandSub:"연세대학교 의과대학 나민석 교수 연구실",nHome:"홈",nResearch:"연구",nTeam:"구성원",nPubs:"논문",nNews:"소식",nGallery:"갤러리",nContact:"연락처",
   heroLbl:"Research in Human Airway Mucosal Immunology",
   aff1:"연세대학교 의과대학",aff2:"세브란스병원 이비인후과",aff3:"기도점막연구소",
   lblThemes:"연구 주제",lblAtGlance:"한눈에 보기",lblLatest:"최근 소식",allNews:"전체 소식 →",lblJoin:"함께하기",
   howApply:"지원 방법 →",
-  teamH:"구성원",piName:"나민석 교수 (MD, PhD)",piTitle:"연세대학교 의과대학 세브란스병원 이비인후과 조교수",
-  copy:"복사",copied:"복사됨",eduCareer:"학력 및 경력",honors:"수상",lblMembers:"연구원",
+  teamH:"구성원",piName:"나민석 교수 (MD, PhD)",piTitle:"조교수",
+  copy:"복사",copied:"복사됨",lblMembers:"연구원",
   pubH:"논문",lblSelected:"대표 논문",lblAll:"전체 SCI(E) 논문",searchPh:"제목, 저자, 저널 검색",fAll:"전체",fFirst:"제1·교신저자",fCo:"공동저자",
   legend:"* 공동 제1저자 · # 공동 교신저자 · (correspondence) 교신저자",newsH:"소식",galH:"연구실 사진",contactH:"연락처 및 지원",cMap:"지도에서 보기 →",cInstLink:"연구소 홈페이지 →",papers:"편", stP:"SCI(E) 논문", stF:"제1·교신저자 논문", stM:"구성원"}
 };
 let lang="en";
 const L=(o)=>typeof o==="string"?o:(o[lang]||o.en);
 
-const topics=[
- {t:"Unraveling the immunopathogenesis and inflammatory memory of chronic airway diseases",
-  d:"Chronic rhinosinsutis and allergic rhinitis are highly prevalent and refractory diseases of the nasal cavity and paranasal sinuses, causing a substantial healthcare burden.",
-  b:["Dissect cellular heterogeneity and decipher inflammatory spatial niche in chronic airway diseases","Decode the pathogenic inflammatory memory encoded in epithelial cells, innate and adaptive immune cells, and bone marrow progenitors (central trained immunity) in chronic inflammatory diseases","Develop and validate biomarkers and immunotherapeutic strategies targeting airway mucosal inflammation","Investigate host–microbial interactions in the airway mucosa during chronic inflammation"]},
- {t:"Decoding the immune system of the human upper airway mucosa",
-  d:"The nasal cavity, paranasal sinuses, and nasal-associated lymphoid tissue (including the palatine tonsils and adenoids) are immunologic sites characterized by well-orchestrated coordination between innate and adaptive immunity.",
-  b:["Define the roles of tissue-resident immune cells and epithelial–immune crosstalk in the upper airway mucosa","Elucidate immunosenescence in upper airway mucosal immunity","Construct an immune (epithelial-immune-microbe) atlas of the upper airway mucosa in humans"]},
- {t:"Immune responses to respiratory pathogens",
-  d:"The upper airway mucosa act as a first-line barrier against respiratory pathogens. Due to its unique anatomic locations, the mucosal immune system in the upper airway mucosa plays a pivotal role in host defense.",
-  b:["Characterize host antiviral immune responses in the upper airway mucosa","Develop novel immunotherapeutics or vaccines strategies improving mucosal immune responses against respiratory pathogens"]}
-];
+const topics=[{"t": {"en": "Unraveling the immunopathogenesis and inflammatory memory of chronic airway diseases", "ko": "만성 기도질환의 면역병인과 염증 기억 규명"}, "d": {"en": "Chronic rhinosinsutis and allergic rhinitis are highly prevalent and refractory diseases of the nasal cavity and paranasal sinuses, causing a substantial healthcare burden.", "ko": "만성 비부비동염과 알레르기 비염은 비강과 부비동에 발생하는 매우 흔하고 난치성인 질환으로, 상당한 의료 부담을 초래합니다."}, "b": {"en": ["Dissect cellular heterogeneity and decipher inflammatory spatial niche in chronic airway diseases", "Decode the pathogenic inflammatory memory encoded in epithelial cells, innate and adaptive immune cells, and bone marrow progenitors (central trained immunity) in chronic inflammatory diseases", "Develop and validate biomarkers and immunotherapeutic strategies targeting airway mucosal inflammation", "Investigate host–microbial interactions in the airway mucosa during chronic inflammation"], "ko": ["만성 기도질환에서 세포 이질성을 분석하고 염증의 공간적 니치를 규명", "만성 염증성 질환에서 상피세포, 선천·적응 면역세포, 골수 전구세포(중추 훈련면역)에 새겨진 병적 염증 기억 해독", "기도 점막 염증을 표적으로 하는 바이오마커와 면역치료 전략의 개발 및 검증", "만성 염증 상태의 기도 점막에서 숙주–미생물 상호작용 연구"]}}, {"t": {"en": "Decoding the immune system of the human upper airway mucosa", "ko": "인간 상기도 점막 면역계의 해독"}, "d": {"en": "The nasal cavity, paranasal sinuses, and nasal-associated lymphoid tissue (including the palatine tonsils and adenoids) are immunologic sites characterized by well-orchestrated coordination between innate and adaptive immunity.", "ko": "비강, 부비동, 그리고 구개편도와 아데노이드를 포함한 비강연관 림프조직은 선천면역과 적응면역이 정교하게 협응하는 면역 기관입니다."}, "b": {"en": ["Define the roles of tissue-resident immune cells and epithelial–immune crosstalk in the upper airway mucosa", "Elucidate immunosenescence in upper airway mucosal immunity", "Construct an immune (epithelial-immune-microbe) atlas of the upper airway mucosa in humans"], "ko": ["상기도 점막에서 조직상주 면역세포의 역할과 상피–면역 상호작용 규명", "상기도 점막 면역의 면역노화 연구", "인간 상기도 점막의 면역(상피–면역–미생물) 아틀라스 구축"]}}, {"t": {"en": "Immune responses to respiratory pathogens", "ko": "호흡기 병원체에 대한 면역 반응"}, "d": {"en": "The upper airway mucosa act as a first-line barrier against respiratory pathogens. Due to its unique anatomic locations, the mucosal immune system in the upper airway mucosa plays a pivotal role in host defense.", "ko": "상기도 점막은 호흡기 병원체에 대한 1차 방어벽입니다. 해부학적으로 독특한 위치 덕분에 상기도 점막 면역계는 숙주 방어에서 핵심적인 역할을 합니다."}, "b": {"en": ["Characterize host antiviral immune responses in the upper airway mucosa", "Develop novel immunotherapeutics or vaccines strategies improving mucosal immune responses against respiratory pathogens"], "ko": ["상기도 점막의 숙주 항바이러스 면역 반응 규명", "호흡기 병원체에 대한 점막 면역 반응을 강화하는 새로운 면역치료제 및 백신 전략 개발"]}}];
 
-const career=[["2024–","Assistant Professor","Dept. of Otorhinolaryngology, Yonsei University College of Medicine, Severance Hospital"],
-["2022–2024","Translational Research Assistant Professor","Dept. of Biomedical Sciences & Dept. of Otorhinolaryngology, Yonsei University College of Medicine"],
-["2021–2022","Clinical Instructor (Rhinology)","Dept. of Otorhinolaryngology, Severance Hospital"],
-["2020–2021","Postdoctoral Researcher","Laboratory of Immunology and Infectious Disease, GSMSE, KAIST"],
-["2017–2020","PhD in Medical Science (Immunology)","Graduate School of Medical Science and Engineering, KAIST"],
-["2014–2017","MS in Otorhinolaryngology","The Graduate School, Yonsei University College of Medicine"],
-["2013–2017","Resident","Dept. of Otorhinolaryngology, Severance Hospital"],
-["2006–2012","MD","Yonsei University College of Medicine"]];
-const awards=[["2026","Future Physician-Scientist Award","The Korean Rhinologic Society"],
-["2025","Dain Leading Researcher Award","Korean Society of Otorhinolaryngology-Head and Neck Surgery"],
-["2025","The 58th Yuhan Medical Award (Young Medical Scientist Award)","Seoul Medical Association & Yuhan Corporation"],
-["2025","Best Oral Presentation Award","69th Korean Rhinologic Society Annual Congress"],
-["2024","O-Kong Academic Award","O-Kong-Hoe (Yonsei Otorhinolaryngology Alumni)"],
-["2023","Oral Sessions Prize Winner & EAACI Travel Grant","EAACI Congress 2023"],
-["2023","Best Oral Presentation Award","Korean Society of Sleep and Breathing, Spring Conference"],
-["2023","Best Oral Presentation Award, 1st Place","ICORL-HNS 2023"],
-["2022","O-Kong Academic Award","O-Kong-Hoe"],
-["2022","Flash Talks Sessions Prize Winner","EAACI Congress 2022"],
-["2022","Young Immunologist Award","Korean Association of Immunologists & Seegene Medical Foundation"],
-["2022","Best Oral Presentation Award","63rd Korean Rhinologic Society Annual Congress"],
-["2021","O-Kong Academic Award, 1st Place","O-Kong-Hoe"],
-["2021","The 31st Wunsch Medical Award (Young Medical Scientist Award)","Korean Academy of Medical Sciences & Boehringer Ingelheim"],
-["2021","Agarwal Award","KAIST Biomedical Research Center"],
-["2020","O-Kong Academic Award, 1st Place","O-Kong-Hoe"],
-["2019","Travel Award","26th International Symposium on Hepatitis C Virus and Related Viruses"],
-["2018","Best Oral Presentation Award","Korean Association of Immunologists International Meeting"],
-["2017–2020","Korean Government Graduate Student Scholarship",""],
-["2008–2010","Scholarship for Academic Excellence","Yonsei University College of Medicine"]];
+const career=[["2024~", "Assistant Professor, Department of Otorhinolaryngology, Yonsei University College of Medicine, Severance Hospital", "연세대학교 의과대학 세브란스병원 이비인후과 조교수"], ["2022-2024", "Translational Research Assistant Professor, Department of Biomedical Sciences & Department of Otorhinolaryngology, Yonsei University College of Medicine, Severance Hospital", "연세대학교 의과대학 세브란스병원 의생명과학과 및 이비인후과 중개연구 조교수"], ["2021-2022", "Clinical Instructor (Rhinology), Department of Otorhinolaryngology, Yonsei University College of Medicine, Severance Hospital", "연세대학교 의과대학 세브란스병원 이비인후과 임상강사 (비과)"], ["2020-2021", "Postdoctoral researcher, Laboratory of Immunology and Infectious Disease, Graduate School of Medical Science and Engineering, KAIST", "KAIST 의과학대학원 면역 및 감염질환 연구실 박사후연구원"], ["2017-2020", "PhD in Medical Science (Immunology), Graduate School of Medical Science and Engineering, KAIST", "KAIST 의과학대학원 의과학 박사 (면역학)"], ["2014-2017", "MS in Otorhinolaryngology, The Graduate School, Yonsei University College of Medicine", "연세대학교 대학원 이비인후과학 석사"], ["2013-2017", "Resident, Department of Otorhinolaryngology, Yonsei University College of Medicine, Severance Hospital", "연세대학교 의과대학 세브란스병원 이비인후과 전공의"], ["2006-2012", "MD in Medicine, Yonsei University College of Medicine", "연세대학교 의과대학 의학사"]];
+const awards=[["2026", "Top 30 Outstanding Achievements of Korea Health and Medical R&D, Ministry of Health and Welfare & The Korea Health Industry Development Institute", "보건의료 R&D 우수성과 30선, 보건복지부·한국보건산업진흥원"], ["2026", "Future Physician-Scientist Award, The Korean Rhinologic Society", "미래의학자상, 대한비과학회"], ["2025", "Dain Leading Researcher Award, The Korean Society of Otorhinolaryngology-Head and Neck Surgery", "다인선도연구자상, 대한이비인후과학회"], ["2025", "The 58th Yuhan Medical Award (Young Medical Scientist Award), Seoul Medical Association & Yuhan Corporation", "제58회 유한의학상 (젊은의학자상), 서울특별시의사회·유한양행"], ["2025", "Best Oral Presentation Award, The 69th Korean Rhinologic Society Annual Congress", "우수 구연상, 제69차 대한비과학회 학술대회"], ["2024", "O-Kong Academic Award, O-Kong-Hoe (Yonsei Otorhinolaryngology Alumni)", "오공학술상, 오공회 (연세대학교 이비인후과 동문회)"], ["2023", "Oral Sessions Prize Winner & EAACI scholarship (Travel grant), EAACI congress 2023", "구연 세션 수상 및 EAACI 장학금 (Travel grant), EAACI 2023"], ["2023", "Best Oral Presentation Award, 2023 Spring Conference of the Korean Society of Sleep and Breathing", "우수 구연상, 2023 대한수면호흡학회 춘계학술대회"], ["2023", "Best Oral Presentation Award 1st Place Winner, International Congress of Otorhinolaryngology-Head & Neck Surgery (ICORL-HNS) 2023", "우수 구연상 1위, ICORL-HNS 2023 (국제이비인후과학술대회)"], ["2022", "O-Kong Academic Award, O-Kong-Hoe (Yonsei Otorhinolaryngology Alumni)", "오공학술상, 오공회 (연세대학교 이비인후과 동문회)"], ["2022", "Flash Talks Sessions Prize Winner, EAACI congress 2022", "Flash Talk 세션 수상, EAACI 2022"], ["2022", "Young Immunologist Award, Korean Association of Immunologists & Seegene Medical Foundation", "젊은면역학자상, 대한면역학회·씨젠의료재단"], ["2022", "Best Oral Presentation Award, The 63rd Korean Rhinologic Society Annual Congress", "우수 구연상, 제63차 대한비과학회 학술대회"], ["2021", "O-Kong Academic Award 1st Place Winner, O-Kong-Hoe (Yonsei Otorhinolaryngology Alumni)", "오공학술상 1위, 오공회 (연세대학교 이비인후과 동문회)"], ["2021", "The 31st Wunsch Medical Award (Young Medical Scientist Award), Korean Academy of Medical Sciences & Boehringer Ingelheim", "제31회 분쉬의학상 (젊은의학자상), 대한의학회·한국베링거인겔하임"], ["2021", "Agarwal Award, KAIST Biomedical Research Center", "Agarwal Award, KAIST 의생명연구센터"], ["2020", "O-Kong Academic Award 1st Place Winner, O-Kong-Hoe (Yonsei Otorhinolaryngology Alumni)", "오공학술상 1위, 오공회 (연세대학교 이비인후과 동문회)"], ["2019", "Travel Award, the 26th International Symposium on Hepatitis C Virus and Related Viruses", "Travel Award, 제26차 국제 C형간염바이러스 심포지엄"], ["2018", "Best Oral Presentation Award, Korean Association of Immunologists International Meeting", "우수 구연상, 대한면역학회 국제학술대회"], ["2017 – 2020", "Korean Government Graduate Student Scholarship", "정부 대학원생 장학금"], ["2008 – 2010", "Scholarship for Academic Excellence, Yonsei University College of Medicine", "학업우수 장학금, 연세대학교 의과대학"]];
 
-const memberGroups=[["Postdoctoral researcher", [["Sungmin Moon, PhD", ["Postdoctoral researcher (2024 - )", "PhD, Department of Medical Science, Yonsei University College of Medicine (2024)", "BS, Department of Biotechnology, Konkuk University (2016)"], ["Airway epithelial cell biology in health and diseases", "Immunopathogenesis of chronic airway inflammation"]]]], ["Graduate student", [["Gyeongyeop Kim, MS", ["PhD student (2024 - )", "Research associate (2022 - 2024)"], ["Mucosal B cell & T cell biology"]], ["Sol Lee, BS", ["MS student (2025 - )", "Research associate (2023 - 2025)"], ["Metabolic-immune remodeling"]], ["Min-Seok Koo", ["Integrated MS/PhD student (2024 - )"], ["Nasal microbiome"]], ["Yu Jin Lee, MS", ["PhD student (2026 - )"], ["Innate immune system of the airway mucosa"]]]], ["Intern", [["Hyunjoon Cho, BS", ["Intern (2026.01. - )"], []], ["Youngjoo Park, MD", ["Medical Intern, Severance Hospital"], []], ["Hajeong Bae", ["Undergraduate medical student, Yonsei University College of Medicine"], []], ["Hankyo Jung", ["Undergraduate medical student, Yonsei University College of Medicine"], []]]], ["Administrative Staff", [["Gahee Choi", [], []], ["Seonju Ryu", [], []], ["Hyemin Yoon, RN", [], []]]], ["Alumni", [["Yeong-Jun Jeon, MD", ["Resident, Department of Otorhinolaryngology, Severance Hospital"], []]]]];
+const memberGroups=[[{"en": "Postdoctoral researcher", "ko": "박사후연구원"}, [["Sungmin Moon, PhD", "문성민", "moon-sungmin", {"en": ["Postdoctoral researcher (2024 - )", "PhD, Department of Medical Science, Yonsei University College of Medicine (2024)", "BS, Department of Biotechnology, Konkuk University (2016)"], "ko": ["박사후연구원 (2024 - )", "연세대학교 의과대학 의과학과 박사 (2024)", "건국대학교 생명공학과 학사 (2016)"]}, {"en": ["Airway epithelial cell biology in health and diseases", "Immunopathogenesis of chronic airway inflammation"], "ko": ["정상 및 질환 상태의 기도 상피세포 생물학", "만성 기도 염증의 면역병인"]}]]], [{"en": "Graduate student", "ko": "대학원생"}, [["Gyeongyeop Kim, MS", "김경엽", "kim-gyeongyeop", {"en": ["PhD student (2024 - )", "Research associate (2022 - 2024)"], "ko": ["박사과정 (2024 - )", "연구원 (2022 - 2024)"]}, {"en": ["Mucosal B cell & T cell biology"], "ko": ["점막 B세포 및 T세포 생물학"]}], ["Sol Lee, BS", "이솔", "lee-sol", {"en": ["MS student (2025 - )", "Research associate (2023 - 2025)"], "ko": ["석사과정 (2025 - )", "연구원 (2023 - 2025)"]}, {"en": ["Metabolic-immune remodeling"], "ko": ["대사-면역 리모델링"]}], ["Min-Seok Koo", "구민석", "koo-minseok", {"en": ["Integrated MS/PhD student (2024 - )"], "ko": ["석박사 통합과정 (2024 - )"]}, {"en": ["Nasal microbiome"], "ko": ["비강 마이크로바이옴"]}], ["Yu Jin Lee, MS", "이유진", "lee-yujin", {"en": ["PhD student (2026 - )"], "ko": ["박사과정 (2026 - )"]}, {"en": ["Innate immune system of the airway mucosa"], "ko": ["기도 점막의 선천면역계"]}]]], [{"en": "Intern", "ko": "인턴"}, [["Hyunjoon Cho, BS", "", "", {"en": ["Intern (2026.01. - )"], "ko": ["인턴 (2026.01. - )"]}, {"en": [], "ko": []}], ["Youngjoo Park, MD", "", "", {"en": ["Medical Intern, Severance Hospital"], "ko": ["세브란스병원 인턴"]}, {"en": [], "ko": []}], ["Hajeong Bae", "", "", {"en": ["Undergraduate medical student, Yonsei University College of Medicine"], "ko": ["연세대학교 의과대학 의학과 학생"]}, {"en": [], "ko": []}], ["Hankyo Jung", "", "", {"en": ["Undergraduate medical student, Yonsei University College of Medicine"], "ko": ["연세대학교 의과대학 의학과 학생"]}, {"en": [], "ko": []}]]], [{"en": "Administrative Staff", "ko": "행정직원"}, [["Gahee Choi", "", "", {"en": [], "ko": []}, {"en": [], "ko": []}], ["Seonju Ryu", "", "", {"en": [], "ko": []}, {"en": [], "ko": []}], ["Hyemin Yoon, RN", "", "", {"en": [], "ko": []}, {"en": [], "ko": []}]]], [{"en": "Alumni", "ko": "졸업생"}, [["Yeong-Jun Jeon, MD", "", "", {"en": ["Resident, Department of Otorhinolaryngology, Severance Hospital"], "ko": ["세브란스병원 이비인후과 전공의"]}, {"en": [], "ko": []}]]]];
 
-const news=[
-[
-"2026.07",
-"award",
-"Our research has been selected as one of the Top 30 Outstanding Achievements in Korea Health and Medical R&D for 2026 by the Ministry of Health and Welfare and the Korea Health Industry Development Institute.",
-"",
-[
-[
-"News",
-"https://www.docdocdoc.co.kr/news/articleView.html?idxno=3041097"
-]
-]
-],
-[
-"2026.06",
-"paper",
-"New Publication: Association between oral corticosteroid use and adverse events in chronic rhinosinusitis with nasal polyps",
-"JAMA Otolaryngol Head Neck Surg (2025 JCR 2/67 Otorhinolaryngology Category; IF 7.0)",
-[
-[
-"Article",
-"https://jamanetwork.com/journals/jamaotolaryngology/fullarticle/2849423"
-],
-[
-"News",
-"https://www.khan.co.kr/article/202607221253001"
-]
-]
-],
-[
-"2026.03",
-"award",
-"PI Min-Seok Rha received the Future Physician-Scientist Award (미래의학자상), presented by the Korean Rhinologic Society.",
-"",
-[]
-],
-[
-"2026.03",
-"people",
-"Yu Jin Lee has officially joined the RHA Lab as a graduate student. Welcome!",
-"",
-[]
-],
-[
-"2026.02",
-"paper",
-"New Publication: Cellular landscapes & immune phenotypes of nasal brushing samples",
-"J Allergy Clin Immunol (2025 JCR 1/40 Allergy Category; 9/183 Immunology Category; IF 11.7)",
-[
-[
-"Article",
-"https://www.jacionline.org/article/S0091-6749%2826%2900130-2/fulltext"
-],
-[
-"BRIC",
-"https://www.ibric.org/bric/hanbitsa/treatise.do?mode=treatise-view&id=100697&authorId=31607&pager.offset=0&pagerLimit=10#!/list"
-],
-[
-"News",
-"https://www.bosa.co.kr/news/articleView.html?idxno=3001704"
-]
-]
-],
-[
-"2025.11",
-"paper",
-"New Publication: Inflammatory features and nasal TH2 cell profiles in allergic patients with chronic rhinosinusitis",
-"Rhinology (2024 JCR 1/67 Otorhinolaryngology Category; IF 6.8)",
-[
-[
-"Article",
-"https://www.rhinologyjournal.com/Abstract.php?id=3381"
-]
-]
-],
-[
-"2025.10",
-"paper",
-"New Publication: Association between allergen signatures and allergic phenotypes",
-"Allergol Int (2024 JCR 4/40 Allergy Category; IF 6.7)",
-[
-[
-"Article",
-"https://www.sciencedirect.com/science/article/pii/S1323893025001091?via%3Dihub"
-]
-]
-],
-[
-"2025.10",
-"grant",
-"PI Min-Seok Rha received a research grant under the National Research Lab (NRL 2.0) Program (NRL 2.0 국가연구소 지원사업), supported by the National Research Foundation of Korea.",
-"",
-[]
-],
-[
-"2025.09",
-"grant",
-"PI Min-Seok Rha received a research grant from the Korea Health Industry Development Institute under the Global Physician-Scientist Program (Leader Track, 글로벌 의사과학자 양성사업 리더), funded by the Ministry of Health and Welfare, Korea.",
-"",
-[]
-],
-[
-"2025.09",
-"paper",
-"New Publication: Epithelial lining fluid biomarker for predicting type 2 chronic rhinosinusitis",
-"Allergy (2024 JCR 1/40 Allergy Category, 9/184 Immunology Category; IF 12.0)",
-[
-[
-"Article",
-"https://onlinelibrary.wiley.com/doi/10.1111/all.16652"
-],
-[
-"BRIC",
-"https://www.ibric.org/bric/hanbitsa/treatise.do?mode=treatise-view&id=97960&authorId=31607#!/list"
-],
-[
-"News",
-"https://www.bosa.co.kr/news/articleView.html?idxno=2255081"
-]
-]
-],
-[
-"2025.09",
-"grant",
-"Congratulations! Min-Seok Koo has received a Master's Program Research Encouragement Grant (석사과정생연구장려금) under the Academic Research Support Program in Science and Engineering, funded by the Ministry of Education, Korea.",
-"",
-[]
-],
-[
-"2025.08",
-"award",
-"Our research has been featured as an Outstanding Research achievement by Yonsei University College of Medicine.",
-"",
-[
-[
-"Video",
-"https://www.youtube.com/watch?v=sM4bBZTd4vU"
-]
-]
-],
-[
-"2025.07",
-"grant",
-"Congratulations! Dr. Sungmin Moon has received a research grant (PostDoc.성장형연구지원) under the Academic Research Support Program in Science and Engineering, funded by the Ministry of Education, Korea.",
-"",
-[]
-],
-[
-"2025.04",
-"award",
-"PI Min-Seok Rha was selected as the recipient of the Dain Leading Researcher Award (다인선도연구자상), presented by the Korean Society of Otorhinolaryngology–Head and Neck Surgery.",
-"",
-[
-[
-"News",
-"https://www.docdocdoc.co.kr/news/articleView.html?idxno=3027964"
-]
-]
-],
-[
-"2025.04",
-"award",
-"PI Min-Seok Rha was selected as the recipient of the 58th Yuhan Medical Award (Young Investigator Award, 유한의학상 젊은의학자상), presented by the Seoul Medical Association.",
-"",
-[
-[
-"News",
-"http://www.doctorstimes.com/news/articleView.html?idxno=231927"
-]
-]
-],
-[
-"2025.03",
-"grant",
-"PI Min-Seok Rha has received a research grant (우수신진연구) under Basic Science Research Program, funded by the National Research Foundation of Korea.",
-"",
-[]
-]
-];
+const news=[["2026.07", "award", {"en": "Our research has been selected as one of the Top 30 Outstanding Achievements in Korea Health and Medical R&D for 2026 by the Ministry of Health and Welfare and the Korea Health Industry Development Institute.", "ko": "보건복지부와 한국보건산업진흥원이 선정한 2026년 보건의료 R&D 우수성과 30선에 저희 연구가 선정되었습니다."}, "", [["News", "https://www.docdocdoc.co.kr/news/articleView.html?idxno=3041097"]]], ["2026.06", "paper", {"en": "New Publication: Association between oral corticosteroid use and adverse events in chronic rhinosinusitis with nasal polyps", "ko": "새 논문: 비용종을 동반한 만성 비부비동염에서 경구 스테로이드 사용과 부작용의 연관성"}, "JAMA Otolaryngol Head Neck Surg (2025 JCR 2/67 Otorhinolaryngology Category; IF 7.0)", [["Article", "https://jamanetwork.com/journals/jamaotolaryngology/fullarticle/2849423"], ["News", "https://www.khan.co.kr/article/202607221253001"]]], ["2026.03", "award", {"en": "PI Min-Seok Rha received the Future Physician-Scientist Award (미래의학자상), presented by the Korean Rhinologic Society.", "ko": "나민석 교수가 대한비과학회에서 수여하는 미래의학자상을 수상했습니다."}, "", []], ["2026.03", "people", {"en": "Yu Jin Lee has officially joined the RHA Lab as a graduate student. Welcome!", "ko": "이유진 학생이 대학원생으로 RHA Lab에 합류했습니다. 환영합니다!"}, "", []], ["2026.02", "paper", {"en": "New Publication: Cellular landscapes & immune phenotypes of nasal brushing samples", "ko": "새 논문: 비강 브러싱 검체의 세포 지형과 면역 표현형"}, "J Allergy Clin Immunol (2025 JCR 1/40 Allergy Category; 9/183 Immunology Category; IF 11.7)", [["Article", "https://www.jacionline.org/article/S0091-6749%2826%2900130-2/fulltext"], ["BRIC", "https://www.ibric.org/bric/hanbitsa/treatise.do?mode=treatise-view&id=100697&authorId=31607&pager.offset=0&pagerLimit=10#!/list"], ["News", "https://www.bosa.co.kr/news/articleView.html?idxno=3001704"]]], ["2025.11", "paper", {"en": "New Publication: Inflammatory features and nasal TH2 cell profiles in allergic patients with chronic rhinosinusitis", "ko": "새 논문: 알레르기를 동반한 만성 비부비동염 환자의 염증 특성과 비강 TH2 세포 프로파일"}, "Rhinology (2024 JCR 1/67 Otorhinolaryngology Category; IF 6.8)", [["Article", "https://www.rhinologyjournal.com/Abstract.php?id=3381"]]], ["2025.10", "paper", {"en": "New Publication: Association between allergen signatures and allergic phenotypes", "ko": "새 논문: 알레르겐 시그니처와 알레르기 표현형의 연관성"}, "Allergol Int (2024 JCR 4/40 Allergy Category; IF 6.7)", [["Article", "https://www.sciencedirect.com/science/article/pii/S1323893025001091?via%3Dihub"]]], ["2025.10", "grant", {"en": "PI Min-Seok Rha received a research grant under the National Research Lab (NRL 2.0) Program (NRL 2.0 국가연구소 지원사업), supported by the National Research Foundation of Korea.", "ko": "나민석 교수가 한국연구재단의 NRL 2.0 국가연구소 지원사업 연구과제에 선정되었습니다."}, "", []], ["2025.09", "grant", {"en": "PI Min-Seok Rha received a research grant from the Korea Health Industry Development Institute under the Global Physician-Scientist Program (Leader Track, 글로벌 의사과학자 양성사업 리더), funded by the Ministry of Health and Welfare, Korea.", "ko": "나민석 교수가 보건복지부 지원, 한국보건산업진흥원 주관 글로벌 의사과학자 양성사업(리더 트랙) 연구과제에 선정되었습니다."}, "", []], ["2025.09", "paper", {"en": "New Publication: Epithelial lining fluid biomarker for predicting type 2 chronic rhinosinusitis", "ko": "새 논문: 2형 만성 비부비동염을 예측하는 상피 피복액(epithelial lining fluid) 바이오마커"}, "Allergy (2024 JCR 1/40 Allergy Category, 9/184 Immunology Category; IF 12.0)", [["Article", "https://onlinelibrary.wiley.com/doi/10.1111/all.16652"], ["BRIC", "https://www.ibric.org/bric/hanbitsa/treatise.do?mode=treatise-view&id=97960&authorId=31607#!/list"], ["News", "https://www.bosa.co.kr/news/articleView.html?idxno=2255081"]]], ["2025.09", "grant", {"en": "Congratulations! Min-Seok Koo has received a Master's Program Research Encouragement Grant (석사과정생연구장려금) under the Academic Research Support Program in Science and Engineering, funded by the Ministry of Education, Korea.", "ko": "축하합니다! 구민석 학생이 교육부 이공분야 학술연구지원사업의 석사과정생연구장려금에 선정되었습니다."}, "", []], ["2025.08", "award", {"en": "Our research has been featured as an Outstanding Research achievement by Yonsei University College of Medicine.", "ko": "저희 연구가 연세대학교 의과대학 우수 연구성과로 소개되었습니다."}, "", [["Video", "https://www.youtube.com/watch?v=sM4bBZTd4vU"]]], ["2025.07", "grant", {"en": "Congratulations! Dr. Sungmin Moon has received a research grant (PostDoc.성장형연구지원) under the Academic Research Support Program in Science and Engineering, funded by the Ministry of Education, Korea.", "ko": "축하합니다! 문성민 박사가 교육부 이공분야 학술연구지원사업의 박사후연구원 성장형연구지원 과제에 선정되었습니다."}, "", []], ["2025.04", "award", {"en": "PI Min-Seok Rha was selected as the recipient of the Dain Leading Researcher Award (다인선도연구자상), presented by the Korean Society of Otorhinolaryngology–Head and Neck Surgery.", "ko": "나민석 교수가 대한이비인후과학회 다인선도연구자상 수상자로 선정되었습니다."}, "", [["News", "https://www.docdocdoc.co.kr/news/articleView.html?idxno=3027964"]]], ["2025.04", "award", {"en": "PI Min-Seok Rha was selected as the recipient of the 58th Yuhan Medical Award (Young Investigator Award, 유한의학상 젊은의학자상), presented by the Seoul Medical Association.", "ko": "나민석 교수가 서울특별시의사회가 수여하는 제58회 유한의학상 젊은의학자상 수상자로 선정되었습니다."}, "", [["News", "http://www.doctorstimes.com/news/articleView.html?idxno=231927"]]], ["2025.03", "grant", {"en": "PI Min-Seok Rha has received a research grant (우수신진연구) under Basic Science Research Program, funded by the National Research Foundation of Korea.", "ko": "나민석 교수가 한국연구재단 기초연구사업 우수신진연구 과제에 선정되었습니다."}, "", []]];
 const tagName={paper:{en:"Paper",ko:"논문"},award:{en:"Award",ko:"수상"},grant:{en:"Grant",ko:"과제"},people:{en:"People",ko:"구성원"}};
 
 // publications: [authors, title, journal, year, cite, type]
@@ -678,20 +468,20 @@ function renderStatic(){
   document.documentElement.lang=lang;
 }
 function renderHome(){
-  $("#homeTopics").innerHTML=topics.map(x=>`<a class="theme-card" href="#research"><h3>${x.t}</h3><p>${x.d}</p></a>`).join("");
+  $("#homeTopics").innerHTML=topics.map(x=>`<a class="theme-card" href="#research"><h3>${L(x.t)}</h3><p>${L(x.d)}</p></a>`).join("");
   const first=P.filter(p=>p.ty==="f").length;
   const s=[[P.length,t("stP","SCI(E) papers")],[first,t("stF","First / corresponding")],[1+5+4+3,t("stM","Lab members")]];
   $("#stats").innerHTML=s.map(([n,l])=>`<div><b>${n}</b><span>${l}</span></div>`).join("");
   $("#homeNews").innerHTML=news.slice(0,4).map(newsRow).join("");
 }
-const newsRow=([d,k,x,j,links])=>`<li class="news-row"><time>${d}</time><div><span class="tag ${k==="award"?"award":""}">${L(tagName[k])}</span>${esc(x)}${j?`<span class="nj">${esc(j)}</span>`:""}${links.length?`<span class="nl">${links.map(([l,u])=>`<a href="${esc(u)}" target="_blank" rel="noopener">${l} ↗</a>`).join("")}</span>`:""}</div></li>`;
+const newsRow=([d,k,x,j,links])=>`<li class="news-row"><time>${d}</time><div><span class="tag ${k==="award"?"award":""}">${L(tagName[k])}</span>${esc(L(x))}${j?`<span class="nj">${esc(j)}</span>`:""}${links.length?`<span class="nl">${links.map(([l,u])=>`<a href="${esc(u)}" target="_blank" rel="noopener">${l} ↗</a>`).join("")}</span>`:""}</div></li>`;
 function renderResearch(){
-  $("#resTopics").innerHTML=topics.map((x,i)=>`<div class="sec"><div class="side"><div class="lbl">Research ${i+1}</div></div><div class="topic"><h3>${x.t}</h3><p class="prose" style="margin:0;color:var(--muted)">${x.d}</p><ul>${x.b.map(b=>`<li>${b}</li>`).join("")}</ul></div></div>`).join("");
+  $("#resTopics").innerHTML=topics.map((x,i)=>`<div class="sec"><div class="side"><div class="lbl">${lang==="ko"?"연구 주제 "+(i+1):"Research "+(i+1)}</div></div><div class="topic"><h3>${L(x.t)}</h3><p class="prose" style="margin:0;color:var(--muted)">${L(x.d)}</p><ul>${L(x.b).map(b=>`<li>${b}</li>`).join("")}</ul></div></div>`).join("");
 }
 function renderTeam(){
-  $("#cvCareer").innerHTML=career.map(([y,p,i])=>`<dt>${y}</dt><dd>${p}<small>${i}</small></dd>`).join("");
-  $("#cvAwards").innerHTML=awards.map(([y,p,i])=>`<dt>${y}</dt><dd>${p}${i?`<small>${i}</small>`:""}</dd>`).join("");
-  const h=memberGroups.map(([g,ms])=>`<h4 class="group-h">${g}</h4><div class="members">${ms.map(([n,info,topics])=>`<div class="member"><div class="avatar" aria-hidden="true">${initials(n)}</div><div><b>${n}</b>${info.map(x=>`<span class="role">${esc(x)}</span>`).join("")}${topics.length?`<p>${topics.map(esc).join("<br>")}</p>`:""}</div></div>`).join("")}</div>`).join("");
+  $("#cvCareer").innerHTML=career.map(([y,e,k])=>`<dt>${y}</dt><dd>${esc(lang==="ko"?k:e)}</dd>`).join("");
+  $("#cvAwards").innerHTML=awards.map(([y,e,k])=>`<dt>${y}</dt><dd>${esc(lang==="ko"?k:e)}</dd>`).join("");
+  const h=memberGroups.map(([g,ms])=>`<h4 class="group-h">${L(g)}</h4><div class="members">${ms.map(([n,nk,ph,info,tp])=>`<div class="member">${ph?`<img class="mphoto" src="assets/members/${ph}.jpg" alt="${esc(n)}" loading="lazy" width="72" height="96">`:`<div class="avatar" aria-hidden="true">${initials(n)}</div>`}<div><b>${lang==="ko"&&nk?`${nk} <small class="en-name">${esc(n)}</small>`:esc(n)}</b>${L(info).map(x=>`<span class="role">${esc(x)}</span>`).join("")}${L(tp).length?`<p>${L(tp).map(esc).join("<br>")}</p>`:""}</div></div>`).join("")}</div>`).join("");
   $("#memberGroups").innerHTML=h;
 }
 let pubFilter="all";
