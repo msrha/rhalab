@@ -119,6 +119,13 @@ main{min-height:60vh}
 /* research */
 .topic-pubs{list-style:none;margin:1rem 0 0;padding:.8rem 0 0;border-top:1px dashed var(--line);display:flex;flex-direction:column;gap:.3rem;font-size:.9rem}
 .topic-pubs li::before{content:none}
+.clin{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.9rem}
+@media (max-width:1000px){.clin{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:480px){.clin{grid-template-columns:minmax(0,1fr)}}
+.clin-card{display:flex;flex-direction:column;gap:.5rem;padding:.8rem;border:1px solid var(--line);border-top:3px solid var(--c);border-radius:10px;background:var(--surface)}
+.clin-card img{width:100%;aspect-ratio:1;object-fit:contain;border-radius:8px;background:#fff}
+.clin-card b{font-size:.95rem;line-height:1.3}
+.clin-card span{font-size:.82rem;color:var(--muted);line-height:1.45}
 .topic-wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,22rem);gap:2rem;align-items:start}
 @media (max-width:900px){.topic-wrap{grid-template-columns:minmax(0,1fr)}}
 .topic-fig{margin:0}
@@ -271,6 +278,7 @@ footer .wrap{align-items:center}
 <section class="view wrap" id="v-research" data-view="research" hidden>
   <div class="page-h"><div class="lbl" data-i18n="nResearch">Research</div>
   <p class="lead" data-i18n="resIntro">RHA Lab explores the complex interplay among immune cells, epithelial cells, tissue stem cells, and microbial communities within the upper airway mucosa. Our research focuses on understanding the mechanisms underlying the persistence of inflammatory memory and the maintenance of tissue immune homeostasis. By integrating immunology, microbiology, tissue stem cell biology, and bioinformatics, we combine studies of human-derived samples with in vivo models to elucidate how mucosal immunity is maintained or reprogrammed at the airway barrier. Ultimately, we aim to translate these mechanistic insights into improved therapeutic strategies for chronic airway diseases and respiratory infections.</p></div>
+  <div class="sec clin-sec"><div class="side"><div class="lbl" data-i18n="clinH">Clinical field</div></div><div class="clin" id="clin"></div></div>
   <div id="resTopics"></div>
 </section>
 
@@ -368,7 +376,7 @@ footer .wrap{align-items:center}
 <script>
 const T={
  en:{},
- ko:{heroLab:"연세대학교 의과대학 나민석 교수 연구실",resIntro:"RHA Lab은 상기도 점막에서 면역세포, 상피세포, 조직 줄기세포, 미생물 군집 사이의 복잡한 상호작용을 연구합니다. 특히 염증 기억이 지속되는 기전과 조직 면역 항상성이 유지되는 기전을 밝히는 데 집중하고 있습니다. 면역학, 미생물학, 조직 줄기세포 생물학, 생물정보학을 아우르며, 인체 유래 검체 연구와 생체 내(in vivo) 모델 연구를 결합해 기도 점막 장벽에서 점막 면역이 어떻게 유지되고 재프로그래밍되는지 규명합니다. 궁극적으로는 이러한 기전 연구의 성과를 만성 기도질환과 호흡기 감염의 더 나은 치료 전략으로 연결하는 것을 목표로 합니다.",heroH:"<em>상기도 점막 면역계</em>를 전례 없는 정밀도로 탐구하고, 그 성과를 임상으로 연결합니다",cAddrH:"위치",cAddr:"RHA Lab은 연세대학교 의과대학 세브란스병원 에비슨의생명연구센터(ABMRC) 2층에 있습니다.<br>(03722) 서울특별시 서대문구 연세로 50-1",cJoinH:"연구원을 모집합니다!",cJoin:"열정 있는 연구자(박사후연구원, 대학원생, 학부연구생, 연구원)를 상시 모집하고 있습니다.",cJoin2:"아래 서류를 준비하여 나민석 교수에게 연락해 주세요.",cDoc1:"연구 관심 분야와 강점을 기술한 자기소개서",cDoc2:"이력서(CV)",cInstH:"기도점막연구소",g1:"단체 사진 (KAI 2025)",g2:"단체 사진 (Cytokines 2024 & KAI 2024)",joinText:"열정 있는 연구자(박사후연구원, 대학원생, 학부연구생, 연구원)를 상시 모집하고 있습니다.",eduCareer:"학력 및 경력",honors:"수상",brandSub:"연세대학교 의과대학 나민석 교수 연구실",nHome:"홈",nResearch:"연구",nTeam:"구성원",nPubs:"논문",nNews:"소식",nGallery:"갤러리",nContact:"연락처",
+ ko:{clinH:"임상 분야",heroLab:"연세대학교 의과대학 나민석 교수 연구실",resIntro:"RHA Lab은 상기도 점막에서 면역세포, 상피세포, 조직 줄기세포, 미생물 군집 사이의 복잡한 상호작용을 연구합니다. 특히 염증 기억이 지속되는 기전과 조직 면역 항상성이 유지되는 기전을 밝히는 데 집중하고 있습니다. 면역학, 미생물학, 조직 줄기세포 생물학, 생물정보학을 아우르며, 인체 유래 검체 연구와 생체 내(in vivo) 모델 연구를 결합해 기도 점막 장벽에서 점막 면역이 어떻게 유지되고 재프로그래밍되는지 규명합니다. 궁극적으로는 이러한 기전 연구의 성과를 만성 기도질환과 호흡기 감염의 더 나은 치료 전략으로 연결하는 것을 목표로 합니다.",heroH:"<em>상기도 점막 면역계</em>를 전례 없는 정밀도로 탐구하고, 그 성과를 임상으로 연결합니다",cAddrH:"위치",cAddr:"RHA Lab은 연세대학교 의과대학 세브란스병원 에비슨의생명연구센터(ABMRC) 2층에 있습니다.<br>(03722) 서울특별시 서대문구 연세로 50-1",cJoinH:"연구원을 모집합니다!",cJoin:"열정 있는 연구자(박사후연구원, 대학원생, 학부연구생, 연구원)를 상시 모집하고 있습니다.",cJoin2:"아래 서류를 준비하여 나민석 교수에게 연락해 주세요.",cDoc1:"연구 관심 분야와 강점을 기술한 자기소개서",cDoc2:"이력서(CV)",cInstH:"기도점막연구소",g1:"단체 사진 (KAI 2025)",g2:"단체 사진 (Cytokines 2024 & KAI 2024)",joinText:"열정 있는 연구자(박사후연구원, 대학원생, 학부연구생, 연구원)를 상시 모집하고 있습니다.",eduCareer:"학력 및 경력",honors:"수상",brandSub:"연세대학교 의과대학 나민석 교수 연구실",nHome:"홈",nResearch:"연구",nTeam:"구성원",nPubs:"논문",nNews:"소식",nGallery:"갤러리",nContact:"연락처",
   heroLbl:"Research in Human Airway Mucosal Immunology",
   aff1:"연세대학교 의과대학",aff2:"세브란스병원 이비인후과",aff3:"기도점막연구소",
   lblThemes:"연구 주제",lblAtGlance:"한눈에 보기",lblLatest:"최근 소식",allNews:"전체 소식 →",lblJoin:"함께하기",
@@ -514,8 +522,14 @@ function renderPubs(){
     out+=`<div class="pub">${linkT(p.t,p.j)}<span class="a">${hl(p.a)}</span><span class="j">${fmtJ(p.j)}</span></div>`});
   $("#pubList").innerHTML=out||`<p style="color:var(--muted)">${lang==="ko"?"검색 결과가 없습니다. 다른 단어로 검색해 보세요.":"No papers match. Try another word."}</p>`;
 }
+const clinical=[
+ ["crs","#2f6fb8",{en:"Chronic rhinosinusitis & nasal polyps",ko:"만성 비부비동염 및 비용종"},{en:"Chronic inflammation of paranasal mucosa and mucosal remodeling",ko:"부비동 점막의 만성 염증과 점막 리모델링"}],
+ ["ar","#2a9d84",{en:"Allergic rhinitis",ko:"알레르기 비염"},{en:"IgE-mediated mucosal hypersensitivity",ko:"IgE 매개 점막 과민반응"}],
+ ["snc","#c0504d",{en:"Sinonasal cancer",ko:"비부비동암"},{en:"Malignancy of the nose and paranasal sinuses",ko:"코와 부비동의 악성 종양"}],
+ ["osa","#7e5aa8",{en:"Obstructive sleep apnea",ko:"폐쇄성 수면무호흡"},{en:"Upper airway collapse during sleep and intermittent hypoxia",ko:"수면 중 상기도 허탈과 간헐적 저산소증"}]];
+function renderClinical(){$("#clin").innerHTML=clinical.map(([k,c,t,d])=>`<div class="clin-card" style="--c:${c}"><img src="assets/clinical/${k}.jpg" alt="" loading="lazy" width="180" height="180"><b>${L(t)}</b><span>${L(d)}</span></div>`).join("")}
 function renderNews(){ $("#newsList").innerHTML=news.map(newsRow).join(""); }
-function renderAll(){renderStatic();renderHome();renderResearch();renderTeam();renderPubs();renderNews();
+function renderAll(){renderStatic();renderHome();renderResearch();renderTeam();renderPubs();renderNews();renderClinical();
   document.querySelectorAll(".lang button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.lang===lang));}
 
 const views=["home","research","team","publications","news","gallery","contact"];
